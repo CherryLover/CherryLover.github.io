@@ -1,0 +1,1546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://cherrylover.github.io</id>
+    <title>Jiang</title>
+    <updated>2020-09-20T05:41:15.213Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://cherrylover.github.io"/>
+    <link rel="self" href="https://cherrylover.github.io/atom.xml"/>
+    <subtitle>我允许你走进我的世界，但不许你在我的世界里走来走去。</subtitle>
+    <logo>https://cherrylover.github.io/images/avatar.png</logo>
+    <icon>https://cherrylover.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, Jiang</rights>
+    <entry>
+        <title type="html"><![CDATA[一篇文章引发的思考]]></title>
+        <id>https://cherrylover.github.io/post/oDDi-IE1j/</id>
+        <link href="https://cherrylover.github.io/post/oDDi-IE1j/">
+        </link>
+        <updated>2020-06-24T08:33:14.000Z</updated>
+        <content type="html"><![CDATA[<p>前几天我写了一篇关于 <a href="https://juejin.im/post/5ee83417f265da76ca590347">Gradle 的文章</a>，从 Gradle 的版本讲到了 Gradle 插件的制作。得到了一些人的认可，没想到今天日常阅读<a href="https://juejin.im/post/5e9c46c8518825737f1a7b4c">鸿洋的公众号推文</a>也是 Gradle 相关的。看完之后，我觉得我写的远不如推送文章的内容丰富，比如他把 setting.gradle 中的配置、使用讲的很清楚，还有他介绍了很多 Gradle 的 API，有关于 Project 也有 Task的。</p>
+<p>总之，我看完之后感觉我写的好像根本比不上人家。想到这里，我有点慌。我开始思考。我的那篇文章的定位是什么？目标呢？阅读人群应该是哪些？再以同样的问题去审视他的文章。我得出一个结论。</p>
+<p>我的文章定位是自己的 Gradle 学习之路，主要是记录 Gradle 整个架构，适合使用过 Gradle 但对它不甚了解的开发者，可以明晰 Gradle 在这些开发者心中的形象「是什么、如何做到的」，让更多的开发者有能力可以主动的更深入的了解 Gradle。</p>
+<p>他的文章则是定位在使用 Gradle 之后，有些困惑或更好的使用方法，主要面向的人群是已经对 Gradle 有所了解，同时期望更进一步的开发者。</p>
+<p>我的文章是对应着我的 Gradle 学习过程，他的文章也是对应着他的 Gradle 学习内容。</p>
+<p>到这，我想应该释然了，于是我放下手机。结果脑子里冒出一个新的问题：</p>
+<p>为什么他的学习过程比我的更丰富。</p>
+<p>这就涉及到我之前学习 Gradle 的过程了。为什么我之前学习的时候没能学习到这么多呢？我再学另一个东西的时候怎么保证我学的内容丰富呢？还有就是我如果保证学习内容的丰富是不是也会产生很多知识点用不上的问题？</p>
+<p>说来也巧，昨天正好在扔物线的知识星球看到他有关这些学习的分享。</p>
+<p>答案是够用，保证够自己用的就行，这样既能保证不会多学「感觉用不上」，也不会造成少学「感觉没学到多少」。</p>
+<p>那什么是够用呢？他给出的建议是：</p>
+<ol>
+<li>根据事情的起因「问题场景，也有可能是其他场景」，能够把需要解决的问题解决就行。比如：如何通过命令行在远程服务器和本机之间互传文件？那答案可能就是通过使用 scp 命令进行。</li>
+<li>如果有其他的有益场景「面试、分享 等」，可以深入 scp 命令的实现原理，他具体是怎么操作的，如果在上传文件时有冲突，scp 是会复写文件还是，重命名文件，内部实现原理是什么？</li>
+</ol>
+<p>针对不同的场景，需要学习的内容是不同的，那具体怎么学呢？就是所有场景的并集，也就是说，当你的学习成功能同时满足你所需场景「或 解决问题或博客分享或升职加薪」才是既不浪费也不少学。</p>
+<p>本文封面图：Photo by <a href="https://unsplash.com/@shawnanggg?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Shawn Ang</a> on <a href="https://unsplash.com/photos/-S15r4VsQhY">Unsplash</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Gradle 学习之路]]></title>
+        <id>https://cherrylover.github.io/post/fqYqdi2NE/</id>
+        <link href="https://cherrylover.github.io/post/fqYqdi2NE/">
+        </link>
+        <updated>2020-06-16T02:44:31.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="前言">前言</h2>
+<p>虽然从开始用 Android Studio 开发 Android 应用就一直在接触 Gradle，但对 Gradle 始终都有一些陌生感，表现在日常的开发中就是不敢随便改 build.gradle 文件，一旦 sync 出错，只会复制错误找谷歌，可是解决方案也不一定能够完美解决自己的问题。还有就是不熟悉 Gradle 的时候，也不能很好的理解整个项目的配置，毕竟 Gradle 是 Android 项目的构建脚本。</p>
+<p>每当我想好好的学习一下 Gradle，总是被从哪里开始这个问题所打败。直到有一天……我终于不怵它了，然后又过了很久我决定写下这篇文章。</p>
+<p>这篇文章目的主要目的在于回顾我的 Gradle 学习之路，如果能对你有一些帮助，那定是极好的。</p>
+<h2 id="目录">目录</h2>
+<p>[TOC]</p>
+<h2 id="gradle">Gradle</h2>
+<p>Gradle 是一个用 Java 语言开发的构建工具，目前最新版本是 6.5。对于 Android 开发者来说，最常见的就是在 Android 开发中使用 Gradle，实际上 Gradle 还可以用于 Java 应用或 Java Web 应用等项目进行开发。</p>
+<blockquote>
+<ol>
+<li>笔者开始写下这篇笔记是在 2020 年 6 月 8 日。最新版本可在 <a href="https://gradle.org/releases/">Gradle 官网</a>进行查看。</li>
+<li>据说有些 Java 开发者从 Maven 迁移到到 Gradle 之后就再也回不去了。</li>
+</ol>
+</blockquote>
+<h2 id="gradle-user-home">Gradle User Home</h2>
+<p>就像安装 Java 的 JDK 一样，Gradle 也有自己的 User Home 目录，一般在这个目录中存放着一些全局的配置信息。在 Mac 下的路径为：<code>user/.gradle</code>。</p>
+<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200608170058361.png" alt="image-20200608170058361" loading="lazy"></figure>
+<p>在 Gradle User Home 中我们主要来介绍 wrapper 这个文件夹。wrapper 内包含 dists 文件夹，dists 就是 distribution 的缩写。</p>
+<h3 id="distribution">distribution</h3>
+<p>刚才我们说 Gradle 现在发布到了 6.5 ，不过 6.5 这个版本内部也有不同的类型。Gradle 将每一个版本分为了三个类型，它们分别是：</p>
+<ul>
+<li>
+<p>src</p>
+<p>源代码类型</p>
+</li>
+<li>
+<p>bin</p>
+<p>源代码打包后的执行文件</p>
+</li>
+<li>
+<p>all</p>
+<p>包含 bin 及一些示例代码和相关文档。</p>
+</li>
+</ul>
+<p>这里的 distribution 就是每个由 Gradle 构建的项目中 gradle-wrapper.properties 文件配置的一部分，如下图。</p>
+<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200608170937573.png" alt="image-20200608170937573" loading="lazy"></figure>
+<p>在 Gradle User Home 中的 wrapper 下的 dists 文件夹内存放的其实就是各个版本的的不同类型的 Gradle 下载并解压后的文件。</p>
+<figure data-type="image" tabindex="3"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200608171239711.png" alt="image-20200608171239711" loading="lazy"></figure>
+<p>仔细看这张图底部的文件路径<code>jiang/.gradle/wrapper/dists</code>，这里隐藏了 2 个问题：</p>
+<ol>
+<li>你看我的 dists 文件夹内有从 4.1 到 6.4 的各种版本的包，那么日常开发中，不是只用一个版本的就可以了吗？为什么要保存这么多版本在本地？</li>
+<li>既然是下载下来的 Gradle 版本，那为什么 dists 是在 wrapper 文件夹下面呢？</li>
+</ol>
+<p>我先回答第一个问题。是因为多版本，具体来说就是，Gradle 支持本地存在多个版本，并且这些版本之间相互独立。举个例子，你在去年用 Android Studio 开发 App 用的是 Gradle 4.1 之后由于各种原因，没有及时对它进行升级。今年你又新创建了一个项目，这个新创建的项目用的是最新的 6.5。你不能因为有了新项目，就不让老项目不能运行吧，那你也太渣了。</p>
+<h3 id="wrapper">wrapper</h3>
+<p>在了解为什么会存在多版本之后，我们可以来讨论一下为什么 dists 是在 wrapper 文件夹而不是直接在 Gradle User Home 的根目录下。</p>
+<p>那是因为，我们在使用 Gradle 构建项目的时候一般不直接使用 dists 里的各种具体版本进行构建，而是选用 wrapper 进行。通过使用 wrapper 进行查找并使用具体的 Gradle 版本完成构建任务。</p>
+<p>具体来说，当我们去构建项目时，首先是根据当前项目中的 gradle-wrapper.properties 文件中设置的目标版本及下载地址。如果在本地「User Home 的 wrapper 下的 dists 文件夹」找不到，就会从服务器上进行下载，这样既能保证在一台从未使用过 Gradle 的机器上运行 Gradle 构建工具，也能保证了多项目之间的 Gradle 各版本相互分离，互不干扰。</p>
+<figure data-type="image" tabindex="4"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/20200609130514.png" alt="Gradle-Wrapper" loading="lazy"></figure>
+<blockquote>
+<p>图片来自 Gradle 官网的 <a href="https://docs.gradle.org/current/userguide/gradle_wrapper.html#header">Gradle Wrapper</a> 介绍。</p>
+</blockquote>
+<h2 id="gradle-项目">Gradle 项目</h2>
+<p>现在我们来创建一个最简单的项目来认识一下 Gradle 项目。</p>
+<figure data-type="image" tabindex="5"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200609135117631.png" alt="image-20200609135117631" loading="lazy"></figure>
+<blockquote>
+<ol>
+<li>执行 gradle init 可能需要正在阅读的你在你的机器上配置 gradle 的路径到环境变量中；</li>
+<li>截图中的红色框 ①、②、③ 是 gradle 提示让开发者输入的项目相关的配置信息。</li>
+<li>截图中的红色框 ④ 是直接完 gradle init 后的目录结构。</li>
+</ol>
+</blockquote>
+<p>可以发现里面有 gradlew 和 gradlew.bat 这两个文件，而这两个文件就是我们当前这个项目执行构建是所必须的的脚本文件。文件名 gradlew 其实就是 gradle wrapper 的缩写。gradlew 文件是用在 macOS 和 Linux 上的执行脚本，gradlew 则是运行在 Windows 上的。</p>
+<p>现在我们来运行一下看看，执行 <code>./gradlew help</code> 命令看看</p>
+<p>![gradlew help](https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/Kapture 2020-06-09 at 15.29.19.gif)</p>
+<p>注意看这个 GIF，在开始的时候，提示了一段话。</p>
+<blockquote>
+<p>Starting a Gradle Daemon, 3 stopped Daemons could not be reused, use --status for details</p>
+</blockquote>
+<p>什么意思呢？就是说，启动了一个 Gradle Daemon，有 3 个已经被停止的 Daemon 是不能被使用的，详情使用 <code>./gradlew --status</code> 进行查看。</p>
+<p>什么是 Daemon？我只是想执行 help 命令，怎么还扯上了 Daemon？</p>
+<p>是因为虽然你执行的是 <code>./gradlew help</code> 实际上，gradle 通过将这条命令转发给了一个叫 Daemon 的进程，由它在完成开发者所期待的指令。</p>
+<h3 id="daemon">Daemon</h3>
+<p>Gradle Daemon 是 Gradle 在 3.0 之后新加入的一个功能，旨在加快项目的构建速度。Daemon 是作为 Gradle 的一个后台进程，在这个后台进程中会缓存参与构建的项目的目录结构、文件、Tasks 还有一些其他东西在内存中。</p>
+<p>默认情况下 Daemon 模式是打开的，开发者可以选择关闭 Daemon 模式，当然如果关闭了，每构建一次项目就会创建一个 JVM 去执行，直到执行结束，关闭并释放资源，如果频繁的进行，其实浪费的是开发者的时间。Gradle 官方也是建议我们使用 Daemon。</p>
+<p>之前说，我机器上可以同时存在多个版本的 Gradle，那如果我正好又同时构建了多个项目，Daemon 又是什么表现呢？</p>
+<p>事实上，当开发者想要执行一个 gradle 指令时，会先去查找有没有可用的 Daemon，这里的可以指的是没有被关闭，同时满足执行构建的所指定的参数。查找到可用的 Daemon 之后就会交给 Daemon 去执行，找不到就根据当前的构建请求去启动一个 Daemon。</p>
+<p>执行构建所指定的参数？什么东西？我没指定过啊，简单来说，就是你要完成构建的环境，比如 Java 的版本或 minimum heap size 等等。</p>
+<figure data-type="image" tabindex="6"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200609161042032.png" alt="image-20200609161042032" loading="lazy"></figure>
+<p>看这个图，我复制了刚才创建的 gradle 项目然后改了 <code>gradle/wrapper/gradle-wrapper.properties</code> 中指定的 Gradle 版本，将原来的 5.4.1-all 改为了 6.5-all，然后执行 <code>./gradlew help</code> 指令。</p>
+<p>Gradle 在执行时就是先下载 6.5-all 的文件，之后启动 Daemon 并执行 <code>help</code> 指令。</p>
+<p>假设启动了多个不同版本的 Daemon，会不会特别占用内存或是我长时间不进行构建不就浪费内存了吗？这个其实也不用怎么操心。Gradle Daemon 在 3 小时之内没有使用，就会被关闭，下次再有构建请求，会重新开启 Daemon，而且当系统内存不足时 Daemon 也会被清理。</p>
+<blockquote>
+<p>使用 ./gradlew --stop 就能手动停止当前的使用的 Daemon 进程。</p>
+</blockquote>
+<h3 id="小结">小结</h3>
+<p>Gradle 是一个使用 Java 开发的构建工具，它有不同的版本、每个版本之间又有不同的类型，当执行一个 Gradle 指令时，实际上是通过 Gradle Daemon 来进行的，Daemon 会在 3 小时内无操作时自动关闭节约内存。</p>
+<h2 id="构建">构建</h2>
+<p>直到现在，我们好像还没跟构建项目打交道，说的全是 Gradle 结构相关的内容。下面我们就来看看如果使用 Gradle 进行项目构建。</p>
+<p>在开始讲构建之前，先看一个小例子。输出一些文字</p>
+<p>打开 build.gradle 文件，在其中加上一行输入。</p>
+<pre><code class="language-groovy">println(&quot; I'm first line in build.gradle &quot;)
+</code></pre>
+<p>问题来了，我该怎么运行让他显示出来呢？答案是没法通过像运行 Java 程序那样运行，然后输出这行文字。不过 Gradle 有他自己的一套规范。</p>
+<h3 id="projecttask">Project&amp;Task</h3>
+<p>Project 和 Task 都是 Gradle 中的模型，它们两个的存在构成了 Gradle 运行所必备的项目结构，一个 Gradle 项目可能包含多个 Project 同时一个 Project 中可能包含多个 Task。真正执行构建任务的实际上就是执行各种的 Task，并且 Task 之间可以相互依赖，通过组合的形式可以完成诸多任务。</p>
+<figure data-type="image" tabindex="7"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610113340066.png" alt="image-20200610113340066" loading="lazy"></figure>
+<blockquote>
+<p>一个 Android 项目的 build Task 的依赖部分截图。</p>
+</blockquote>
+<p>一个 Gradle 项目在执行构建的过程中，会先通过当前目录下的 <code>settings.gradle</code> 来配置当前的项目结构，比如：项目名称是什么，包含了几个 Project 以及每个 Project 的路径名称等信息。在这之后又会根据 Project 来构建其所包含的 Task 及 Task 之间的层级关系。</p>
+<figure data-type="image" tabindex="8"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610144743655.png" alt="image-20200610144743655" loading="lazy"></figure>
+<blockquote>
+<p>上面这张图列举了 Project 和 Task 的一些属性，完整的属性列表请看 <a href="https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#N15090">Project Proterties</a> 和 <a href="https://docs.gradle.org/current/dsl/org.gradle.api.Task.html#N18EF0">Task Proterties</a>。</p>
+</blockquote>
+<p>一个基本的 Gradle 项目也有一些默认的 Task，比如之前我们 之前执行的 <code>help</code> 就是一个辅助功能的 Task，还有 <code>tasks</code> 用于查看当前项目所有的 Task，<code>projects</code> 用于查看当前项目所有的 Project。</p>
+<figure data-type="image" tabindex="9"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610142047140.png" alt="image-20200610142047140" loading="lazy"></figure>
+<blockquote>
+<p>执行 <code>./gradlew projects</code> 的结果</p>
+</blockquote>
+<figure data-type="image" tabindex="10"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610142231861.png" alt="image-20200610142231861" loading="lazy"></figure>
+<blockquote>
+<p>执行 <code>./gradlew tasks</code> 的结果</p>
+</blockquote>
+<p>细心看的话，会发现这两张图片的顶部都有这样一些字样：</p>
+<pre><code>&gt; Configure project :
+ I'm first line in build.gradle
+</code></pre>
+<p>这是什么意思？这行文字，不是我们刚才写在 build.gradle 第一行的吗？我没有执行啊，我执行的明明是 <code>projects</code> 和 <code>tasks</code> 两个指令，为什么反而输出了呢？这就不得不提到 Gradle 构建的生命周期了。</p>
+<h3 id="生命周期">生命周期</h3>
+<p>Gradle 执行构建时的生命周期共有 3 个，分别为：initialization、configuration、execution。</p>
+<p>initialization 阶段就是从当前项目读取整个项目的配置信息，比如是不是多项目「通过在 <code>settings.gradle</code> 中的配置」工程、这个 Gradle 项目用到了哪些插件、项目之间的依赖关系是怎么样？</p>
+<p>configuration 阶段所做的任务就是把当前项目的每个 <code>Project</code> 下的 <code>build.gradle</code> 文件从上到下依次执行一遍。在这个生命周期过程中，也就产生了各种 Task 被创建并建立关联，并把执行单元 Action 依次添加进各自的执行列表。</p>
+<p>最后是 execution 阶段，在这个阶段就是执行在 configuration 中配置的各种的 Task。说是执行 Task，其实是执行 Task 中的的 Actions。</p>
+<blockquote>
+<p>在 Task 中有一些操作 Action 的方法比如：doFirst、doLast 都是添加一个实际要执行的过程，并在 execution 阶段执行。</p>
+</blockquote>
+<h3 id="小试牛刀">小试牛刀</h3>
+<pre><code class="language-groovy">println(&quot; I'm first line in build.gradle &quot;)
+
+task hello {
+    group('demo-run')
+    doLast {
+        println(&quot; hello world&quot;)
+    }
+}
+
+task(&quot;tryRun&quot;, {
+    group(&quot;demo-run&quot;)
+    dependsOn(&quot;hello&quot;)
+    println(&quot; you are in configuration&quot;)
+
+    doLast {
+        println(&quot;You run me! in Last&quot;)
+    }
+
+    doFirst {
+        println(&quot; You run me in First&quot;)
+    }.doFirst {
+        println(&quot; You run me in 2nd First&quot;)
+    }
+})
+</code></pre>
+<p>这段代码是用 Groovy 写的，意思就是创建了两个 Task，分别是 hello 和 tryRun，它们都属于 demo-run 这个分组，同时 tryRun 依赖于 hello。</p>
+<p>doLast 和 doFirst 后面跟着的代码块就是实际要执行的内容，这个内容就叫 Action。doLast 和 doFirst 内部操作的是一个 List，doLast 相当于在这个 List 的最后添加一个 Action；doFirst 相当于插入一个 Action 作为 List 的第一个元素，它们都是 Task 的方法。在 Gradle 生命周期的 execution 阶段其实就是执行这个 Action 的 List。</p>
+<figure data-type="image" tabindex="11"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610165147980.png" alt="image-20200610165147980" loading="lazy"></figure>
+<h3 id="小结-2">小结</h3>
+<p>来来来，快速回顾一下，刚才说了 Gradle 的构建模型和生命周期，模型是 Project 和 Task，单个项目中可能存在多个 Project，同时单个 Project 也可能存在多个 Task。Gradle 构建的生命周期分为 initialization、configuration、execution 三个阶段，第一个阶段是读取项目配置构建 Project，第二个阶段是依次配置 Project 的中的 Task及 Task 之间的层级关系；最后一个阶段就是执行，按照 Task 的层级关系依次执行相对应 Task 中的 Actions。</p>
+<p>说了这么多，感觉 Gradle 好像没啥大不了啊，就像是个没完成的功能？真的是这样吗？不是的，我觉得 Gradle 最大的优点就是接下来要介绍的 Gradle Plugin。通过 Gradle Plugin 可以完成一系列构建任务，而且几乎每一个 Android 开发者都在和 Gradle Plugin 打交道，下面我们就一起开看一下吧。</p>
+<h2 id="gradle-plugin">Gradle Plugin</h2>
+<p>就像前文所说的那样，Gradle 本身并没有承担大多数任务，而是很巧妙的把任务分担到各式各样的 Plugin 上，这样做的好处是，Gradle 本身不需要有特定的业务点，只需要提供一个环境给那些有需要的开发者，而有需要的人自己肯定会根据去自己的业务场景去定制不同的功能，就像 Android 应用的构建。</p>
+<blockquote>
+<ol>
+<li>说到这其实你也应该明白了，说是 Android 应用使用 Gradle 构建不够准确，更为准确的说法应该是，使用 Android Gradle Plugin 进行构建。</li>
+<li>有兴趣的同学可以自行了解 Android Gradle Plugin，这里就不展开了。</li>
+<li>编写 Plugin 并不是非要会 Groovy，用 Java 也可以。</li>
+</ol>
+</blockquote>
+<p>要编写插件也不难，可能稍微有些麻烦。Gradle 考虑到开发者在不同场景下进行创建 Plugin，所以 Gradle 一共提供了 3 种形式 Plugin 的编写方式。下面就示范一下其中两种。</p>
+<h3 id="buildgradle-脚本-plugin">build.gradle 脚本 Plugin</h3>
+<p>这种方法是最简单的 Plugin 开发方式，只需要在 build.gradle 脚本文件中添加 Plugin 的实现逻辑，并通过 apply 进行引入即可。</p>
+<pre><code class="language-groovy">...
+class GreetingPlugin implements Plugin&lt;Project&gt; {
+    void apply(Project project) {
+        project.task('helloPlugin') {
+            doLast {
+                println 'Hello from the GreetingPlugin'
+            }
+        }
+    }
+}
+
+
+apply plugin: GreetingPlugin
+</code></pre>
+<p>实现一个 Plugin 也没有很难，创建一个类然后实现 Plugin 接口，接口的泛型就是 Project。然后在实现 apply 方法即可。</p>
+<p>接下来在 apply 方法内部实现自己的逻辑即可，这里就是很简单的创建出一个名为 helloPlugin 的 Task，并向它的执行列表「Actions」内添加一个输出到控制台的一句话的 Action。</p>
+<p>通过上文我们可以知道添加了一个 Task 之后，在任何时候都可以执行，而且 Task 之间还可以设置依赖关系，如果我们的任务很复杂还可以通过 <code>dependsOn</code> 方法对多个 Task 设置依赖关系。那直接创建 Task 和通过 Plugin 创建 Task 有什么区别吗？或者说用 Plugin 创建的 Task 有什么优势吗？</p>
+<p>答案是没有，至少在实现效果上 Plugin 实现的 Task 并没有什么优势。使用 Plugin 的目的在于开发者 Plugin 的人员期望能以最小成本让需要的开发者接入，降低由于人「开发者」导致问题的风险概率。在这种时候 Plugin 的优势就显露出来了，让开发 Plugin 的人只关注 Plugin 的开发，使用 Plugin 的人尽量少的感知 Plugin 的存在。</p>
+<blockquote>
+<p>我在刚用 Android Studio 开发时从来就没想过编译 Android 应用的竟然是另一个工具的一个插件，这种无感知成功的。</p>
+</blockquote>
+<p>所以这种使用脚本进行开发 Plugin 的方式就比较适合单人或小范围内的插件开发。像 Android Gradle Plugin 这种级别的大工程都是需要一个标准项目工程来完成的，下面就来简单介绍一下。</p>
+<h3 id="标准工程-plugin">标准工程 Plugin</h3>
+<p>这种标准化工程开发 Plugin 与 脚本式开发的区别还是挺大的。推荐使用 IDE 进行开发，笔者使用的是 JetBrains 开发的 IntelliJ IDEA。</p>
+<blockquote>
+<ol>
+<li>我是直接将上文通过命令行创建的 gradle 导入 IDE，然后创建一个 Module 作为开发 Plugin。项目代码已上传至 GitHub，文末有链接。</li>
+<li>如果直接开发插件的话，在创建项目时，选择使用 Gradle 作为构建工具的进行开发即可，开发语言不受限，可使用 Groovy 也可使用 Java 或 Kotlin。</li>
+</ol>
+</blockquote>
+<p>创建完成项目之后，第一步我们需要添加依赖关系。依赖什么呢？Gradle，毕竟我们开发的是 Gradle 的 Plugin，没有对应的环境该怎么继续。</p>
+<p>在 dependencies 中添加下面这行代码。</p>
+<pre><code class="language-groovy">implementation gradleApi()
+</code></pre>
+<p>然后 IDE 会在右下角提示你需要同步修改。这里选择 import Changes 或 Enable Auto-import 均可，或是在 IDE 上找到 Gradle 面板然后点击 ReImport All Gradle Project 。</p>
+<figure data-type="image" tabindex="12"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200612165031911.png" alt="image-20200612165031911" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200612165358694.png" alt="image-20200612165358694" loading="lazy"></figure>
+<blockquote>
+<p>如果没有选择自动 import，每次修改 .gradle 文件后需要手动 impor。后文不再赘述。</p>
+</blockquote>
+<p>接下来就是创建 Plugin 的入口类了，别忘记创建包路径哦。下面是我创建的入口类，在这个 apply 方法内部就可以编写了。</p>
+<pre><code class="language-java">package me.monster.gradle.plugin;
+
+import org.gradle.api.Plugin;
+import org.gradle.api.Project;
+
+public class Entrance implements Plugin&lt;Project&gt; {
+
+    @Override
+    public void apply(Project target) {
+
+    }
+}
+</code></pre>
+<p>不过在此之前，还需要配置一个东西，一个指向性的文件。在与 java 文件夹同级目录下创建 resources 文件夹，然后，在其中创建子文件夹及文件。路径：<code>resources/META-INF/gradle-plugins/{包名}.properties</code>。在这个文件中添加一行代码：<code>implementation-class={入口类的路径}</code>。如果创建正确的话，点击入口类名是能够跳转到入口类的。</p>
+<p>完成这些之后，就能在入口类中尽情的玩耍了。</p>
+<h3 id="自定义-plugin-输入">自定义 Plugin 输入</h3>
+<p>刚才我们在使用 build.gradle 脚本写 Plugin 内创建了一个 Task，然后打印一句话。看起来挺死板的，让我们来加点自定义的输入信息。</p>
+<h3 id="object-一样的输入extension">Object 一样的输入·Extension</h3>
+<p>通常我们会把多个属性值「字段」和方法的集合叫做对象，对应的在 Gradle 中有一种各种属性的输入，它就是 Extension。先来看看它长什么样。</p>
+<pre><code class="language-groovy">userInfo {
+    userName = 'little monster'
+    avatar = &quot;no avatar&quot;
+    age = 20
+}
+</code></pre>
+<p>以上的这段代码是写在 build.gradle 文件中的。也就是在实际使用的阶段的由使用者决定的输入值。它是怎么创建出来的呢？</p>
+<p>首先需要定义一个明确参数及方法的对象，然后使用 <code>project.getExtensions</code> 方法拿到 <code>ExtensionContainer</code> 对象，利用这个对象的 create 方法我们可创建出一个 Extension。</p>
+<pre><code class="language-groovy">def userInfo = project.extensions.create(&quot;userInfo&quot;, UserInfo)
+project.task('helloPlugin') {
+    doLast {
+        println userInfo.toString()
+        println 'Hello from the GreetingPlugin'
+    }
+}
+</code></pre>
+<blockquote>
+<ol>
+<li>写在 build.gradle 中 <code>{}</code> 外面的名称是由 create 方法中 name 参数控制的；</li>
+<li>在这个例子中，我省略了 UserInfo 这个类的构造方法，使用 Java 提供的默认的无参构造，当构造方法有参数时，需要在 create 方法中的 constructionArguments 参数填入构造方法的值；</li>
+</ol>
+</blockquote>
+<p>Extension 也是可以嵌套使用的，例如：</p>
+<pre><code class="language-groovy">userInfo {
+    userName = 'little monster'
+    avatar = &quot;no avatar&quot;
+    age = 20
+
+    address {
+        country = &quot;China&quot;
+        province = &quot;ShangHai&quot;
+        city = &quot;ShangHai&quot;
+    }
+}
+</code></pre>
+<p>创建的嵌套 Extension 的方式也很简单，只需要在外层 Extension 中增加一个与嵌套 Extension 同名的方法即可。具体实现方式如下：</p>
+<pre><code class="language-groovy">class UserInfo {
+  Address address = new Address()
+
+  /**
+   * 两个 address 方法，选择一个即可。
+   */
+  void address(Closure c) {
+      org.gradle.util.ConfigureUtil.configure(c, address)
+  }
+
+  void address(Action&lt;Address&gt; action) {
+      action.execute(address)
+  }
+}
+</code></pre>
+<p>更多关于 Extension 的用法及介绍这里就不一一展开了，有兴趣的朋友可以看看官方文档。</p>
+<h3 id="map-一样的输入nameddomainobjectcontainer">Map 一样的输入·NamedDomainObjectContainer</h3>
+<p>刚才已经介绍了 Extension，现在来看一下 NamedDomainObjectContainer，这个名字看起来很长，但是实际的用法看起来就像 Map 的 put 方法一样。与 put 方法类似，这种输入方式必须有一个 name 属性，而它自己本身则相当于 put 方法中的 value。</p>
+<p>听起来听绕的，看一下具体的使用。</p>
+<pre><code class="language-groovy">clothes {
+    pants {
+        brand = &quot;Nike&quot;
+        year = 1
+    }
+
+    shoes {
+        brand = &quot;Converse&quot;
+        year = 2
+    }
+}
+</code></pre>
+<blockquote>
+<p>这里的 pants、shoes 就是 name 的值。</p>
+</blockquote>
+<p>Clothes 是一个对象，里面有 name、brand、year 三个属性，同时 Clothes 对象的构造方法必须有一个值赋值给 name 属性。</p>
+<pre><code class="language-groovy">class Clothes {
+    /**
+     * 必须有 name 属性
+     */
+    String name
+    String brand
+    int year
+
+    Clothes(String name) {
+        this.name = name
+    }
+
+    String toString() {
+        return getName() + &quot; &quot; + getBrand() + &quot; &quot; + getYear()
+    }
+}
+
+class UserInfo{
+    /**
+     * UserInfo 构造方法，传入 Project 对 clothesNamedDomainObjectContainer 进行初始化
+     * @param project
+     */
+    public UserInfo(Project project) {
+        NamedDomainObjectContainer&lt;Clothes&gt; domainObjs = project.container(Clothes)
+        clothesNamedDomainObjectContainer = domainObjs
+    }
+
+    /**
+     * 添加 Clothes
+     * @param action
+     */
+    void clothes(Action&lt;NamedDomainObjectContainer&lt;Clothes&gt;&gt; action) {
+        action.execute(clothesNamedDomainObjectContainer)
+    }
+  
+  
+    /**
+     * 打印所有 Clothes
+     */
+    public void printAllClothes() {
+        clothesNamedDomainObjectContainer.all { singleCloth -&gt;
+            println(singleCloth.toString())
+        }
+    }
+}
+</code></pre>
+<p>使用起来也挺简单的，不过它有什么作用呢？它最大的亮点就在于可以由开发者自行配置参数搭建出想要的配置而不需要额外的支持。Android 开发者应该对下面这段代码比较熟悉。</p>
+<pre><code class="language-groovy">buildTypes {
+    release {
+        minifyEnabled true
+        zipAlignEnabled true
+        shrinkResources true
+        proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        debuggable false
+    }
+
+    debug {
+        debuggable true
+    }
+}
+</code></pre>
+<p>buildType 就是 Android Gradle Plugin 中的一个 NamedDomainObjectContainer，其中 release、debug 只是 BuildType 的一个 Name，换句话说，你可以再添加任意一个不与他们重名都可以完成构建，而且 Android Gradle Plugin 还会为其生成 <code>assemble&lt;Name&gt;</code> 等配套的 Task。</p>
+<h3 id="状态监听">状态监听</h3>
+<p>有些时候，开发一个插件需要在构建完成之后再进行，或是需要监控执行状态，Gradle 也替我们提前想好了，调用 <code>project.getGradle</code> 方法能够获得一个 Gradle 对象，在这个 Gradle 对象中，可以设置各种各样的状态监听，比如：buildStarted，在构建开始之后被调用，buildFinished 在构建完成之后等等。需要的朋友可以查看 Gradle 源码或官方文档。</p>
+<h3 id="小结-3">小结</h3>
+<p>这一部分我们讲了 Gradle 的 Plugin 部分，围绕着 Plugin 的创建展开，由简入难，先说了脚本试的插件、标准化工程的 Plugin，有了 Plugin 之后，还讲了 Plugin 的输入的两种方式，一种为 Extension，另一种为 NamedDomainObjectContainer，在最后还稍微提了一下 Gradle 这个对象中可以设置的状态监听方法。</p>
+<h2 id="后记">后记</h2>
+<p>Gradle 作为 Android 开发的必备工具，一直是很多人心中的痛，有点懂，又不是那么懂，我也是从那个阶段过来的，在这里分享一下我的 Gradle 学习之路，针对本文有什么建议，还请指出，共同进步。</p>
+<h2 id="相关资料">相关资料</h2>
+<h3 id="参考来源">参考来源</h3>
+<ul>
+<li>B 站 <a href="https://www.bilibili.com/video/BV1DE411Z7nt?p=1">来自 Gradle 开发团队的 Gradle 入门教程</a></li>
+<li><a href="https://docs.gradle.org/current/userguide/userguide.html">Gradle 官方文档</a></li>
+<li>简书 <a href="https://www.jianshu.com/p/e26236943dd6">Android Gradle 学习系列</a></li>
+<li>掘金 <a href="https://juejin.im/post/5b8642ac6fb9a019f82fb772#heading-0">Android Gradle Plugin 源码解析</a></li>
+</ul>
+<h3 id="辅助资料">辅助资料</h3>
+<ul>
+<li><a href="https://lug.ustc.edu.cn/wiki/mirrors/help/aosp">Android Gradle Plugin 源码</a></li>
+<li><a href="https://github.com/CherryLover/BlogTestGradle">本文示例代码</a></li>
+</ul>
+<h2 id="关于我">关于我</h2>
+<p>我是一个普普通通的 Android 开发者，你可以在<a href="https://www.jianshu.com/u/7ecc47c75446">简书</a>、<a href="https://juejin.im/user/576d73cd0a2b58006a09ad87">掘金</a>，还有我的<a href="https://jiangjiwei.site/">个人博客</a>找到我。</p>
+<p>本文封面图：Photo by <a href="https://unsplash.com/@wgzhai?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Wengang Zhai</a> on <a href="https://unsplash.com/photos/RVl6CjcvZ_0">Unsplash</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[从 notifyDataSetChanged 到 DiffUtil]]></title>
+        <id>https://cherrylover.github.io/post/l47QXN-qI/</id>
+        <link href="https://cherrylover.github.io/post/l47QXN-qI/">
+        </link>
+        <updated>2020-03-30T13:24:31.000Z</updated>
+        <content type="html"><![CDATA[<p>DiffUtil 是 RecyclerView 中自带的一个计算数据集差异性的组件，其内部还提供了对 RecyclerView 进行局部刷新的 API。以往我们对 RecyclerView 的刷新，大多会采用 notifyDataSetChanged，而这种刷新方式，会造成 RecyclerView#Adapter 调用 List#size 次的 onCreateViewHolder 和 onBindViewHolder，很容易就造成资源浪费，在使用了 DiffUtil 之后，无论是添加、删除、还是更新元素，也只会调用对应数量个 onCreateViewHolder 和 onBindViewHolder，从而对 RecyclerView 的使用进行优化。</p>
+<p>下面我们就通过一个简单的例子来认识一下这个 DiffUtil。</p>
+<h2 id="创建-recyclerview">创建 RecyclerView</h2>
+<p>首先，我们创建出一个简单的列表。然后为其设置 Adapter、LayoutManager 等 RecyclerView 基础配置。</p>
+<p>代码如下：</p>
+<pre><code class="language-java">private val numberList = mutableListOf&lt;SimpleText&gt;()
+private val simpleAdapter = SimpleAdapter(numberList)
+
+rv_main_diff.adapter = simpleAdapter
+rv_main_diff.layoutManager = LinearLayoutManager(this)
+rv_main_diff.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
+
+for (i in 1..10) {
+  numberList.add(SimpleText(&quot;Tittle $i&quot;))
+}
+
+prepareList()
+simpleAdapter.notifyDataSetChanged()
+
+data class SimpleText(var title: String)
+</code></pre>
+<p>SimpleAdapter 和 布局文件内容比较简单，就不展示了，仅仅是把 SimpleText 的中的 title 显示到 RecyclerView 的 Item 上。</p>
+<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/BlogTest-DiffUtil-1.png" alt="" loading="lazy"></figure>
+<h2 id="更新列表">更新列表</h2>
+<h3 id="实现-diffutilcallback">实现 DiffUtil.Callback</h3>
+<p>在没有使用 DiffUtil 时，更新页面上的内容我们需要更新数据集合「List」，然后再次调用 Adapter#notifyDataSetChanged 或 Adapter 的其它局部更新的方法进行刷新即可。现在我们既然要使用 DiffUtill，那么具体该怎么做呢？</p>
+<p>首先，我们需要创建一个 DiffUtil.Callback 的实现类，DiffUtil.Callback 是一个抽象类，其中包含了 4 个抽象方法，都是用于比较两个数据集时所必须用到的方法。</p>
+<pre><code class="language-java">class DiffCallback(private val oldList: List&lt;SimpleText&gt;, private val newList: List&lt;SimpleText&gt;) : DiffUtil.Callback() {
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition] === newList[newItemPosition]
+    }
+
+    override fun getOldListSize(): Int {
+        return oldList.size
+    }
+
+    override fun getNewListSize(): Int {
+        return newList.size
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        return oldList[oldItemPosition].title.hashCode() == newList[newItemPosition].title.hashCode()
+    }
+}
+</code></pre>
+<p>DiffUtil.Callback 需要两个列表，就把新旧两个数据集合在构造函数中传入即可。</p>
+<ul>
+<li>getOldListSize：顾名思义就是获取上一个版本的列表个数；</li>
+<li>getNewListSize：和 getOldListSize 一样，只不过是获取最新的列表个数；</li>
+<li>areItemsTheSame：这个方法是用于比较指定新旧两个元素位置所对应的元素是否为同一个元素；</li>
+<li>areContentsTheSame：这个方法有些类似上一个，区别在于确定两个元素是同一个元素后，判断新旧列表中的这两个元素内容是否相同。</li>
+</ul>
+<p>到这里，我们猜一下，这个 DiffUtil 的工作原理：先进行判断新旧两个数据集的尺寸是否相同，然后再比较新旧两个数据集同一个下标的所对应的元素是否相同，最后再对元素内容是否一致进行比较。</p>
+<p>不管猜的对不对，我们先继续。</p>
+<p>在创建完 DiffUtil.Callback 的实现类后，需要对它进行实例化，注意看，DiffCallback 的主构造器声明了两个字段，所以我们在对它进行实例化时也需要传入两个元素。</p>
+<h3 id="编辑列表元素">编辑列表元素</h3>
+<p>现在我们有个需求：对数据集合中倒数第二个元素进行编辑。我们该怎么做？按照之前不使用 Diff 的时候，我们应该这么做：</p>
+<pre><code class="language-java">numberList[numberList.size - 2].title = &quot;New Edit To&quot;
+simpleAdapter.notifyItemChanged(numberList.size - 2)
+</code></pre>
+<p>现在呢？自然是用 DiffUtil.Callback 来进行，不过在使用 Diff 之前，我们还需要准备一个 List。因为我们刚才给 DiffCallback 的主构造器声明了两个字段，一个是 oldList，一个是 newList。oldList 就是我们的 numberList，我们还需要准备一个新的 List。</p>
+<pre><code class="language-java">val tmpList = MutableList&lt;SimpleText&gt;(10) {
+  return@MutableList numberList[it]
+}
+tmpList[tmpList.size - 2] = SimpleText(&quot;New Edit To&quot;)
+</code></pre>
+<p>数据准备完成后，接下来就是应用在 Diff 上了。</p>
+<pre><code class="language-java">val diffResult = DiffUtil.calculateDiff(DiffCallback(numberList, tmpList))
+numberList.clear()
+numberList.addAll(tmpList)
+diffResult.dispatchUpdatesTo(simpleAdapter)
+</code></pre>
+<p>可以看到，就这样很简单的把两个 List 放在 DiffUtil#calculateDiff 中进行计算，然后得出 diffResult，最后将 diffResult 关联到 Adapter 即可。</p>
+<p>怎么样？是不是挺简单的？去试一下，向列表添加元素和删除元素吧。</p>
+<blockquote>
+<p>添加和删除元素本质上和编辑元素没太多区别，就不进行阐述了，在提供的代码中都有。</p>
+</blockquote>
+<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/BlogTest-DiffUtil-Action.gif" alt="" loading="lazy"></figure>
+<h2 id="listadapter">ListAdapter</h2>
+<p>Diff 用起来好像挺简单的，不过 Google 还向我们提供了一个工具，能让我们用起来更方便，这个就是 ListAdapter。</p>
+<p>ListAdapter 继承了 RecyclerView#Adapter，并且开发者不需要再实现 DiffCallback 的四个方法，只需要实现其中的两个「areItemsTheSame，areContentsTheSame」即可。也不需要调用拿到 DiffUtil#calculateDiff 的结果了。只需要在需要更新列表的时候，调用 <code>simpleListAdapter.submitList(List)</code> 即可，不过 RecyclerView 的 Adapter 就不能继承 RecyclerView#Adaper 了，而是需要继承自 ListAdapter。</p>
+<pre><code class="language-java">class SimpleDiffItemCallback : DiffUtil.ItemCallback&lt;MainActivity.SimpleText&gt;() {
+    override fun areItemsTheSame(oldItem: MainActivity.SimpleText, newItem: MainActivity.SimpleText): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun areContentsTheSame(oldItem: MainActivity.SimpleText, newItem: MainActivity.SimpleText): Boolean {
+        return oldItem.title.hashCode() == newItem.title.hashCode()
+    }
+}
+
+class SimpleListAdapter : ListAdapter&lt;MainActivity.SimpleText, SimpleListViewHolder&gt;(SimpleDiffItemCallback()) {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SimpleListViewHolder {
+        return SimpleListViewHolder(LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent,false))
+    }
+
+    override fun onBindViewHolder(holder: SimpleListViewHolder, position: Int) {
+        holder.tvText.text = getItem(position).title
+    }
+}
+
+class SimpleListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+    var tvText: TextView = itemView.findViewById(android.R.id.text1)
+}
+</code></pre>
+<p>仔细看的朋友可能会发现，我在使用 ListAdapter 时传入一个 SimpleDiffItemCallback 这个对象，这个对象实现的抽象类是 DiffUtil.ItemCallback。这个 ItemCallback 和之前使用 Callback 有 3 处不同。</p>
+<ol>
+<li>Callback 是 DiffUtil 用于比较两个列表，而 ItemCallback 是 DiffUtil 用于比较两个元素不为空的列表；</li>
+<li>Callback 有 4 个抽象方法，ItemCallback 只有 2 个；</li>
+<li>Callback 适用于自己创建并应用在 RecyclerView#Adapter 上，ItemCallback 是 ListAdapter 内置在其中的。</li>
+</ol>
+<p>怎么样？ListAdapter 是不是挺简单的？不过我现在有点好奇，ListAdpater 内部具体做了哪些事情？来让我们看看 ListAdapter 的源码。</p>
+<h2 id="listadapter-到底干了啥">ListAdapter 到底干了啥</h2>
+<p>当我点开 ListAdapter 的源码时，我发现，它内部好像啥也没干，又好像啥都干了。具体来说就是把全部的脏活累活都丢给了 AsyncListDiffer 这个类，ListAdapter 自己就像是一个代理，需要做什么，就丢给 AsyncListDiffer 这个类，需要获取什么就从 AsyncListDiffer 这个类里取出来。</p>
+<figure data-type="image" tabindex="3"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/20200327163615.png" alt="" loading="lazy"></figure>
+<p>看到这，我继续进入 AsyncListDiffer，发现这个类其实也没特别多的东西，最重要的就是其中两个方法。一个是 submitList，另一个是 latchList。</p>
+<p>submitList 其实就是我们在 Activity/Fragment 调用 adapter#submit(List) 后通过各种调用最终的目的地。不过在 submitList 的内部实际上是通过在子线程计算两个列表的差异，并在主线程上通过调用 latchList 将数据关联到 RecyclerView#Adapter 的效果。</p>
+<p>latchList 做的内容就很简单了，只是将数据进行绑定。</p>
+<figure data-type="image" tabindex="4"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/carbon-asynclistdiffer.png" alt="" loading="lazy"></figure>
+<h2 id="多类型怎么做">多类型怎么做？</h2>
+<p>在这个例子中，我使用的是单一类型的数据集，但是在实际项目中存在多类型数据集该怎么做呢？我这里提供一下思路和简单的示例代码。</p>
+<p>思路：</p>
+<ol>
+<li>多类型数据集合，我们可以创建一个 Base 类，在 Base 类中定义类型，不同的类型在继承 Base 类时，在其构造方法内调用 Base 的构造方法，并传入类型。</li>
+<li>如果不使用 ListAdapter 的话，RecyclerView#Adapter 就可以按照以往的多类型编写方式进行，只需要更改 DiffUtil.Callback 的实现类中的 areItemsTheSame 和 areContentsTheSame 的具体实现。具体实现可以先判断元素类型是否相同，然后再对内容进行判断；</li>
+<li>如果使用 ListAdapter 的话，需要在继承的 ListAdapter 传入泛型进行更改，而且还需要对实现 DiffUtil.ItemCallback 的实现类的传入泛型的更改；</li>
+</ol>
+<p>怎么样？Diff 用起来很简单吧？要不要去试一下？而且，偷偷告诉你，Google 发布的另一个库 Paging 内部也有 Diff 的身影哦。</p>
+<p>本文示例代码已经上传到了 <a href="https://github.com/CherryLover/BlogTest">GitHub</a>，分支为 <a href="https://github.com/CherryLover/BlogTest/tree/diff">diff</a>，<a href="https://github.com/CherryLover/BlogTest/commit/d2d01149d5a2f4b655ae61cb636df66d1cd4582f">多类型示例</a>。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2019 年终总结]]></title>
+        <id>https://cherrylover.github.io/post/utzSPBys_/</id>
+        <link href="https://cherrylover.github.io/post/utzSPBys_/">
+        </link>
+        <updated>2019-12-31T14:05:23.000Z</updated>
+        <content type="html"><![CDATA[<p>前两天被楼下的两棵树圈粉了，图片来给你们看一下。</p>
+<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/20191230151456.jpeg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/20191230151457.jpeg" alt="" loading="lazy"></figure>
+<p>起初我觉得冬天不好，万物凋零，然后发现这两棵树看起来比一年中任何时候都好看。</p>
+<p>我是 17 年 11 月真正入行做 Android 开发的，到现在刚好 2 年多点，找工作的时候大家都说不好找，经济寒冬。兴许是老天想赏我口饭吃，不怎么费力气就找到了一份还不错的工作。</p>
+<p>从那时起就一直有人在说经济不景气之类的话，我也没深刻的感受到，更多时候觉得跟自己没多大关系。</p>
+<p>也不知道是为什么在年末的两个月内公司换老板了，也换了办公地点。换完之后明显感觉到公司在压缩成本，就在前两天公司人事被约谈人员优化，我心想看来不是冬天没来，而是我刚被「冻醒」。</p>
+<p>既然这个冬天这么冷，我们该怎么办呢？我是这么做的。</p>
+<h2 id="开发">开发</h2>
+<p>在过去的一年里，我接触到了 Kotlin、Jetpack、Gradle 等这些新技术，同时也在为团队开发一些基础库。</p>
+<h3 id="kotlin">Kotlin</h3>
+<p>Kotlin 在我上大学的时候就听人说过，一直觉得不温不火，直到今年的 I/O 上，Google 宣布 Kotlin 成为 Android 开发的第一语言之后，大量的示例代码都开始拥抱 Kotlin。我也开始了我的 Kotlin 之路。</p>
+<p>起初的目的很简单，只是为了能看懂别人写的 Kotlin 代码，慢慢的自己也加入到使用 Kotlin 的队伍中，现在公司的项目中也是 Java 与 Kotlin 混合开发。</p>
+<h3 id="jetpack">Jetpack</h3>
+<p>Jetpack 是 Google 推出的一系列组件库。其中每一个单独的组件都解决了其所在领域的一些问题，比如 ViewModel 解决了多内容的统一数据保存、Navigation 解决了 Fragment 之间的负责的导航问题。</p>
+<p>我最早使用的是 Navigation，起初我是想用 Navigation 替换掉现有的 <a href="https://github.com/JingYeoh/FragmentRigger">FragmentRigger</a>，但随着使用的深入，我发现 Navigation 要想直接接入到项目中还有一段路程要走，还需要我做些额外的工作，这是与其他库所不同的。</p>
+<p>我在查阅了较多的资料后发现 Navigation 是 Google 提供给开发者的一个组件，但似乎 Google 并不想让开发者局限于这个组件，而是提供了丰富的可扩展的 API 让开发者发现它的更多使用方法。</p>
+<h3 id="gradle">Gradle</h3>
+<p>最早从 Eclipse 迁移至 Android Studio 时，看到 build.gradle 真的是头大，在很长的一段时间内不敢碰它。生怕它把我「搞死」，不过在今年下半年我把它「搞死」了。我从 Gradle 基础开始，到 Gradle 的构建过程、Gradle 生命周期以及 Gradle 插件。一步步过关斩将，以后再也不怕了。</p>
+<p>最后我还做了一个 Gradle 插件用在公司的项目中，也算是实践一把。</p>
+<h2 id="个人成长">个人成长</h2>
+<p>2019 年我在个人成长方面也有所进步，初步形成了知识管理、任务管理的基本概念，但目前都还是属于初级阶段，尚不能影响什么具体的东西，还需要一定的时间进行沉淀。</p>
+<p>知识管理方面，我开始建立起属于自己的知识库，通过不断更新自己的知识库，对知识库中的内容进行不断的深入及内化，形成总结，进行输出，最后在个人知识体系中进行结束。在一个完整的知识管理闭环中，我真正体会到了学习的快乐，那种充实自己知识体系的愉悦是我之前所不曾拥有的。</p>
+<p>之前总是觉得自己的生活可以过的更好一点，但丝毫没有什么好的解决方法。直到我接触到 GTD 任务管理法，通过对所有任务建立起统一处理方式，明晰不同任务之间的差异，对任务进行分门别类，有计划有规划的做事情。明确高效工作的目的不是为了完成所有的任务，而是为了更好的生活。好像突然之间少了很多事情，但也没有少做什么事。</p>
+<p>回顾 2020，我发现我还是少做了不少，还留有些许遗憾。马上就要到 2020 年了，希望能在下一年不给自己留遗憾。加油~</p>
+<p>封面图：Photo by <a href="https://unsplash.com/@judebeck?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Jude Beck</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[从注解到 ButterKnife]]></title>
+        <id>https://cherrylover.github.io/post/kgKwL3Z6V/</id>
+        <link href="https://cherrylover.github.io/post/kgKwL3Z6V/">
+        </link>
+        <updated>2019-10-28T14:37:34.000Z</updated>
+        <content type="html"><![CDATA[<p>一直好奇 BufferKnife 内部是怎么做到 findViewById 的，今天就好好看看它。</p>
+<pre><code class="language-java">@BindView(R.id.tv_hello) TextView tvHello;
+@Override public void onCreate(Bundle savedInstanceState) {
+    //......
+    ButterKnife.bind(this);
+}
+</code></pre>
+<p>其实，重点就是那个注解，利用 <code>BindView</code> 这个注解，可以把 tvHello 这个成员变量跟 <code>R.id.tv_hello</code> 进行绑定，下面就来一步步实现一下。</p>
+<p>先来认识一下注解吧。声明注解和声明一个借口类似，不同的是注解声明时在 interface 这个关键字前加一个 <code>@</code> 符号，就像这样：<code>public @interface BindView</code> ，而且注解还可以增加各种限制，比如限制当前注解的适用范围（<code>Target</code>），是只能用于方法（函数）还是可以用在成员变量上，亦或是可以用在类型上。当然了，最重要的还是可以设置当前注解的保存期限，有三个选项可供选择，分别是：</p>
+<ul>
+<li>SOURCE：仅保留在源代码时；</li>
+<li>CLASS：保留到 java 代码编译到 class 文件时；</li>
+<li>RUNTIME：保留到实际运行时 Class 所对应的对象上；</li>
+</ul>
+<p>在声明注解内部的方法时也和接口有所不用，在注解中，可以为声明的方法设置一个默认值，这个是接口没有的，其他的也是像接口一样的声明。</p>
+<blockquote>
+<p>在 Java 后续的版本中提供了设置默认值的方式，这里只讨论 Java 本身的接口设计不包含其他后续版本的新特性。</p>
+</blockquote>
+<p>注解内部也可以定义多个方法，使用时需要显式声明出多个方法，就像下面这样。</p>
+<pre><code class="language-java">@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+public @interface BindView {
+
+    int value();
+
+    String name() default &quot;&quot;;
+}
+
+@BindView(value = R.id.tv_hello, name = &quot;jiang&quot;) TextView tvHello;
+</code></pre>
+<p>如果注解里面只有一个方法，且方法名为 value，在使用时可以省去方法名。</p>
+<pre><code class="language-java">@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
+public @interface BindView {
+    int value();
+}
+
+@BindView(R.id.tv_hello) TextView tvHello;
+</code></pre>
+<p>简单的了解一下注解，之后我们可以继续往下了。注意，在这里我们对 BindView 这个注解加了两个限制，一个指明了当前的生命周期是 RUNTIME，另一个是限制只用在成员变量上，避免误用。</p>
+<p>注解定义好之后，我们还需要再实现一个类，干什么的呢？就是做跟  <code>ButterKnife.bind(this);</code> 一样的事情。那简简单单的一行代码里，具体做的什么呢？简单来说，利用传入的 this 配合着注解，在运行时通过反射进行 findViewById 的操作。</p>
+<pre><code class="language-java">public static void bind(Activity activity) {
+    for (Field field : activity.getClass().getDeclaredFields()) {
+        BindView annotation = field.getAnnotation(BindView.class);
+        if (annotation != null) {
+            try {
+                field.setAccessible(true);
+                field.set(activity, activity.findViewById(annotation.value()));
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+</code></pre>
+<p>这样好是好，不过呢，就一点不好，反射是有时间成本的，所以，ButterKnife 换了另一种方式，变成了利用注解动态生成代码的方式。</p>
+<p>生成什么代码呢？其实就是生成 findViewById 这行代码，并且我们在生成之后还需要让代码能够执行，自动执行好办，可以利用反射，根据生成代码的路径，通过 <code>Class#forName</code> 来完成对生成代码后的调用。</p>
+<pre><code class="language-java">public static void bind(Activity activity) {
+        // $Binding 是自动生成代码的后缀，用于与开发者声明的类做区分
+        Class bindClass = Class.forName(activity.getClass().getCanonicalName() + &quot;$Binding&quot;);
+        Class activityClass = Class.forName(activity.getClass().getCanonicalName());
+        Constructor constructor = bindClass.getDeclaredConstructor(activityClass);
+        constructor.newInstance(activity);
+    }
+</code></pre>
+<p>看这部分代码这么少就知道重头戏不在这，而在于动态生成代码，其实动态生成我们 Android 开发者一点也不陌生，就是 AnnotationProcessor。</p>
+<p>要实现 AnnotationProcessor 我们需要创建一个 Java Module，之后再稍加配置，然后就可以写出让我们能自动生成代码的代码了。</p>
+<blockquote>
+<p>这里我创建的 module 名为 lib-processor</p>
+</blockquote>
+<p>配置：</p>
+<ol>
+<li>在 java 文件夹中正确的包下创建一个继承自 <code>AbstractProcessor</code> 的类；</li>
+<li>在 main 文件夹下新建与 java 文件夹同级的名为 resources 文件夹；</li>
+<li>在 resources 中按照 <code>resources/META-INF/services/javax.annotation.processing.Processor</code> 新建一个文件，并把刚才新建的类的路径写入 <code>javax.annotation.processing.Processor</code>；</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/butterKnife20191028130047.jpg" alt="" loading="lazy"></figure>
+<p>现在就需要开始编写能够进行自动生成代码的代码了，不过在此之前，我们需要理一下思路。首先，我们需要注解，其次，需要用到 AnnotationProcessor，然后才能在 Activity 中调用 <code>@BindView</code> 的注解以及 <code>Bind.bind(this)</code> 方法。</p>
+<p>这里我们需要注意一点，就是 AnnotationProcessor 需要用到「依赖」注解「BindView」，Activity 所在的 App 模块也需要用到它，这样一来我们就不能在 app 模块定义注解，需要在另一个模块中单独定义注解，这个模块叫 <code>lib-annotation</code>。而且我要做的是像 ButterKnife 一样的依赖库，所以还得把 Bind 这个类也放在一个 module 里，而且还不能放在 <code>lib-annotaion</code> 中，所以我们还需要一个叫 <code>bind-lib</code> 的模块。</p>
+<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/butterKnife20191028131931.jpg" alt="" loading="lazy"></figure>
+<blockquote>
+<ol>
+<li>
+<p>app 模块和 bind-lib 都需要依赖 lib-annotation，可以在 bind-lib 已传递依赖的形式进行依赖 lib-annotaion，这样 app 模块就不需要单独声明依赖 lib-annotation。</p>
+<pre><code class="language-groovy">api project(path: ':lib-annotaion')
+</code></pre>
+</li>
+<li>
+<p>动态生成代码需要用到一个第三方库</p>
+<pre><code class="language-groovy">implementation 'com.squareup:javapoet:1.11.1'
+</code></pre>
+</li>
+</ol>
+</blockquote>
+<p>准备工作一切就绪，下面来看看动态生成的代码吧。</p>
+<pre><code class="language-java">public class BindProcessor extends AbstractProcessor {
+    private Filer filer;
+
+    @Override
+    public synchronized void init(ProcessingEnvironment processingEnvironment) {
+        super.init(processingEnvironment);
+        filer = processingEnvironment.getFiler();
+    }
+
+    @Override
+    public boolean process(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment) {
+
+        for (Element element : roundEnvironment.getRootElements()) {
+            String packageStr = element.getEnclosingElement().toString();
+            String classStr = element.getSimpleName().toString();
+            ClassName className = ClassName.get(packageStr, classStr + &quot;$Binding&quot;);
+            MethodSpec.Builder constructorBuilder = MethodSpec.constructorBuilder()
+                    .addModifiers(Modifier.PUBLIC)
+                    .addParameter(ClassName.get(packageStr, classStr), &quot;activity&quot;);
+            boolean hasBinding = false;
+            for (Element enclosedElement : element.getEnclosedElements()) {
+                BindView bindView = enclosedElement.getAnnotation(BindView.class);
+                if (bindView != null) {
+                    hasBinding = true;
+                    constructorBuilder.addStatement(&quot;activity.$N = activity.findViewById($L)&quot;, enclosedElement.getSimpleName(), bindView.value());
+                }
+            }
+            TypeSpec buildClass = TypeSpec.classBuilder(className)
+                    .addModifiers(Modifier.PUBLIC)
+                    .addMethod(constructorBuilder.build())
+                    .build();
+            if (hasBinding) {
+                JavaFile.builder(packageStr, buildClass).build().writeTo(filer);
+            }
+        }
+
+        return false;
+    }
+
+    @Override
+    public Set&lt;String&gt; getSupportedAnnotationTypes() {
+        return Collections.singleton(BindView.class.getCanonicalName());
+    }
+}
+</code></pre>
+<p>先来解释一下这三个方法：</p>
+<ul>
+<li>
+<p>getSupportedAnnotationTypes</p>
+<p>这个方法真的是见名之意，就是获取当前 AnnotationProcessor 所支持的注解集合而已；</p>
+</li>
+<li>
+<p>init</p>
+<p>初始化 AnnotationProcessor 并获取到 Filer，这个 Filer 是我们等下生成代码需要用到的。</p>
+</li>
+<li>
+<p>process</p>
+<p>真正做生成代码的部分。</p>
+</li>
+</ul>
+<p>这个类中，process 才是真正做事情的方法，代码也不难懂。先是从根据当前类提取到有用的包名及类名，再利用包名、类名及特殊字符创建出一个类，紧接着为其声明一个参数名为 <code>activity</code> 的公开构造方法，在构造方法内部加入一行 <code>activity.$N = activity.findViewById($L)</code> 。其中，N 和 L 均是占位符，真正的值是开发者定义的字段的 name 以及注解的 value 也就是 View 的 Id。</p>
+<figure data-type="image" tabindex="3"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/butterKnife20191028133523.png" alt="" loading="lazy"></figure>
+<p>这个就是 ButterKnife 它做的事情，不同的是，它内部还做了其他的优化以及一些其他功能。</p>
+<hr>
+<p>本文首发于<a href="https://jiangjiwei.site/">个人博客</a>，文中全部源代码已上传至 <a href="https://github.com/CherryLover/BlogTest">GitHub</a>，代码分支为 bindView。喜欢本文的麻烦点个🌟。</p>
+<p>本文封面图：Photo by <a href="https://unsplash.com/@wilstewart3?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Wil Stewart</a> on <a href="https://unsplash.com/s/photos/look?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[设计模式：观察者模式]]></title>
+        <id>https://cherrylover.github.io/post/5CnDqT_V1/</id>
+        <link href="https://cherrylover.github.io/post/5CnDqT_V1/">
+        </link>
+        <updated>2019-10-24T14:27:25.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>本文是设计模式系列中的第三篇，上一篇是 <a href="https://jiangjiwei.site/post/dan-li-mo-shi/">单例模式</a>。</p>
+</blockquote>
+<p>观察者模式是使用频率最高的设计模式之一。是对象之间的一种<strong>一对多</strong>的依赖关系，使得当一个对象「被观察者」发生改变，其相关依赖对象「观察者」皆收到通知，并自动更新。</p>
+<p>比如，我们注册某个网站的时，默认订阅了它的促销活动邮件及账户安全邮件。当促销活动发生时，所有用户都会收到与促销相关的邮件，当公司信息发生泄漏，需要用户更改密码时，向所有用户发送更改密码的邮件提示。</p>
+<p>在这个例子中，观察者就是每一个注册网站的用户，被观察者就是网站中具体的业务（可能是促销信息、也可能是账户安全信息）。当被观察者产生事件时，观察者收到事件。</p>
+<p>通常来说，被观察者可能有多个观察者，比如，小王和小蒋比较喜欢购物，就没有取消订阅促销信<br>
+息邮件通知，小李因为平时不怎么用在线购物，所以他主动取消了促销信息的订阅。</p>
+<pre><code class="language-java">// 注册用户
+Person jiang = new Person(&quot;小蒋&quot;);
+Person wang = new Person(&quot;小王&quot;);
+Person li = new Person(&quot;小李&quot;);
+
+// 系统功能
+SaleProduct saleProduct = new SaleProduct();
+SafeAccount safeAccount = new SafeAccount();
+
+// 默认情况下，订阅系统邮件
+saleProduct.registerObserver(jiang);
+saleProduct.registerObserver(wang);
+saleProduct.registerObserver(li);
+
+safeAccount.registerObserver(jiang);
+safeAccount.registerObserver(wang);
+safeAccount.registerObserver(li);
+
+// 小李、小王主动取消订阅相关产品邮件
+saleProduct.unRegisterObserver(li);
+</code></pre>
+<p>所以，被观察者「公司产品」内部需要维护一个集合，用于添加及删除订阅的观察者「用户」，以及当事件「促销及安全信息」产生时，通知所有订阅当前被观察者的观察者。</p>
+<blockquote>
+<p>由于公司可能有多个产品，所以我们把被观察者定义为接口，名为 Obserable，而每一个用户都具有订阅的能力，都是一个观察者，我们也定义一个接口，名为 Observer。</p>
+</blockquote>
+<pre><code class="language-java">public interface Observable {
+    // 注册观察者
+    void registerObserver(Observer  observer);
+
+    // 解绑观察者
+    void unRegisterObserver(Observer observer);
+
+    // 产生事件
+    void changeObserver();
+}
+
+public interface Observer {
+    //接受被观察者发出的事件
+    void onChange(Object object);
+}
+</code></pre>
+<p>之后定义公司产品「促销及安全」和个人账户。</p>
+<pre><code class="language-java">public class SaleProduct implements Observable {
+    List&lt;Observer&gt; useSaleNameList = new ArrayList&lt;&gt;();
+
+    @Override
+    public void registerObserver(Observer observer) {
+        useSaleNameList.add(observer);
+    }
+
+    @Override
+    public void unRegisterObserver(Observer observer) {
+        observer.onChange(&quot;----- 您已经取消订阅促销信息 -----&quot;);
+        useSaleNameList.remove(observer);
+    }
+
+    @Override
+    public void changeObserver() {
+        for (Observer observer : useSaleNameList) {
+            observer.onChange(&quot;大型售卖活动开始了&quot;);
+        }
+    }
+}
+
+public class SafeAccount implements Observable {
+    List&lt;Observer&gt; observers = new ArrayList&lt;&gt;();
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void unRegisterObserver(Observer observer) {
+        observer.onChange(&quot;----- 您已经取消订阅安全信息 -----&quot;);
+        observers.remove(observer);
+    }
+
+    @Override
+    public void changeObserver() {
+        for (Observer observer : observers) {
+            observer.onChange(&quot;当前账户安全受到威胁&quot;);
+        }
+    }
+}
+
+public class Person implements Observer {
+
+    private static final String TAG = &quot;Person&quot;;
+    private String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void onChange(Object object) {
+        Log.d(TAG, name + &quot; 收到了邮件，内容是：&quot; + object.toString());
+    }
+}
+</code></pre>
+<p>观察者模式并不难，思路清晰就可以写出。不过需要注意的是，观察者「用户」需订阅被观察者「产品」的动态，在用代码写出来的是：<code>产品.regisisterObserver(用户)</code>，与思路上的观察者「用户」定义被观察者「产品」正好相反，稍微有点绕，习惯就好了。</p>
+<p>优点：</p>
+<ol>
+<li>观察者模式可以实现表示层和逻辑逻辑层的分离，定义了稳定的消息更新传递机制，抽象了更新接口，可以让不同的表示层充当观察者。</li>
+<li>观察者模式在被观察者和观察者之间建立一个抽象的耦合，观察目标只需要维持一个抽象观察者的集合，无须了解具体的观察者。由于观察目标和观察者之间没有紧密的耦合，因此他们可以分别属于不同的抽象化层级。</li>
+<li>观察者模式支持广播通信，被观察者会向所有已注册的观察者发送通知，简化了一对多系统设计的难度。</li>
+<li>观察者模式满足开闭原则，增加新的具体观察者无须修改原有系统代码，在具体观察者与被观察者之间不存在关联关系的情况下，增加新的观察目标也非常方便。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>当一个被观察者有很多观察者时，通知所有的观察者可能需要花费很多时间；</li>
+<li>如果被观察与观察者之间存在循环依赖，会被触发循环调用，可能导致系统崩溃；</li>
+<li>观察者模式没有相应的机制让观察者知道被观察者是因为什么导致发生的变化，仅仅知道被观察者发生了变化。</li>
+</ol>
+<p>本文封面图：Photo by <a href="https://unsplash.com/@mvdheuvel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Maarten van den Heuvel</a> on <a href="https://unsplash.com/s/photos/observer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ToolBar 在项目中的变迁]]></title>
+        <id>https://cherrylover.github.io/post/aNW6JlNaAsdfsf/</id>
+        <link href="https://cherrylover.github.io/post/aNW6JlNaAsdfsf/">
+        </link>
+        <updated>2019-09-21T06:10:46.000Z</updated>
+        <content type="html"><![CDATA[<p>本文旨在分享自己在 ToolBar 使用上的偷懒，没有较多代码，只是分享一种思路。</p>
+<blockquote>
+<p>这里指的 ToolBar 是泛指顶部的那个功能区域，不仅仅局限于 Android 中的 ActionBar、ToolBar 。</p>
+</blockquote>
+<h2 id="toolbar-的样式">ToolBar 的样式</h2>
+<p>ToolBar 应该算是在项目中使用较为广泛的一个 View 了，它主要用于展示当前页面的标题、导航按钮及可能存在的扩展功能。</p>
+<p>下图就展示了一个具有一些基本属性的 ToolBar。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolBar-Normal.png" alt="" loading="lazy">)</p>
+<p>在 Android 中也不难实现，无非就是在布局文件声明出 ToolBar，然后在 Activity 使用它，为其设置一些内容，如果需要用到右侧的菜单，为其添加菜单即可。</p>
+<p>不过呢，国内的应用大多没有按照这种样式去设计，我们公司也是如此。这里我们不去评判它该是怎么样的，只是来讨论如何快速做出与设计师要求相同的效果。</p>
+<blockquote>
+<p>QQ 的 ToolBar</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolbar-QQ.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>小米短信的 ToolBar</p>
+</blockquote>
+<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolBar-Mi-Message.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>我司产品的 ToolBar</p>
+</blockquote>
+<figure data-type="image" tabindex="3"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolbar-osapling.png" alt="" loading="lazy"></figure>
+<p>遇到这种情况，无非就是通过自定义 View，做出一个类似 ToolBar 的 View，然后放在页面的最靠近状态栏的地方。然后每个页面通过在布局文件中进行声明，再到相应的 Activity 或是 Fragment 中通过 findViewById 的形式找到再设置一些相关属性之类的。</p>
+<p>难吗？不难，就是有点恶心，每个页面都得写一些重复代码，我是真的不想写啊。那就一起来偷个懒吧。</p>
+<h2 id="偷懒版本-v1">偷懒版本 V1</h2>
+<p>我不想在每个 Activity 或是 Fragment 上都写那些恶心的代码，能不能少些一点？</p>
+<p>经过观察我发现，大部分页面的 ToolBar 都是中间是标题，左侧是返回按钮，右侧可能为文字、图片或是什么都不显示。区别最大的就是底部的内容，那么我把底部的内容全部划分给 Fragment、Toolbar 所属的区域属于承载 Fragment 的 Activity。(如下图所示)</p>
+<figure data-type="image" tabindex="4"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolBar-Activity-Fragment.png" alt="" loading="lazy"></figure>
+<p>这样一来，开发者只需要在 Activity 中写，在 Activity 加载不同的 Fragment 时由 Fragment 去更新当前的标题。当用户点击了左侧或右侧的功能按键，通过查找当前 Activity 中存在的 Fragment 列表，找出当前显示的 Fragment，把点击事件传入即可。</p>
+<p>这样一来，既能实现了 UI 效果也少些了部分代码，挺好的。到这还没完，来思考一下这种方案的优缺点。</p>
+<p>优点是不需要在每个 Fragment 中声明并设置 ToolBar 了，在一定程度上减少了 ToolBar 声明与设置属性的次数。</p>
+<p>不过呢这种方案的缺点也很明显，由于把 ToolBar 放在了 Activity，所以每次设置 ToolBar 的相关属性都必须经过 Activity，Activity 要保证其承载的每个 Fragment 显示不出问题，就必须做到对每个 Fragment 的情况做到兼容。比如，有个页面需要放置一张圆弧的背景图，此时这种方案做起来就会比较麻烦。</p>
+<p>所以，整体来说，只是把粗略的把重复代码的解决掉，但是又会带来某些兼容的问题。也不算多好，所以才又有了新的偷懒版本。</p>
+<h2 id="偷懒版本-v2">偷懒版本 V2</h2>
+<p>自从 Android Studio 大力推行 ConstraintLayout 之后，我就一直在使用，发现了可以利用 ConstraintLayout 动态设置 View 的约束从而达到设置 ToolBar 的效果。</p>
+<p>具体来说是这样的：</p>
+<p>首先使用 Java 代码动态创建出 ToolBar 这个 View。紧接着为 ToolBar 设置约束条件，分别为：</p>
+<ul>
+<li>Start: Parent</li>
+<li>Top: Parent</li>
+<li>End: Parent</li>
+</ul>
+<p>这样一来，就能让 ToolBar 位于整个页面的顶端位置。</p>
+<p>不过这样有一个致命的痛，就是会覆盖原有属于顶部的 View（closeToolView），解决这个问题也很简单，利用 ConstraintLayout 为顶端 View （closeToolView）设置一个 top_toBottomOf 这个属性，这个属性值当然就是 ToolBar 了。</p>
+<p>怎么样，这个方案是不是挺简单的，不过，稍微想一想就会发现，我们在布局文件里不就这么写的吗？有什么稀奇的。</p>
+<p>这个方案没什么稀奇的，只是把原本属于开发者写在布局文件中的内容，放在了 Java 代码中而已。</p>
+<p>不过稍稍变通一下，我们在页面的布局文件也就不需要写这么多的重复代码了，而且，可以创建出一个 ToolBarHelper 这个类，由这个类去完成上述的这些内容，如此一来，Activity 与 Fragment 的基类只需要去调用 ToolBarHelper 即可。</p>
+<p>这样这个流程下来就算是完事了，不过你要是想用的话还是得清楚他的不足之处：</p>
+<ol>
+<li>
+<p>根布局必须为 ConstraintLayout</p>
+<p>这个很好理解，如果不是 ConstraintLayout 这个布局的话，后续所有的约束条件都不能使用；</p>
+</li>
+<li>
+<p>顶部 View （closeToolView）的高度不能设置为 match_parent</p>
+<p>如果顶部 View（closeToolView）的高度为 match_parent 的话，那么即使设置了 top_toBottomOf 顶部 View（closeToolView）的相对位置也不会发生改变。</p>
+</li>
+</ol>
+<h4 id="talk-is-cheap-show-me-the-code">Talk is cheap show me the code.</h4>
+<p>关键的代码如下：</p>
+<pre><code class="language-kotlin">private fun addToolBar(root: View, closeToolView: View) {
+    val layoutParams = ConstraintLayout.LayoutParams(root.layoutParams)
+    layoutParams.width = ConstraintLayout.LayoutParams.MATCH_PARENT
+    layoutParams.height = 48.toPix()
+    toolView.layoutParams = layoutParams
+    toolView.id = View.generateViewId()
+    if (initTitle.isNotEmpty()) {
+        toolView.setTitle(initTitle)
+    }
+    if (root is ConstraintLayout) {
+        val relation = ConstraintSet()
+        checkId(root)
+        root.addView(toolView)
+        relation.clone(root)
+        relation.connect(toolView.id, ConstraintSet.START, root.id, ConstraintSet.START)
+        relation.connect(toolView.id, ConstraintSet.END, root.id, ConstraintSet.END)
+        relation.connect(toolView.id, ConstraintSet.TOP, root.id, ConstraintSet.TOP)
+        relation.applyTo(root)
+
+        val closeRelation = ConstraintSet()
+        closeRelation.clone(root)
+        closeRelation.connect(
+            closeToolView.id,
+            ConstraintSet.TOP,
+            toolView.id,
+            ConstraintSet.BOTTOM
+        )
+        closeRelation.applyTo(root)
+    }
+}
+</code></pre>
+<p>笔者做了一个简单的 Demo，并上传到了 <a href="https://github.com/CherryLover/ToolBarHelper">GitHub</a>，这个 Demo 仅用于演示 ToolBarHelper 的使用，后续可能包含 ToolBar 的点击相应及多样化的设置，没有什么特别的功能，其中 Fragment 的导航库使用的是 AndroidX 的 Navigation。</p>
+<p>有什么问题或是情况，可以在评论或是 issues 中留言。😉</p>
+<p>封面图：Photo by <a href="https://unsplash.com/@artwalker?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Amber Walker</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+<p>推荐阅读：<a href="https://jiangjiwei.site/post/lai-xue-yi-bo-navigation/">来学一波 Navigation</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于 TDD]]></title>
+        <id>https://cherrylover.github.io/post/guan-yu-tdd-about/</id>
+        <link href="https://cherrylover.github.io/post/guan-yu-tdd-about/">
+        </link>
+        <updated>2019-09-06T12:07:15.000Z</updated>
+        <content type="html"><![CDATA[<p>有一种编程思想叫测试驱动开发，英文全称Test-Driven Development，也就是 TDD。在这个过程中，最重要的就是编写测试代码，而且不是写完了业务逻辑之后才去写，是先写测试，然后根据需求，一步步的完善测试用例，最终写出有效的业务逻辑代码。</p>
+<p>主讲师熊节老师提供了两个准则：</p>
+<blockquote>
+<ol>
+<li>没有失败的测试就不许写代码；</li>
+<li>只许写恰好让测试通过的代码；</li>
+</ol>
+</blockquote>
+<p>开课后的第一个作业是 FizzBuzz。题目很简单，从 1 到 100，能被 3 整除的数打印 Fizz，能被 5 整除的数打印 Buzz，同时满足这两个条件的打印 FizzBuzz，其余的数字直接输出。题目不难，拿到题目，第一反应是有一个类 FizzBuzz 其中有 print 这个方法，然后在方法内部进行逻辑判断并打印，最后运行代码。</p>
+<p>可是，老师不是这么做的，他的做法是：</p>
+<ol>
+<li>
+<p>编写测试用例 should_print_raw_value_by_1</p>
+<p>这个测试方法中，只是去检查 FizzBuzz 类的 print 是否与之相同，但并没有在 print 函数中进行任何的逻辑判断，只是输出了 null。第一次运行，测试不通过。</p>
+</li>
+<li>
+<p>完善 FizzBuzz 类中的 print 方法，直接返回当前值；</p>
+<p>不做过多的任务，仅仅输出了 1 这个字符串。第二次运行，测试通过，</p>
+</li>
+<li>
+<p>编写测试用例 should_print_fizz_by_3</p>
+<p>与第一步相同，未在 print 方法中增加对当前数字是否满足整除 3 的条件。第三次运行，测试不通过。</p>
+</li>
+<li>
+<p>完善 print 方法中能否被 3 整除的判断。</p>
+<p>第四次运行，测试通过。</p>
+</li>
+</ol>
+<p>以此继续向前，不断进行尝试，直至把 print 方法完全编写出来。</p>
+<p>我开始不理解，这么做不是麻烦了许多吗？甚至看起来有些傻，明知道那样运行测试是不可能通过的，为什么还去做这种事情呢？后来自己上手的时候才发现，这种方法是在锻炼程序员的思考能力以及对需求的理解。</p>
+<p>当一个程序员做编写测试用例的时候，就相当于在给自己提需求。把客户(PM、甲方等)提出的问题用自己的思维方式进行思考。</p>
+<p>第一步该怎么做？具体的代码怎么写，写完后，进行确认，确保在实现下一个需求时不把当前的 bug 带过去。这里的确认，就是通过编写测试代码进行的。不同的是，先写测试，根据测试结果（自己期望的结果，也就是自己给自己定的需求），来编写业务代码，让业务代码恰好得出自己所期望的目标。</p>
+<p>这种测试先行的编程思想在需求不是那么清晰的时候，更能体现出其作用。</p>
+<p>优点：</p>
+<ol>
+<li>根据需求编写测试用例，对功能的过程及接口都进行了设计，而且这种从使用者角度对代码进行设计通常更符合后期的开发需求。</li>
+<li>处于易测试的目的，促使开发者实现低耦合的设计，更多的依赖接口而非具体的类，提高系统的可扩展性；</li>
+<li>将测试提到编码之前，并频繁的运行所有测试，可以尽可能避免和早发现错误，极大的降低了后续测试及修复的成本，提高了代码的质量，在测试的保护下，得以不断重构，以消除重复代码，优化设计结构，提高代码复用性，进而提高软件质量。</li>
+</ol>
+<p>优点来源于 <a href="https://baike.baidu.com/item/%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91#7_1">百度百科</a>。</p>
+<p>封面图：Photo by <a href="https://unsplash.com/@eberhardgross?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">eberhard grossgasteiger</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[[转] 目标方法前置检验模型设计与实现]]></title>
+        <id>https://cherrylover.github.io/post/zhuan-biao-fang-fa-qian-zhi-jian-yan-mo-xing-she-ji-yu-shi-xian/</id>
+        <link href="https://cherrylover.github.io/post/zhuan-biao-fang-fa-qian-zhi-jian-yan-mo-xing-she-ji-yu-shi-xian/">
+        </link>
+        <updated>2019-08-06T02:15:22.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>本文转载自 <a href="https://feelschaotic.github.io/">feelschaotic 的个人博客</a></p>
+</blockquote>
+<h2 id="前言">前言</h2>
+<p><a href="https://www.jianshu.com/p/ed880f35f97f">继上次的指纹验证</a>后，产品又提出了个项目典型需求：用户在未登录状态下，点击关注，跳转登录，登录成功后自动执行关注。</p>
+<h2 id="分析">分析</h2>
+<p>这里有两个需求：</p>
+<ol>
+<li>自动跳转到登录界面</li>
+<li>登录成功后再自动执行关注行为</li>
+</ol>
+<p>思考下抽象出通用性，首先，我们的目的是执行关注行为，但是关注行为需要用户处于登录状态。也就是说执行某个操作时需要满足一些前提条件，而这些前提条件是需要用户参与才能满足。可能存在多个前提条件的需求，这里可以分离出目标行为和前提条件行为。</p>
+<h2 id="技术选型">技术选型</h2>
+<p>那就登录页面加个回调喽，登录成功就回调回去，不过，我们可不想在登录界面侵入太多逻辑代码，而且也违背了可维护性和通用性，难道以后扩展时，每个前置条件都要加回调？</p>
+<p>再思考，第一想法是利用事件通知机制（EventBus、BroadcastReceiver），把登录成功这个事件 post 出去，异步执行关注行为。但如果前提条件有多个呢，是不是得发送多个事件？是不是得监听多个事件？而且，如果下次需求改了，目标事件不是执行关注事件了，而是执行发帖或者跳转到某个页面，那之前关注行为已经注册了，还是会通知到关注事件，难道要通过 msg 标志位来区分不同的目标行为吗？有没有更优雅简洁的方式呢？</p>
+<p>再思考，如果用拦截器呢？</p>
+<p>这种行为模式和拦截器非常相似，都是在执行目标前，判断是否符合条件。</p>
+<p>但是拦截器似乎并不能直接完成我们的需求，因为我们需要插入一个验证行为后（例如进入登录界面），还要执行相应的操作，保证这个验证行为通过后，才能真正执行我们的目标行为。拦截器执行完后，马上会执行目标方法。中间并不会等待。所以我们根本没有办法去执行我们的登录操作，所以pass了。</p>
+<p>那设计模式里的责任链模式，能不能提供点什么思路呢？</p>
+<p>在责任链模式里，很多的处理对象由每一个对象对其下家的引用而联接起来形成一条链。请求在这个链上传递，直到链上的<strong>某一个</strong>对象决定处理此请求。<strong>注意，是某一个</strong>！而我们的场景是，需要通过<strong>所有的</strong>前置条件验证，才能执行目标方法。</p>
+<h2 id="设计与实现">设计与实现</h2>
+<p>思考可以改良一下责任链，每一个前置条件对象（<code>Valid</code>类）不再持有其下家的引用，而是采用一个队列存储所有的前置条件对象，以先进先出的顺序依次验证条件。</p>
+<pre><code class="language-java">private Queue&lt;Valid&gt; validQueue = new ArrayDeque&lt;&gt;();
+</code></pre>
+<p>前置条件对象抽象为接口<code>Valid</code></p>
+<pre><code class="language-java">public interface Valid {
+    /**
+     * 是否满足检验器的要求，如果不满足的话，则执行doValid()方法。如果满足，则执行目标action.call
+     * @return
+     */
+    boolean preCheck();
+
+    /**
+     * 去执行验证前置行为，例如跳转到登录界面。（但并未完成验证。所以需要在登陆成功时调用preCheck()再次检查）
+     */
+    void doValid();
+
+}
+</code></pre>
+<p>可以看到，我们把前置条件对象的验证条件和操作分离开来。</p>
+<p>目标对象<code>Action</code>就很简单了，仅拥有一个目标执行方法。</p>
+<pre><code class="language-java">public interface Action {
+    void call();
+}
+</code></pre>
+<p>整体的验证流程，如下图所示：</p>
+<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/delay-action/delay_action_process.png" alt="验证流程" loading="lazy"></figure>
+<p>循环从前置条件对象队列 <code>validQueue</code> 里取出验证对象，调用 check 方法判断是否满足条件，不满足则进入该验证对象的验证流程，验证完毕，再次调用 check 方法判断满足条件，如果满足则取下一个，直至队列为空，就可以直接执行目标方法了。</p>
+<p>那么前置条件对象队列 <code>validQueue</code> 和目标对象的持有方，我们封装为 <code>Call</code>，意为一次执行。</p>
+<pre><code class="language-java">public class Call {
+    //目标对象 
+    private Action action;
+    //先进先出验证模型
+    private Queue&lt;Valid&gt; validQueue = new ArrayDeque&lt;&gt;();
+    //上一个执行的valid
+    private Valid lastValid;
+
+}
+</code></pre>
+<p>包装一个单例的持有Call对象的外观类 <code>SingleCall</code>，提供给业务层调用。</p>
+<pre><code class="language-java">public class SingleCall {
+
+    private Call call = new Call();
+
+    public SingleCall addAction(Action action) {
+        clear();
+        call.setAction(action);
+        return this;
+    }
+
+    public SingleCall addValid(Valid valid) {
+        //只添加无效的，验证不通过的
+        if (valid.preCheck()) {
+            return this;
+        }
+        call.addValid(valid);
+        return this;
+    }
+
+    public void doCall() {
+        //如果上一条valid没有通过，是不允许再发起call的
+        if (call.getLastValid() != null &amp;&amp; !call.getLastValid().preCheck()) {
+            return;
+        }
+
+        //如果全部都验证通过了，执行action
+        if (call.getValidQueue().size() == 0) {
+            if (call.getAction() != null) { //容错处理
+                call.getAction().call();
+                clear();
+            }
+        } else {
+            //执行验证
+            Valid valid = call.getValidQueue().poll();
+            call.setLastValid(valid);
+            valid.doValid();
+        }
+
+    }
+    .....
+}
+</code></pre>
+<p>调用示例（常用场景，单 Action）：</p>
+<p><code>Activity</code> 实现 <code>Action</code> 接口，或 new 一个<code>Action</code> 实现类，实现 call 目标行为。</p>
+<p>前置行为完成后，调用 <code>SingleCall.getInstance().doCall();</code> 重新启动验证模型。因为验证操作需要用户手动触发完成，我们只是引导用户到了验证体里，由于我们因为等待用户的操作，验证模型就在这里停下来了，如果验证操作成功了，我们需要让整个验证模型再运转起来了，所以验证后，永远少不了手动开启验证模型。</p>
+<p>以下是整个模型的类 UML 图，重点梳理 Valid、Call、Action 三者的关系：</p>
+<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/delay-action/delay_action_uml.png" alt="类 UML 图" loading="lazy"></figure>
+<h2 id="应用场景">应用场景</h2>
+<figure data-type="image" tabindex="3"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/delay-action/delay_action_since.png" alt="" loading="lazy"></figure>
+<h2 id="源码地址">源码地址</h2>
+<p><a href="https://github.com/feelschaotic/DelayAction">github 源码地址</a></p>
+<ul>
+<li>增加了容错处理</li>
+<li>补充了嵌套 Call 的情况</li>
+</ul>
+<blockquote>
+<p>参考：</p>
+<ul>
+<li><a href="https://www.jianshu.com/p/22a9d4eb07ce">在执行目标操作前，插入N个需要用户参与的操作，简化此过程</a></li>
+<li><a href="https://www.jianshu.com/p/1d0180ec64fb">android 登录成功后再跳转到目标界面的思考</a></li>
+</ul>
+</blockquote>
+<p>本文转载自 <a href="https://feelschaotic.github.io/">feelschaotic 的个人博客</a>，封面图是编者加的，封面图：Photo by <a href="https://unsplash.com/@chengfengrecord?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">cheng feng</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Navigation 之 Fragment 切换]]></title>
+        <id>https://cherrylover.github.io/post/navigation-zhi-fragment-qie-huan/</id>
+        <link href="https://cherrylover.github.io/post/navigation-zhi-fragment-qie-huan/">
+        </link>
+        <updated>2019-07-24T07:13:43.000Z</updated>
+        <content type="html"><![CDATA[<p>本篇是有关 Navigation 的第二篇，如有对 Navigation 不了解的朋友请先阅读<a href="https://jiangjiwei.site/post/lai-xue-yi-bo-navigation/">来学一波 Navigation</a>。</p>
+<h2 id="多次执行-oncreateview">多次执行 onCreateView</h2>
+<p>在上一篇中，我们利用 Navigation 与 BottomNavigationView 做出了一个有三个 Tab 的页面，分别是 Feed、Timer、Mine，这三个 Fragment 都是只在当前页面显示各自的名称。</p>
+<p>现在我们来给 TimerFragment 加点内容，我们在 TimerFragment 的 onCreateView 方法中启动一个倒计时。</p>
+<pre><code class="language-java">private void startTimer() {
+    new CountDownTimer(10 * 1000, 1000) {
+
+        @Override
+        public void onTick(long millisUntilFinished) {
+            tvLabel.setText(String.valueOf((millisUntilFinished / 1000) + 1));
+        }
+
+        @Override
+        public void onFinish() {
+            tvLabel.setText(&quot;Finished&quot;);
+        }
+    }.start();
+}
+</code></pre>
+<img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_nav_tab.gif" style="zoom:33%;" />
+<p>仔细看上面的效果可以看到，每次切换到 TimerFragment 时，倒计时总会重新开始，不是我们想要的仅开始一次。这是什么问题导致的呢？答案是 TimerFragment 执行了多次的 onCreateView，为什么是会执行多次，Fragment 为什么会加载多次？我们没有什么特殊的操作呀。是不是因为 Navigation？</p>
+<p>现在让我们深入到 Navigation 的源码看一看这到底是怎么一回事，以及我们该如何解决这一问题。</p>
+<p>首先，我们需要明确我们的方向，就是 Navigation 到底是怎么做 Fragment 切换的，为什么会导致 Fragment 的 onCreateView 被多次执行。</p>
+<p>从哪里作为入口呢？了解过 Navigation 的朋友对下面这行代码应该不会陌生，就是通过一个 View 获取到 NavController，然后通过执行 NavController 的 navigate 这个方法，我们就从这个方法开始。</p>
+<pre><code class="language-java">Navigation.findNavController(view)
+        .navigate(id);
+</code></pre>
+<p>这个 navigate 有多个重载方法，我们开始的 navigate 方法最终也是执行到下面这个重载方法。</p>
+<pre><code class="language-java">navigate(NavDestination node, Bundle args, NavOptions navOptions, Navigator.Extras navigatorExtras)
+</code></pre>
+<p>方法的具体内容如下图：</p>
+<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_code_navigate.png" alt="" loading="lazy"></figure>
+<p>其中在第 9 行，我们可以看到通过 mNavigatorProvider 获取到了一个泛型类型为 NavDestination 的 Navigator 对象，并且在第 12 行时，通过调用刚获取到的 navigator 的 navigate 方法，得到了 NavDestination 这个对象。</p>
+<p>这两行是关键代码，一个是获取到执行 navigator 的对象，一个是实际执行 navigate 的方法。看到这，我们就只需要找到 Navigator 的 navigate 方法即可。不过，Navigator 这个只是一个抽象类，我们还需要继续寻找它的实现类。</p>
+<blockquote>
+<p>快捷键：Implementation(s) Mac: option(⌥) + command(⌘)+B</p>
+</blockquote>
+<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/image-20190724110340568.png" alt="image-20190724110340568" loading="lazy"></figure>
+<p>Navigator 抽象类的关键代码：</p>
+<pre><code class="language-java">public abstract class Navigator&lt;D extends NavDestination&gt; {
+    @Retention(RUNTIME)
+    @Target({TYPE})
+    @SuppressWarnings(&quot;UnknownNullness&quot;)
+    public @interface Name {
+        String value();
+    }
+
+    @NonNull
+    public abstract D createDestination();
+
+    @Nullable
+    public abstract NavDestination navigate(@NonNull D destination, @Nullable Bundle args,
+            @Nullable NavOptions navOptions, @Nullable Extras navigatorExtras);
+
+    public abstract boolean popBackStack();
+
+    @Nullable
+    public Bundle onSaveState() {
+        return null;
+    }
+
+    public void onRestoreState(@NonNull Bundle savedState) {
+    }
+
+    public interface Extras {
+    }
+}
+</code></pre>
+<p>通过快捷键我们能找到多个实现类，有 ActivityNavigator、DialogFragmentNavigator 还有 FragmentNavigator 等，这里我们只关注 FragmentNavigator 这个类中的 navigate 这个方法。</p>
+<figure data-type="image" tabindex="3"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_code_navigate_real.png" alt="" loading="lazy"></figure>
+<p>别看这么多代码，别害怕，其实关键部分的代码就是第 32 行 <code>ft.replace(mContainerId, frag)</code> 这里使用的是 FragmentTransaction 的 replace 方法，这个方法不用说了吧。 replace 是移除了相同 id 的 fragment 然后再进行 add 的。</p>
+<p>所以，看到这，我们也就知道了，为什么 TimerFragment 的 onCreateView 方法会被执行多次了，原因就是在这。</p>
+<h2 id="规避-replace">规避 replace</h2>
+<p>找到原因了，那我们有什么方法去规避，或者说去绕过这个 replace 吗？答案是有的。</p>
+<p>还记得刚才我们找的下面这行代码吧（忘记的，请看第一张代码图的第 9 行），刚才我说，通过 mNavigatorProvider 找到一个泛型类型为 NavDestination 的 Navigator 对象，那它实际上是怎么找到的呢？是通过 node.getNavigatorName() 然后找的，这个 node 是什么东西？以及 mNavigatorProvider.getNavigator 内部究竟发生了什么？</p>
+<pre><code class="language-java">Navigator&lt;NavDestination&gt; navigator = mNavigatorProvider.getNavigator(
+        node.getNavigatorName());
+</code></pre>
+<p>实际上这里的 node 就是一个 NavDestination 对象，而一个 NavDestination 对象就是对应着 navigation graph 中的节点信息。我用来演示的 Demo 的 navigation graph 文件如下：</p>
+<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;navigation xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    android:id=&quot;@+id/tab_navigation&quot;
+    app:startDestination=&quot;@id/feedFragment&quot;&gt;
+
+    &lt;fragment
+        android:id=&quot;@+id/feedFragment&quot;
+        android:name=&quot;me.monster.blogtest.tab.FeedFragment&quot;
+        android:label=&quot;fragment_feed&quot;
+        tools:layout=&quot;@layout/fragment_feed&quot; /&gt;
+    &lt;fragment
+        android:id=&quot;@+id/timerFragment&quot;
+        android:name=&quot;me.monster.blogtest.tab.TimerFragment&quot;
+        android:label=&quot;fragment_timer&quot;
+        tools:layout=&quot;@layout/fragment_timer&quot; /&gt;
+    &lt;fragment
+        android:id=&quot;@+id/mineFragment&quot;
+        android:name=&quot;me.monster.blogtest.tab.MineFragment&quot;
+        android:label=&quot;fragment_mine&quot;
+        tools:layout=&quot;@layout/fragment_mine&quot; /&gt;
+&lt;/navigation&gt;
+</code></pre>
+<p>node.getNavigatorName 返回的就是 fragment 节点的节点名称 <code>fragment</code>，而 getNavigator 其实内部就是维护了一个类型为 HashMap 的 mNavigators，这个 HashMap 存的 key 就是节点名称，value 就是抽象类 Navigator 的实现类。而与 fragment 对应的 FragmentNavigator 也存储在其中。</p>
+<p>既然是存在一个 map，并从中取出相对于的 Navigator 实现类，那我们能不能创建一个类并实现 Navigator，然后将 key、value 添加到那个 HashMap 中。答案是可行的。在NavigatorProvider 这个类中有两个公共方法：</p>
+<ul>
+<li>addNavigator(Navigator navigator)</li>
+<li>addNavigator(String name, Navigator navigator)</li>
+</ul>
+<p>其中，一个参数的 addNavigator 也是调用了 两个参数的 addNavigator 方法，那个 name 也就是 navigation graph 中 fragment 节点的节点名称，同时也是 Navigator 这个抽象类中注解 <code>Name</code> 定义的值。而且在 NavController 这个类（最初我们找到的 navigate 所在的类）中有一个 getNavigatorProvider() 方法。</p>
+<figure data-type="image" tabindex="4"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/uml_blog_navigation.jpg" alt="" loading="lazy"></figure>
+<p>看到这，关系应该就比较清楚了。所以，我们需要自己创建一个类，实现 Navigator 并为 Name 注解添加一个值，然后在使用 Navigation 这个模块的 Activity 获取到 NavController 并调用其 getNavigatorProvider 方法后再调用 addNavigator 即可。</p>
+<h2 id="自定义-navigator">自定义 Navigator</h2>
+<p>Github 上已经有一个演示自定义实现 Navigator 的项目了。这个项目是以 Kotlin 语言编写的。</p>
+<p>项目地址： https://github.com/STAR-ZERO/navigation-keep-fragment-sample。</p>
+<blockquote>
+<p>说起来这个项目还是 <a href="https://github.com/drakeet">Drakeet</a> 在他的知识星球中分享的。感谢 Drakeet 的分享。</p>
+</blockquote>
+<p>我根据按照他的代码写了一份 Java 版本的，并且在其中改了两行代码（注释部分）。注释的内容其实就是使用 FragmentTranslation 对 Fragment 进行控制。原作者写的是 detach 与 attach 方法，我改成了使用 hide 和 show 方法。</p>
+<pre><code class="language-java">@Navigator.Name(&quot;keep_state_fragment&quot;)
+public class KeepStateNavigator extends FragmentNavigator {
+    private Context context;
+    private FragmentManager manager;
+    private int containerId;
+
+    public KeepStateNavigator(@NonNull Context context, @NonNull FragmentManager manager, int containerId) {
+        super(context, manager, containerId);
+        this.context = context;
+        this.manager = manager;
+        this.containerId = containerId;
+    }
+
+    @Nullable
+    @Override
+    public NavDestination navigate(@NonNull Destination destination, @Nullable Bundle args, @Nullable NavOptions navOptions, @Nullable Navigator.Extras navigatorExtras) {
+        String tag = String.valueOf(destination.getId());
+        FragmentTransaction transaction = manager.beginTransaction();
+        boolean initialNavigate = false;
+        Fragment currentFragment = manager.getPrimaryNavigationFragment();
+        if (currentFragment != null) {
+//            transaction.detach(currentFragment);
+            transaction.hide(currentFragment);
+        } else {
+            initialNavigate = true;
+        }
+        Fragment fragment = manager.findFragmentByTag(tag);
+        if (fragment == null) {
+            String className = destination.getClassName();
+            fragment = manager.getFragmentFactory().instantiate(context.getClassLoader(), className);
+            transaction.add(containerId, fragment, tag);
+        } else {
+//            transaction.attach(fragment);
+            transaction.show(fragment);
+        }
+
+        transaction.setPrimaryNavigationFragment(fragment);
+        transaction.setReorderingAllowed(true);
+        transaction.commitNow();
+        return initialNavigate ? destination : null;
+    }
+}
+</code></pre>
+<blockquote>
+<p>这里的代码没有传递 Bundle 类型的 args 同时也破坏了在 navigation graph 中切换动画的设置，如需要，自行加上即可。可参考 FragmentNavigator 类中实现。</p>
+<p>感谢 <a href="https://github.com/1196455690">Qwer</a> 提出问题</p>
+</blockquote>
+<p>注意，使用自定义 Navigator 的时候 navigation graph 需要把 fragment 节点名称改为 keep_state_fragment，并且在承载的 Activity 中进行设置并且还需要把 Activity 布局文件中 fragment 的 navGraph 属性移除。</p>
+<pre><code class="language-java">NavController navController = Navigation.findNavController(this, R.id.fragment3);
+NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment3);
+KeepStateNavigator navigator = new KeepStateNavigator(this, navHostFragment.getChildFragmentManager(), R.id.fragment3);
+navController.getNavigatorProvider().addNavigator(navigator);
+navController.setGraph(R.navigation.tab_navigation);
+</code></pre>
+<p>最后来看一下使用自定义 Navigator 时的 TabActivity。</p>
+<img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_nav_tab_state.gif" style="zoom: 33%;" />
+<p>这样好像看起来结束了？其实并没有，我们只是刚刚开始。</p>
+<p>首先，我先更正一下，在第一篇关于 Navigation 的博客中从 SettingFragment 返回到 RootFragment 那一段代码有些问题。</p>
+<blockquote>
+<p>没看过那篇文章的不要着急，其实就是 A 调到 B，然后在 B 中触发一个点击事件，再从 B 返回到 A。返回的代码如下。</p>
+</blockquote>
+<p>原代码为：</p>
+<pre><code class="language-java">btnToRoot.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Navigation.findNavController(btnToRoot)
+                .popBackStack();
+    }
+});
+</code></pre>
+<p>这里在点击事件中，最后执行的是 <code>popBackStack</code>，其实不应该调用这个方法应该用 <code>navigateUp</code> 这个方法。</p>
+<p>在第一篇博客中，Navigation Graph 中所有的节点名称都是 Fragment，如果我用上面这种 keep_state_fragment 的方式，会发生什么呢？</p>
+<img src="Navigation-state.assets/backNoWork.gif" style="zoom: 50%;" />
+<p>可以看到，在把 Navigation Graph 节点名替换为 keep_state_fragment 后，在 SettingFragment 点击返回并没有进行返回。这是为什么呢？我没干啥呀，怎么不好使了。</p>
+<p>不行，我要看看 Navigation 源码里面到底怎么做的。于是我开始了 debug 之旅。后来，我发现在 <code>Navigation.findNavController(btnToRoot).navigateUp();</code> 内部判断了当前的返回栈个数是否为 1，结果让我很震惊，返回的竟然真的是 1。所以，navigateUp 就理所当然的返回 false，也就没能从 SettingFragment 回到 RootFragment 了。</p>
+<blockquote>
+<p>下面的两段代码分别是：NavController#navigateUp 和 NavController#getDestinationCountOnBackStack</p>
+</blockquote>
+<figure data-type="image" tabindex="5"><img src="Navigation-state.assets/nav_conll_up.png" alt="" loading="lazy"></figure>
+<pre><code class="language-java">private int getDestinationCountOnBackStack() {
+    int count = 0;
+    for (NavBackStackEntry entry : mBackStack) {
+        if (!(entry.getDestination() instanceof NavGraph)) {
+            count++;
+        }
+    }
+    return count;
+}
+</code></pre>
+<p>我查了一下 mBackStack 这个数据类型，发现它是一个栈，紧接着找到 mBackStack 入栈的方法。</p>
+<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2019/10/17/s91Txif3vPM2JOj.png" alt="" loading="lazy"></figure>
+<p>mBackStack#add 相关的方法一共有 4 个，第一个方法是在 NavController#NavController 方法中进行调用的，其余 3 个 add 相关方法均是在 NavController#navigate 内调用，而调用 add 方法之外有一个判空。判空的对象就是来自 Navigator#navigate 这个方法。</p>
+<blockquote>
+<p>NavController 的 navigate 方法，有删减。</p>
+</blockquote>
+<pre><code class="language-java">private void navigate(@NonNull NavDestination node, @Nullable Bundle args,
+        @Nullable NavOptions navOptions, @Nullable Navigator.Extras navigatorExtras) {
+    //......
+    Navigator&lt;NavDestination&gt; navigator = mNavigatorProvider
+           .getNavigator(node.getNavigatorName());
+    Bundle finalArgs = node.addInDefaultArgs(args);
+    NavDestination newDest = navigator.navigate(node, finalArgs,
+            navOptions, navigatorExtras);
+    if (newDest != null) {
+        // The mGraph should always be on the back stack after you navigate()
+        if (mBackStack.isEmpty()) {
+            mBackStack.add(new NavBackStackEntry(mGraph, finalArgs));
+        }
+        // Now ensure all intermediate NavGraphs are put on the back stack
+        // to ensure that global actions work.
+        ArrayDeque&lt;NavBackStackEntry&gt; hierarchy = new ArrayDeque&lt;&gt;();
+        NavDestination destination = newDest;
+        while (destination != null &amp;&amp; findDestination(destination.getId()) == null) {
+            NavGraph parent = destination.getParent();
+            if (parent != null) {
+                hierarchy.addFirst(new NavBackStackEntry(parent, finalArgs));
+            }
+            destination = parent;
+        }
+        mBackStack.addAll(hierarchy);
+        // And finally, add the new destination with its default args
+        NavBackStackEntry newBackStackEntry = new NavBackStackEntry(newDest,
+                newDest.addInDefaultArgs(finalArgs));
+        mBackStack.add(newBackStackEntry);
+    }
+  //......
+}
+</code></pre>
+<p>根据我们之前的经验，可以得出这里的 Navigator 就是我们自定义的 KeepStateNavigator 这个对象，那 navgate 这个方法的返回值也就是我们自己控制的，也就是我们自己给自己挖了个坑。2333~</p>
+<p>来吧，来看一下刚才写的代码。</p>
+<pre><code class="language-java">public NavDestination navigate(Destination destination, Bundle args, NavOptions navOptions, Navigator.Extras navigatorExtras) {
+    String tag = String.valueOf(destination.getId());
+    FragmentTransaction transaction = manager.beginTransaction();
+    boolean initialNavigate = false;
+    Fragment currentFragment = manager.getPrimaryNavigationFragment();
+    if (currentFragment != null) {
+      transaction.hide(currentFragment);
+    } else {
+      initialNavigate = true;
+    }
+    Fragment fragment = manager.findFragmentByTag(tag);
+    if (fragment == null) {
+      String className = destination.getClassName();
+      fragment = manager.getFragmentFactory().instantiate(context.getClassLoader(), className);
+      transaction.add(containerId, fragment, tag);
+    } else {
+      transaction.show(fragment);
+    }
+
+    transaction.setPrimaryNavigationFragment(fragment);
+    transaction.setReorderingAllowed(true);
+    transaction.commitNow();
+    return initialNavigate ? destination : null;
+  }
+</code></pre>
+<p>在最后一行中，我们通过对 <code>initialNavigate</code> 进行判断然后返回 null 或是 destination 对象。而把 initialNavigate 赋值为 true 则是只有在 currentFragment 为空时才会进行，什么时候 currentFragment 才会为空？只有当打开一个 Activity 并为其填充第一个 Fragment 时才会为 true，在我们当前这个场景里，就是当应用启动，打开 RootFragment 时 initialNavigate 为 true，从 RootFragment 跳转到 SettingFragment 时 initialNavigate 为 false。</p>
+<p>这显然是有问题的，那么我们需要改为，当这个 fragmen 为空时，在 <code>transaction.add(containerId, fragment, tag);</code> 之后把 initialNavigate 赋值为 true。这样一来，NavController#getDestinationCountOnBackStack 就能获取到实际的 fragment 大小了，也就不会直接 return fase 了。</p>
+<p>运行一下看看结果？别着急啊，再检查检查。刚才我说在 <code>Navigation.findNavController(btnToRoot).navigateUp();</code> 内部判断了当前的返回栈个数是否为 1，现在我们把为 1 的情况解决了，那么当返回栈的个数不为 1 时它怎么做的？在判断返回栈个数不是 1 的后经过内部调用，最终来到了 <code>NavController#popBackStackInternal</code> 这个方法内。</p>
+<blockquote>
+<p>NavController 的 popBackStackInternal 方法，有删减</p>
+</blockquote>
+<pre><code class="language-java">boolean popBackStackInternal(@IdRes int destinationId, boolean inclusive) {
+    if (mBackStack.isEmpty()) {
+        // Nothing to pop if the back stack is empty
+        return false;
+    }
+    ArrayList&lt;Navigator&gt; popOperations = new ArrayList&lt;&gt;();
+    Iterator&lt;NavBackStackEntry&gt; iterator = mBackStack.descendingIterator();
+    boolean foundDestination = false;
+    while (iterator.hasNext()) {
+        NavDestination destination = iterator.next().getDestination();
+        Navigator navigator = mNavigatorProvider.getNavigator(
+                destination.getNavigatorName());
+        if (inclusive || destination.getId() != destinationId) {
+            popOperations.add(navigator);
+        }
+    //......
+    boolean popped = false;
+    for (Navigator navigator : popOperations) {
+        if (navigator.popBackStack()) {
+            NavBackStackEntry entry = mBackStack.removeLast();
+            popped = true;
+     // ......
+    return popped;
+}
+</code></pre>
+<p>在这个方法内，我又看到了那个熟悉的面孔 navigator，在这里 navigator 执行了一个叫 popBackStack 的方法，这个方法看起来好像就是做返回事件的。可是，我们的 KeepStateNavigator 并没有这个方法啊，那是因为我们选择了继承自 FragmentNavigator，在 FragmentNavigator 有一套 popBackStack 逻辑，不过我们用不了。所以我们需要在 FragmentNavigator 进行重写这个方法。</p>
+<p>由于我们需要返回到上一个页面，所以我们也得有个管理栈，然后在 KeepStateNavigator#navigate 方法中的 <code>transaction.add(containerId, fragment, tag);</code> 之后把当前 Fragment 添加到返回栈中，在 popBackStack 中根据一些条件再进行 remove 即可。</p>
+<figure data-type="image" tabindex="7"><img src="Navigation-state.assets/keep_state_navigator.png" alt="" loading="lazy"></figure>
+<p>这样一来就可以了。</p>
+<img src="https://i.loli.net/2019/10/17/qn84IfTF7ybrViS.gif" style="zoom:50%;" />
+<blockquote>
+<p>不知道为什么，录制的 gif 画面一直在闪……</p>
+</blockquote>
+<h3 id="随意切换">随意切换</h3>
+<p>好了，这样就可以了，终于可以愉快的使用 Navigation 了。直到有一天，老大找到我，跟我说了一个需求。</p>
+<blockquote>
+<p>从 A 页面进入 B 页面，再从 B 页面进入 C 页面，在 C 页面产生一个事件，然后用户返回时，需要跳过 B，也就是从 C 直接回到 A。</p>
+</blockquote>
+<p>问我这个能不能在 Navigation 上实现，我想了一下，说可以。下面就分享一下实现这种效果的思路，我个人觉得可以有两个解决方法，下面我依次来说一下。</p>
+<blockquote>
+<p>假设页面打开顺序为：A、B、C。</p>
+</blockquote>
+<ul>
+<li>
+<p>第一种：优先关闭</p>
+<p>当从 C 返回到 A 时，其实并不一定是返回的时候进行操作，可能是在某个事件产生之后，这时就把 B 给关闭，此时回退栈里面也就只剩下 A 和 B。这时候只需要正常走页面返回逻辑即可。</p>
+</li>
+<li>
+<p>第二种：优先返回</p>
+<p>当从 C 返回到 A 时，也可以直接跳过 B，具体方法为：当从 C 点击返回时，触发返回栈的操作，当完成返回操作后发现当前页面需要跳过时，则继续返回，此时也就回到了 A。</p>
+</li>
+</ul>
+<p>落实到 Navigation 中，就是在自定义 Navigator 中添加一些方法，然后在需要执行此类操作的地方获取到 Navigator 对象，并进行相关操作。</p>
+<p>获取 Navigator 的相关代码如下：</p>
+<pre><code class="language-java">NavController navController = Navigation.findNavController(btnToRoot);
+NavigatorProvider navigatorProvider = navController.getNavigatorProvider();
+Navigator&lt;?&gt; navigator = navigatorProvider.getNavigator(&quot;keep_state_fragment&quot;);
+if (navigator instanceof KeepStateNavigator) {
+    ((KeepStateNavigator) navigator).closeMiddle(R.id.settingsFragment);
+}
+</code></pre>
+<h2 id="思考">思考</h2>
+<p>我第一次学习 Navigation 的时候就瞄了一眼，觉得这不就是个 Fragment 的管理框架吗？有什么的呀，比其他Fragment 的管理框架好吗？看起来一般般啊。哇哦，好复杂啊，算了，不看了，知道大致怎么用就行。看着大家讨论的越来越多，没忍住，又去仔细看了一下 Navigation 的使用，以及稍微阅读了源码。不就是个 Fragment 管理框架吗？怎么搞这么复杂，什么 NavigatorProvider、Navigator、Destination 这些都是啥啊。</p>
+<p>随着我看的内容越来越多，实践的也变多了，原生的 Navigation 越来不不能满足需求了，才发现，原来 Google 早就想到了，只是没有给我们提供具体的解决方法，只是把一些东西开放出来供开发者在不同场景下进行自定义使用。</p>
+<p>想想自己项目里的代码，好像如果要扩展的话，就得改动较多原来的代码，不能像 Navigation 这样，在需要改动的时候，尽量不触动原有代码，而通过接口、Provider、泛型等更多是编码技巧或是设计模式上的技巧来完成业务需求。</p>
+<p>也不应该把过多的心思花在各式各样的第三方库上，而是把更多的精力花在基础技能上，虽然可能一时半会儿看不出什么结果，但这可能是笑到最后的方法。</p>
+<hr>
+<p>本文首发于<a href="https://jiangjiwei.site/">个人博客</a>，文中全部源代码已上传至 <a href="https://github.com/CherryLover/BlogTest">GitHub</a>，代码分支为 master。喜欢本文的麻烦点个🌟。</p>
+<p>本文封面图：Photo by <a href="https://unsplash.com/@joaosilas?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">João Silas</a> on <a href="https://unsplash.com/search/photos/translation?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+]]></content>
+    </entry>
+</feed>

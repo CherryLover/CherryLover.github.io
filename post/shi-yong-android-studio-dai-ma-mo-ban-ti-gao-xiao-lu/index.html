@@ -1,0 +1,315 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>使用 Android Studio 代码模板提高效率 | Jiang</title>
+<link rel="shortcut icon" href="https://cherrylover.github.io/favicon.ico?v=1600573857586">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cherrylover.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143284233-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-143284233-1');
+</script>
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://cherrylover.github.io">
+  <img class="avatar" src="https://cherrylover.github.io/images/avatar.png?v=1600573857586" alt="">
+  </a>
+  <h1 class="site-title">
+    Jiang
+  </h1>
+  <p class="site-description">
+    我允许你走进我的世界，但不许你在我的世界里走来走去。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://cherrylover.github.io/post/guan-yu-wo/" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/CherryLover" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://juejin.im/user/576d73cd0a2b58006a09ad87" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              使用 Android Studio 代码模板提高效率
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-04-30 ·
+              </time>
+              
+                <a href="https://cherrylover.github.io/tag/fZN0895-D/" class="post-tags">
+                  # 编码技巧
+                </a>
+              
+                <a href="https://cherrylover.github.io/tag/FPMMcTCET/" class="post-tags">
+                  # 工具软件
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/code_temp_compress.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>本文题图：Photo by <a href="https://unsplash.com/photos/CmF_5GYc6c0?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Lost Co</a> on <a href="https://unsplash.com/search/photos/entrepreneur?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+<h2 id="快捷输入">快捷输入</h2>
+<p>在编码过程中需要编写大量的重复的代码，比如，判空、log 打印，不想每次都写那么长怎么办？来试试 Android Studio 的快捷输入吧。</p>
+<p>输入 inn 就能自动生成 if 语句及对应的大括号并把光标定位到 if 的判断条件内。</p>
+<pre><code class="language-java">if ( != null) {
+
+}
+</code></pre>
+<p>Android Studio 自带了许多的快捷输入模板，并细心的把它们都进行了分组，有包含 log 的，也有包含注释的，还有常量等等。</p>
+<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/code_temp_live_list.png" alt="" loading="lazy"></figure>
+<p>基本使用是够了，但是在某些时候我们还需要用到一下这里面没有的怎么办？答案是自己写，自己编写代码模板也不算难。先来看看吧。</p>
+<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/code_temp_live_new.png" alt="" loading="lazy"></figure>
+<p>试着写一下这个吧。</p>
+<pre><code class="language-java">switch ($condition$) {
+    case $case1$:
+        break;
+    default:
+        break;
+}
+</code></pre>
+<p>写完之后，记得设置适用范围，不然不能使用。</p>
+<h2 id="脏数据的处理">脏数据的处理</h2>
+<p>在开始学习 Android 的时候，就有就像下面这些一些不得不写的代码，如果不写的话，就会导致出现空指针，写的话又很恶心，这种代码写起来真的是让人心生厌恶。</p>
+<pre><code class="language-java">if (info.getName() != null) {
+  tvName.setText(info.getName());
+}
+</code></pre>
+<p>这种代码，你在所有需要设置 Name 的地方都要写，很烦。学了一段时间之后，发现还可以这么写：</p>
+<pre><code class="language-java">class Info {
+  private String name;
+
+  @NonNull
+  public String getName() {
+    return name == null ? name = &quot;&quot; : name;
+  }
+}
+</code></pre>
+<p>这样写，就很爽，慢慢的，发现，这种处理方式，确实挺不错的。直到有一天，发现有些情况下获取类中的 List 和 Map 也会为空，也得加上烦人的 if 判断，按照我的思路，我把 List 和 Map 的也实现了一下。</p>
+<pre><code class="language-java">public List&lt;String&gt; getNameList() {
+  return nameList == null ? nameList = new ArrayList&lt;&gt;() : nameList;
+}
+
+public Map&lt;String, String&gt; getNameMap() {
+	return nameMap == null ? nameMap = new HashMap&lt;&gt;() : nameMap;
+}
+</code></pre>
+<p>就这样，我就又能愉快的玩耍了，那天，同事在跟我抱怨烦人的 if 判断时，我就兴奋的跟他说了，我的方案，我以为他会对我表示赞同，没想到一盆冷水泼过来，说：要是一个类里面有几十个甚至几百个成员变量你怎么办？顿时泄气，他说的对，那有没有什么简单的方法呢。去搜索一波，发现 Android Studio 可以对 get，set 方法设置自定义模板。</p>
+<p>首先打开我们要选择进行生成 get set 方法的页面，在下面的红色框的右边，点开里面就是默认的代码模板了。</p>
+<figure data-type="image" tabindex="3"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/code_temp_GET_compress.jpg" alt="" loading="lazy"></figure>
+<p>我这里是有两个模板，一个是 Android Studio 默认的代码模板，一个是我自己根据默认的进行修改后的。</p>
+<figure data-type="image" tabindex="4"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/code_temp_list.png" alt="Get模板" loading="lazy"></figure>
+<p>修改后的模板代码在👇</p>
+<pre><code class="language-java">#if($field.modifierStatic)
+static ##
+#end
+$field.type ##
+#set($name = $StringUtil.capitalizeWithJavaBeanConvention($StringUtil.sanitizeJavaIdentifier($helper.getPropertyName($field, $project))))
+#if ($field.boolean &amp;&amp; $field.primitive)
+  is##
+#else
+  get##
+#end
+${name}() {
+  #if($field.String)
+    return $field.name == null ? &quot;&quot; : $field.name;
+  #else
+    #if($field.List)
+      return $field.name == null ? $field.name = new ArrayList&lt;&gt;() : $field.name; 
+    #else
+      #if($field.Map)
+        return $field.name == null ? $field.name = new HashMap&lt;&gt;() : $field.name;
+      #else
+        return $field.name;
+      #end
+    #end
+  #end
+}
+</code></pre>
+<h2 id="文件代码模板">文件代码模板</h2>
+<p>在日常的协作开发中，一般都会在文件的头部，标注当前文件作者，创建时间之类的，或是在新建文件的时候就内置了一些字段或是方法，那是怎么做的呢？答案就是文件代码模板。</p>
+<p>比如使用 Android Studio 进行创建一个 Activity 而不是创建一个类然后自己继承 Activity ，那你就能得到一些默认的代码如下：</p>
+<pre><code class="language-java">import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import com.osapling.breath.brazil.dr.R;
+
+public class TempActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_temp);
+    }
+}
+</code></pre>
+<p>那我们是不是也可以自己做一些代码以此来方便我们创建类的过程呢？答案是可以的。</p>
+<p>在 Android Studio 的 File and Code Templates 设置模块中，你可以看到这里面有多种多样的代码模板，你可以在他们的基础之上进行二次编辑，也可以完全自己写。</p>
+<figure data-type="image" tabindex="5"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/code_temp_file_temp_setting.png" alt="" loading="lazy"></figure>
+<p>比如，我们可以在 Files 中进行自定义一个文件用于在项目中快速创建 Fragment。</p>
+<pre><code class="language-java">package com.osapling.breath.mvp.view.fragment;
+
+import android.content.Context;
+import android.os.Bundle;
+
+import com.osapling.breath.children.R;
+import com.osapling.breath.children.base.BaseFragment;
+import com.osapling.breath.children.base.BaseActivity;
+import com.osapling.breath.children.base.IPresenter;
+
+/**
+ * @description
+ * @author: Created ${USER} in ${DATE} ${TIME}
+ */
+public class ${name}Fragment extends BaseFragment {
+    private static final String TAG = &quot;${name}Fragment&quot;;
+
+    private BaseActivity mBaseActivity;
+
+    public static ${name}Fragment newInstance() {
+        ${name}Fragment mFragment = new ${name}Fragment();
+        mFragment.setArguments(new Bundle());
+        return mFragment;
+    }
+
+    @Override
+    protected int getLayoutId() {
+        return R.layout.fragment_${name};
+    }
+
+    @Override
+    protected IPresenter createPresenter() {
+        return null;
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mBaseActivity = (BaseActivity) context;
+    }
+}
+
+</code></pre>
+<p>这里的文件头，我是采用使用当前模板里的文件头，如果你想不想用的话，还可以使用来自上图中与 Files 同级的 include 里的一个文件头，仅需要将那 4 行注释改为 <code>#parse(&quot;File Header.java&quot;)</code> 即可。</p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://cherrylover.github.io/post/19-04-25/">
+              <h3 class="post-title">
+                19-04-25
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'f5cc70d7d50fba65cf69',
+    clientSecret: '1d018e38ce9cdd399682bdd76690decfef00a051',
+    repo: 'CherryLover.github.io',
+    owner: 'CherryLover',
+    admin: ['CherryLover'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

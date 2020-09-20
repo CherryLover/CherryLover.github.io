@@ -1,0 +1,267 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ToolBar 在项目中的变迁 | Jiang</title>
+<link rel="shortcut icon" href="https://cherrylover.github.io/favicon.ico?v=1600573857586">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cherrylover.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143284233-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-143284233-1');
+</script>
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://cherrylover.github.io">
+  <img class="avatar" src="https://cherrylover.github.io/images/avatar.png?v=1600573857586" alt="">
+  </a>
+  <h1 class="site-title">
+    Jiang
+  </h1>
+  <p class="site-description">
+    我允许你走进我的世界，但不许你在我的世界里走来走去。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://cherrylover.github.io/post/guan-yu-wo/" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/CherryLover" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://juejin.im/user/576d73cd0a2b58006a09ad87" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              ToolBar 在项目中的变迁
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-09-21 ·
+              </time>
+              
+                <a href="https://cherrylover.github.io/tag/37yorOBW4/" class="post-tags">
+                  # 持续学习
+                </a>
+              
+                <a href="https://cherrylover.github.io/tag/Mk4HmBIQ7/" class="post-tags">
+                  # Android
+                </a>
+              
+                <a href="https://cherrylover.github.io/tag/fZN0895-D/" class="post-tags">
+                  # 编码技巧
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelpertoolBar-convert.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>本文旨在分享自己在 ToolBar 使用上的偷懒，没有较多代码，只是分享一种思路。</p>
+<blockquote>
+<p>这里指的 ToolBar 是泛指顶部的那个功能区域，不仅仅局限于 Android 中的 ActionBar、ToolBar 。</p>
+</blockquote>
+<h2 id="toolbar-的样式">ToolBar 的样式</h2>
+<p>ToolBar 应该算是在项目中使用较为广泛的一个 View 了，它主要用于展示当前页面的标题、导航按钮及可能存在的扩展功能。</p>
+<p>下图就展示了一个具有一些基本属性的 ToolBar。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolBar-Normal.png" alt="" loading="lazy">)</p>
+<p>在 Android 中也不难实现，无非就是在布局文件声明出 ToolBar，然后在 Activity 使用它，为其设置一些内容，如果需要用到右侧的菜单，为其添加菜单即可。</p>
+<p>不过呢，国内的应用大多没有按照这种样式去设计，我们公司也是如此。这里我们不去评判它该是怎么样的，只是来讨论如何快速做出与设计师要求相同的效果。</p>
+<blockquote>
+<p>QQ 的 ToolBar</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolbar-QQ.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>小米短信的 ToolBar</p>
+</blockquote>
+<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolBar-Mi-Message.png" alt="" loading="lazy"></figure>
+<blockquote>
+<p>我司产品的 ToolBar</p>
+</blockquote>
+<figure data-type="image" tabindex="3"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolbar-osapling.png" alt="" loading="lazy"></figure>
+<p>遇到这种情况，无非就是通过自定义 View，做出一个类似 ToolBar 的 View，然后放在页面的最靠近状态栏的地方。然后每个页面通过在布局文件中进行声明，再到相应的 Activity 或是 Fragment 中通过 findViewById 的形式找到再设置一些相关属性之类的。</p>
+<p>难吗？不难，就是有点恶心，每个页面都得写一些重复代码，我是真的不想写啊。那就一起来偷个懒吧。</p>
+<h2 id="偷懒版本-v1">偷懒版本 V1</h2>
+<p>我不想在每个 Activity 或是 Fragment 上都写那些恶心的代码，能不能少些一点？</p>
+<p>经过观察我发现，大部分页面的 ToolBar 都是中间是标题，左侧是返回按钮，右侧可能为文字、图片或是什么都不显示。区别最大的就是底部的内容，那么我把底部的内容全部划分给 Fragment、Toolbar 所属的区域属于承载 Fragment 的 Activity。(如下图所示)</p>
+<figure data-type="image" tabindex="4"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolBar-Activity-Fragment.png" alt="" loading="lazy"></figure>
+<p>这样一来，开发者只需要在 Activity 中写，在 Activity 加载不同的 Fragment 时由 Fragment 去更新当前的标题。当用户点击了左侧或右侧的功能按键，通过查找当前 Activity 中存在的 Fragment 列表，找出当前显示的 Fragment，把点击事件传入即可。</p>
+<p>这样一来，既能实现了 UI 效果也少些了部分代码，挺好的。到这还没完，来思考一下这种方案的优缺点。</p>
+<p>优点是不需要在每个 Fragment 中声明并设置 ToolBar 了，在一定程度上减少了 ToolBar 声明与设置属性的次数。</p>
+<p>不过呢这种方案的缺点也很明显，由于把 ToolBar 放在了 Activity，所以每次设置 ToolBar 的相关属性都必须经过 Activity，Activity 要保证其承载的每个 Fragment 显示不出问题，就必须做到对每个 Fragment 的情况做到兼容。比如，有个页面需要放置一张圆弧的背景图，此时这种方案做起来就会比较麻烦。</p>
+<p>所以，整体来说，只是把粗略的把重复代码的解决掉，但是又会带来某些兼容的问题。也不算多好，所以才又有了新的偷懒版本。</p>
+<h2 id="偷懒版本-v2">偷懒版本 V2</h2>
+<p>自从 Android Studio 大力推行 ConstraintLayout 之后，我就一直在使用，发现了可以利用 ConstraintLayout 动态设置 View 的约束从而达到设置 ToolBar 的效果。</p>
+<p>具体来说是这样的：</p>
+<p>首先使用 Java 代码动态创建出 ToolBar 这个 View。紧接着为 ToolBar 设置约束条件，分别为：</p>
+<ul>
+<li>Start: Parent</li>
+<li>Top: Parent</li>
+<li>End: Parent</li>
+</ul>
+<p>这样一来，就能让 ToolBar 位于整个页面的顶端位置。</p>
+<p>不过这样有一个致命的痛，就是会覆盖原有属于顶部的 View（closeToolView），解决这个问题也很简单，利用 ConstraintLayout 为顶端 View （closeToolView）设置一个 top_toBottomOf 这个属性，这个属性值当然就是 ToolBar 了。</p>
+<p>怎么样，这个方案是不是挺简单的，不过，稍微想一想就会发现，我们在布局文件里不就这么写的吗？有什么稀奇的。</p>
+<p>这个方案没什么稀奇的，只是把原本属于开发者写在布局文件中的内容，放在了 Java 代码中而已。</p>
+<p>不过稍稍变通一下，我们在页面的布局文件也就不需要写这么多的重复代码了，而且，可以创建出一个 ToolBarHelper 这个类，由这个类去完成上述的这些内容，如此一来，Activity 与 Fragment 的基类只需要去调用 ToolBarHelper 即可。</p>
+<p>这样这个流程下来就算是完事了，不过你要是想用的话还是得清楚他的不足之处：</p>
+<ol>
+<li>
+<p>根布局必须为 ConstraintLayout</p>
+<p>这个很好理解，如果不是 ConstraintLayout 这个布局的话，后续所有的约束条件都不能使用；</p>
+</li>
+<li>
+<p>顶部 View （closeToolView）的高度不能设置为 match_parent</p>
+<p>如果顶部 View（closeToolView）的高度为 match_parent 的话，那么即使设置了 top_toBottomOf 顶部 View（closeToolView）的相对位置也不会发生改变。</p>
+</li>
+</ol>
+<h4 id="talk-is-cheap-show-me-the-code">Talk is cheap show me the code.</h4>
+<p>关键的代码如下：</p>
+<pre><code class="language-kotlin">private fun addToolBar(root: View, closeToolView: View) {
+    val layoutParams = ConstraintLayout.LayoutParams(root.layoutParams)
+    layoutParams.width = ConstraintLayout.LayoutParams.MATCH_PARENT
+    layoutParams.height = 48.toPix()
+    toolView.layoutParams = layoutParams
+    toolView.id = View.generateViewId()
+    if (initTitle.isNotEmpty()) {
+        toolView.setTitle(initTitle)
+    }
+    if (root is ConstraintLayout) {
+        val relation = ConstraintSet()
+        checkId(root)
+        root.addView(toolView)
+        relation.clone(root)
+        relation.connect(toolView.id, ConstraintSet.START, root.id, ConstraintSet.START)
+        relation.connect(toolView.id, ConstraintSet.END, root.id, ConstraintSet.END)
+        relation.connect(toolView.id, ConstraintSet.TOP, root.id, ConstraintSet.TOP)
+        relation.applyTo(root)
+
+        val closeRelation = ConstraintSet()
+        closeRelation.clone(root)
+        closeRelation.connect(
+            closeToolView.id,
+            ConstraintSet.TOP,
+            toolView.id,
+            ConstraintSet.BOTTOM
+        )
+        closeRelation.applyTo(root)
+    }
+}
+</code></pre>
+<p>笔者做了一个简单的 Demo，并上传到了 <a href="https://github.com/CherryLover/ToolBarHelper">GitHub</a>，这个 Demo 仅用于演示 ToolBarHelper 的使用，后续可能包含 ToolBar 的点击相应及多样化的设置，没有什么特别的功能，其中 Fragment 的导航库使用的是 AndroidX 的 Navigation。</p>
+<p>有什么问题或是情况，可以在评论或是 issues 中留言。😉</p>
+<p>封面图：Photo by <a href="https://unsplash.com/@artwalker?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Amber Walker</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+<p>推荐阅读：<a href="https://jiangjiwei.site/post/lai-xue-yi-bo-navigation/">来学一波 Navigation</a></p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://cherrylover.github.io/post/guan-yu-tdd-about/">
+              <h3 class="post-title">
+                关于 TDD
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'f5cc70d7d50fba65cf69',
+    clientSecret: '1d018e38ce9cdd399682bdd76690decfef00a051',
+    repo: 'CherryLover.github.io',
+    owner: 'CherryLover',
+    admin: ['CherryLover'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

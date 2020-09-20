@@ -1,0 +1,213 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>关于 TDD | Jiang</title>
+<link rel="shortcut icon" href="https://cherrylover.github.io/favicon.ico?v=1600573857586">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cherrylover.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143284233-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-143284233-1');
+</script>
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://cherrylover.github.io">
+  <img class="avatar" src="https://cherrylover.github.io/images/avatar.png?v=1600573857586" alt="">
+  </a>
+  <h1 class="site-title">
+    Jiang
+  </h1>
+  <p class="site-description">
+    我允许你走进我的世界，但不许你在我的世界里走来走去。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://cherrylover.github.io/post/guan-yu-wo/" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/CherryLover" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://juejin.im/user/576d73cd0a2b58006a09ad87" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              关于 TDD
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-09-06 ·
+              </time>
+              
+                <a href="https://cherrylover.github.io/tag/37yorOBW4/" class="post-tags">
+                  # 持续学习
+                </a>
+              
+                <a href="https://cherrylover.github.io/tag/ari5goDnZ/" class="post-tags">
+                  # 基础技能
+                </a>
+              
+                <a href="https://cherrylover.github.io/tag/fZN0895-D/" class="post-tags">
+                  # 编码技巧
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/eberhard-grossgasteiger-mLVdkJCOick-unsplash.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>有一种编程思想叫测试驱动开发，英文全称Test-Driven Development，也就是 TDD。在这个过程中，最重要的就是编写测试代码，而且不是写完了业务逻辑之后才去写，是先写测试，然后根据需求，一步步的完善测试用例，最终写出有效的业务逻辑代码。</p>
+<p>主讲师熊节老师提供了两个准则：</p>
+<blockquote>
+<ol>
+<li>没有失败的测试就不许写代码；</li>
+<li>只许写恰好让测试通过的代码；</li>
+</ol>
+</blockquote>
+<p>开课后的第一个作业是 FizzBuzz。题目很简单，从 1 到 100，能被 3 整除的数打印 Fizz，能被 5 整除的数打印 Buzz，同时满足这两个条件的打印 FizzBuzz，其余的数字直接输出。题目不难，拿到题目，第一反应是有一个类 FizzBuzz 其中有 print 这个方法，然后在方法内部进行逻辑判断并打印，最后运行代码。</p>
+<p>可是，老师不是这么做的，他的做法是：</p>
+<ol>
+<li>
+<p>编写测试用例 should_print_raw_value_by_1</p>
+<p>这个测试方法中，只是去检查 FizzBuzz 类的 print 是否与之相同，但并没有在 print 函数中进行任何的逻辑判断，只是输出了 null。第一次运行，测试不通过。</p>
+</li>
+<li>
+<p>完善 FizzBuzz 类中的 print 方法，直接返回当前值；</p>
+<p>不做过多的任务，仅仅输出了 1 这个字符串。第二次运行，测试通过，</p>
+</li>
+<li>
+<p>编写测试用例 should_print_fizz_by_3</p>
+<p>与第一步相同，未在 print 方法中增加对当前数字是否满足整除 3 的条件。第三次运行，测试不通过。</p>
+</li>
+<li>
+<p>完善 print 方法中能否被 3 整除的判断。</p>
+<p>第四次运行，测试通过。</p>
+</li>
+</ol>
+<p>以此继续向前，不断进行尝试，直至把 print 方法完全编写出来。</p>
+<p>我开始不理解，这么做不是麻烦了许多吗？甚至看起来有些傻，明知道那样运行测试是不可能通过的，为什么还去做这种事情呢？后来自己上手的时候才发现，这种方法是在锻炼程序员的思考能力以及对需求的理解。</p>
+<p>当一个程序员做编写测试用例的时候，就相当于在给自己提需求。把客户(PM、甲方等)提出的问题用自己的思维方式进行思考。</p>
+<p>第一步该怎么做？具体的代码怎么写，写完后，进行确认，确保在实现下一个需求时不把当前的 bug 带过去。这里的确认，就是通过编写测试代码进行的。不同的是，先写测试，根据测试结果（自己期望的结果，也就是自己给自己定的需求），来编写业务代码，让业务代码恰好得出自己所期望的目标。</p>
+<p>这种测试先行的编程思想在需求不是那么清晰的时候，更能体现出其作用。</p>
+<p>优点：</p>
+<ol>
+<li>根据需求编写测试用例，对功能的过程及接口都进行了设计，而且这种从使用者角度对代码进行设计通常更符合后期的开发需求。</li>
+<li>处于易测试的目的，促使开发者实现低耦合的设计，更多的依赖接口而非具体的类，提高系统的可扩展性；</li>
+<li>将测试提到编码之前，并频繁的运行所有测试，可以尽可能避免和早发现错误，极大的降低了后续测试及修复的成本，提高了代码的质量，在测试的保护下，得以不断重构，以消除重复代码，优化设计结构，提高代码复用性，进而提高软件质量。</li>
+</ol>
+<p>优点来源于 <a href="https://baike.baidu.com/item/%E6%B5%8B%E8%AF%95%E9%A9%B1%E5%8A%A8%E5%BC%80%E5%8F%91#7_1">百度百科</a>。</p>
+<p>封面图：Photo by <a href="https://unsplash.com/@eberhardgross?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">eberhard grossgasteiger</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://cherrylover.github.io/post/zhuan-biao-fang-fa-qian-zhi-jian-yan-mo-xing-she-ji-yu-shi-xian/">
+              <h3 class="post-title">
+                [转] 目标方法前置检验模型设计与实现
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'f5cc70d7d50fba65cf69',
+    clientSecret: '1d018e38ce9cdd399682bdd76690decfef00a051',
+    repo: 'CherryLover.github.io',
+    owner: 'CherryLover',
+    admin: ['CherryLover'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,288 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>设计模式：观察者模式 | Jiang</title>
+<link rel="shortcut icon" href="https://cherrylover.github.io/favicon.ico?v=1600573857586">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cherrylover.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143284233-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-143284233-1');
+</script>
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://cherrylover.github.io">
+  <img class="avatar" src="https://cherrylover.github.io/images/avatar.png?v=1600573857586" alt="">
+  </a>
+  <h1 class="site-title">
+    Jiang
+  </h1>
+  <p class="site-description">
+    我允许你走进我的世界，但不许你在我的世界里走来走去。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://cherrylover.github.io/post/guan-yu-wo/" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/CherryLover" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://juejin.im/user/576d73cd0a2b58006a09ad87" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              设计模式：观察者模式
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2019-10-24 ·
+              </time>
+              
+                <a href="https://cherrylover.github.io/tag/DA_fZV3WD/" class="post-tags">
+                  # 设计模式
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelper20191025121347.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <blockquote>
+<p>本文是设计模式系列中的第三篇，上一篇是 <a href="https://jiangjiwei.site/post/dan-li-mo-shi/">单例模式</a>。</p>
+</blockquote>
+<p>观察者模式是使用频率最高的设计模式之一。是对象之间的一种<strong>一对多</strong>的依赖关系，使得当一个对象「被观察者」发生改变，其相关依赖对象「观察者」皆收到通知，并自动更新。</p>
+<p>比如，我们注册某个网站的时，默认订阅了它的促销活动邮件及账户安全邮件。当促销活动发生时，所有用户都会收到与促销相关的邮件，当公司信息发生泄漏，需要用户更改密码时，向所有用户发送更改密码的邮件提示。</p>
+<p>在这个例子中，观察者就是每一个注册网站的用户，被观察者就是网站中具体的业务（可能是促销信息、也可能是账户安全信息）。当被观察者产生事件时，观察者收到事件。</p>
+<p>通常来说，被观察者可能有多个观察者，比如，小王和小蒋比较喜欢购物，就没有取消订阅促销信<br>
+息邮件通知，小李因为平时不怎么用在线购物，所以他主动取消了促销信息的订阅。</p>
+<pre><code class="language-java">// 注册用户
+Person jiang = new Person(&quot;小蒋&quot;);
+Person wang = new Person(&quot;小王&quot;);
+Person li = new Person(&quot;小李&quot;);
+
+// 系统功能
+SaleProduct saleProduct = new SaleProduct();
+SafeAccount safeAccount = new SafeAccount();
+
+// 默认情况下，订阅系统邮件
+saleProduct.registerObserver(jiang);
+saleProduct.registerObserver(wang);
+saleProduct.registerObserver(li);
+
+safeAccount.registerObserver(jiang);
+safeAccount.registerObserver(wang);
+safeAccount.registerObserver(li);
+
+// 小李、小王主动取消订阅相关产品邮件
+saleProduct.unRegisterObserver(li);
+</code></pre>
+<p>所以，被观察者「公司产品」内部需要维护一个集合，用于添加及删除订阅的观察者「用户」，以及当事件「促销及安全信息」产生时，通知所有订阅当前被观察者的观察者。</p>
+<blockquote>
+<p>由于公司可能有多个产品，所以我们把被观察者定义为接口，名为 Obserable，而每一个用户都具有订阅的能力，都是一个观察者，我们也定义一个接口，名为 Observer。</p>
+</blockquote>
+<pre><code class="language-java">public interface Observable {
+    // 注册观察者
+    void registerObserver(Observer  observer);
+
+    // 解绑观察者
+    void unRegisterObserver(Observer observer);
+
+    // 产生事件
+    void changeObserver();
+}
+
+public interface Observer {
+    //接受被观察者发出的事件
+    void onChange(Object object);
+}
+</code></pre>
+<p>之后定义公司产品「促销及安全」和个人账户。</p>
+<pre><code class="language-java">public class SaleProduct implements Observable {
+    List&lt;Observer&gt; useSaleNameList = new ArrayList&lt;&gt;();
+
+    @Override
+    public void registerObserver(Observer observer) {
+        useSaleNameList.add(observer);
+    }
+
+    @Override
+    public void unRegisterObserver(Observer observer) {
+        observer.onChange(&quot;----- 您已经取消订阅促销信息 -----&quot;);
+        useSaleNameList.remove(observer);
+    }
+
+    @Override
+    public void changeObserver() {
+        for (Observer observer : useSaleNameList) {
+            observer.onChange(&quot;大型售卖活动开始了&quot;);
+        }
+    }
+}
+
+public class SafeAccount implements Observable {
+    List&lt;Observer&gt; observers = new ArrayList&lt;&gt;();
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void unRegisterObserver(Observer observer) {
+        observer.onChange(&quot;----- 您已经取消订阅安全信息 -----&quot;);
+        observers.remove(observer);
+    }
+
+    @Override
+    public void changeObserver() {
+        for (Observer observer : observers) {
+            observer.onChange(&quot;当前账户安全受到威胁&quot;);
+        }
+    }
+}
+
+public class Person implements Observer {
+
+    private static final String TAG = &quot;Person&quot;;
+    private String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void onChange(Object object) {
+        Log.d(TAG, name + &quot; 收到了邮件，内容是：&quot; + object.toString());
+    }
+}
+</code></pre>
+<p>观察者模式并不难，思路清晰就可以写出。不过需要注意的是，观察者「用户」需订阅被观察者「产品」的动态，在用代码写出来的是：<code>产品.regisisterObserver(用户)</code>，与思路上的观察者「用户」定义被观察者「产品」正好相反，稍微有点绕，习惯就好了。</p>
+<p>优点：</p>
+<ol>
+<li>观察者模式可以实现表示层和逻辑逻辑层的分离，定义了稳定的消息更新传递机制，抽象了更新接口，可以让不同的表示层充当观察者。</li>
+<li>观察者模式在被观察者和观察者之间建立一个抽象的耦合，观察目标只需要维持一个抽象观察者的集合，无须了解具体的观察者。由于观察目标和观察者之间没有紧密的耦合，因此他们可以分别属于不同的抽象化层级。</li>
+<li>观察者模式支持广播通信，被观察者会向所有已注册的观察者发送通知，简化了一对多系统设计的难度。</li>
+<li>观察者模式满足开闭原则，增加新的具体观察者无须修改原有系统代码，在具体观察者与被观察者之间不存在关联关系的情况下，增加新的观察目标也非常方便。</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>当一个被观察者有很多观察者时，通知所有的观察者可能需要花费很多时间；</li>
+<li>如果被观察与观察者之间存在循环依赖，会被触发循环调用，可能导致系统崩溃；</li>
+<li>观察者模式没有相应的机制让观察者知道被观察者是因为什么导致发生的变化，仅仅知道被观察者发生了变化。</li>
+</ol>
+<p>本文封面图：Photo by <a href="https://unsplash.com/@mvdheuvel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Maarten van den Heuvel</a> on <a href="https://unsplash.com/s/photos/observer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://cherrylover.github.io/post/aNW6JlNaAsdfsf/">
+              <h3 class="post-title">
+                ToolBar 在项目中的变迁
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'f5cc70d7d50fba65cf69',
+    clientSecret: '1d018e38ce9cdd399682bdd76690decfef00a051',
+    repo: 'CherryLover.github.io',
+    owner: 'CherryLover',
+    admin: ['CherryLover'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
