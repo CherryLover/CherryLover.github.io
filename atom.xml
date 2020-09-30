@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://cherrylover.github.io</id>
     <title>Jiang</title>
-    <updated>2020-09-20T05:41:15.213Z</updated>
+    <updated>2020-09-30T06:36:12.646Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://cherrylover.github.io"/>
     <link rel="self" href="https://cherrylover.github.io/atom.xml"/>
@@ -10,6 +10,372 @@
     <logo>https://cherrylover.github.io/images/avatar.png</logo>
     <icon>https://cherrylover.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Jiang</rights>
+    <entry>
+        <title type="html"><![CDATA[Postman 的实用功能]]></title>
+        <id>https://cherrylover.github.io/post/VTl2FzFV2/</id>
+        <link href="https://cherrylover.github.io/post/VTl2FzFV2/">
+        </link>
+        <updated>2020-07-01T06:29:10.000Z</updated>
+        <content type="html"><![CDATA[<section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com"
+    style="font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+    <h1 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 24px;">
+        <span class="prefix" style="display: none;"></span><span class="content">Postman 的实用功能</span><span
+            class="suffix"></span></h1>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"></p>
+    <div class="table-of-contents" data-tool="mdnice编辑器">
+        <ul style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">前言</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">基础使用</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">Collection</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">Environment</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">Test</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">Collection
+                    Runner</a></li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">参考资料</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">关于我</a>
+            </li>
+        </ul>
+    </div>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"></p>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">前言</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">我是一个
+        Android 开发工程师，日常开发中最免不了的就是使用 Postman 进行网络调试，Postman 也很方便，URL、Header 都能设置。下面来分享几个有用的功能，来看看有没有你没用过的。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200629171237658.png"
+            alt="image-20200629171237658" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200629171237658
+        </figcaption>
+    </figure>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">基础使用</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">初次打开
+        Postman，就会显示上图这样的页面。需要测试一个请求的时候，新开一个 Tab，填写 URL、选择请求方式，还要按照接口的要求设置响应的 Header、Params，然后点击 Send 发送请求，观察响应。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630143346409.png"
+            alt="image-20200630143346409" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630143346409
+        </figcaption>
+    </figure>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">Collection</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这就是最简单一次网络请求，我之前一直是这么用的，没有毛病。直到有一天，老大给我一个 JSON 文件，让我导入到
+        Postman，说是这是你后面要接手的项目的所有的网络请求。我导入之后，大概是下面这样的。老大告诉我，导入的这个就是一个 Collection，你可以在 Postman 中创建多个 Collection。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630150543167.png"
+            alt="image-20200630150543167" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630150543167
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这是我第一次接触 Collection，还是挺兴奋的，跑到一旁去研究这些接口去了，用了一阵子我发现，Collection 还可以在内部创建文件夹，用分包的形式对 Collection 里的请求进行归类整理，就像这样。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630152402689.png"
+            alt="image-20200630152402689" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630152402689
+        </figcaption>
+    </figure>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">Environment</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        用了没多久，我发现了一个问题，每次我访问的接口 token 变了，我就需要把每个请求的 header 中的 token 那个值改一下，这样弄太麻烦了。我就想 Postman 能不能设置全局变量，然后我只需要在一个地方更新
+        token，其他地方自动设置。查了一下还真有这个功能。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">不过
+        Postman 把变量这个概念放在了 Environment 中，如果把变量看做是请求，那么 Environment 就是变量的 Collection。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630161417022.png"
+            alt="image-20200630161417022" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630161417022
+        </figcaption>
+    </figure>
+    <blockquote class="multiquote-1" data-tool="mdnice编辑器"
+        style="border: none; display: block; font-size: 0.9em; overflow: auto; overflow-scrolling: touch; border-left: 3px solid rgba(0, 0, 0, 0.4); color: #6a737d; padding-top: 10px; padding-bottom: 10px; padding-left: 20px; padding-right: 10px; margin-bottom: 20px; margin-top: 20px; border-left-color: rgb(239, 112, 96); background: #fff9f9;">
+        <p
+            style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0px; color: black; line-height: 26px;">
+            ① 当前的 Environment</p>
+        <p
+            style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0px; color: black; line-height: 26px;">
+            ② 查看当前 Environment 中的值</p>
+        <p
+            style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0px; color: black; line-height: 26px;">
+            ③ 设置 Environment「可以添加、删除 Environment 或编辑其中的变量」</p>
+    </blockquote>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">点击 ③
+        可以打开下面这个面板，这个面板是列出当前所有的 Environment，点击每一个 Environment 的名称可以进入并编辑所属的变量。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">点击 ④
+        可以新建一个 Environment，并创建、编辑、删除变量；点击 ⑤ 则是直接对全局变量进行创建、编辑、删除，这里的全局的意思是在发起一个请求时不设置 Environment 也能使用的变量。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630171558981.png"
+            alt="image-20200630171558981" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630171558981
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        点击上图的 ④ 或 ⑤ 都会打开一个设置参数的面板，区别就在于 ⑤ 无需设置 Environment 的名称。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630161003931.png"
+            alt="image-20200630161003931" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630161003931
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        需要注意啊，如果你把变量设置在了 Environment 而不是全局的，需在发送请求之前，设置当前所使用的 Environment，点击 ① 处就能选择 Environment 了。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701144232925.png"
+            alt="image-20200701144232925" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701144232925
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        我就这么用了一阵子，也没什么事，老老实实的开发我的 APP，直到测试找上门来，说不对啊，你这 App 上的数据不对啊，还有有的时候半天都没数据，那个 Loading 动画一直在转，人家 iOS
+        都是好的。这我哪能忍，经过我一番排查，结果发现是服务器的问题，于是我就让测试再遇到这种情况，自己用 Postman 测试一下，自己去看数据。可人家又嫌每次都得用一下 Postman 太麻烦，于是我又发现了一个 Postman
+        功能，Test。</p>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">Test</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">Test
+        可以对每个请求及响应执行相应的测试逻辑，比如延迟是否超过 200ms，服务器响应是否为 200 等等，测试逻辑所采用的编程语言是 JavaScript。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701145427438.png"
+            alt="image-20200701145427438" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701145427438
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        每个请求都有一个 Tests 的 Tab，在 Tests 下方的编辑框中可以自行编写代码，相应的每个响应也都有一个 TestResult，在这里展示每一个 Test 的执行结果，是通过还是失败，如果是失败还有具体的原因。
+    </p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        下面就来简单测试一下，测试的项目是响应时间少于 200ms 和是否成功响应「是否成功响应，直接判断服务器返回的状态码是否为 200」。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701150729899.png"
+            alt="image-20200701150729899" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701150729899
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        可以看到，这次的测试有一个通过，一个失败的，失败的原因是请求时间为 1891ms 高于我们设置的 200ms 的目标值。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        嘿，你是不是在想测试哪些东西？Postman 都提供示例了，你看上图 Tests 编辑框右侧我框柱的区域，那是 Postman 提供的几个模板。直接拿来用就好了。如果模板不够用的，还可以自己写呢，Header 和 Body
+        都可以进行测试。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        比如我们一般把服务器的响应规定为下面这种类型，而客户端需要先判断 status 是否正确，然后再进行取值，那么我们需要拿到 status，然后进行判断。下面就是数据示例及测试样例代码。</p>
+    <pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px;"><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; background: #282c34; display: block; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; border-radius: 0px; font-size: 12px; -webkit-overflow-scrolling: touch;">{
+<span/>    <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"data"</span>: {
+<span/>        <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"isAgency"</span>: <span class="hljs-string" style="color: #98c379; line-height: 26px;">"0"</span>,
+<span/>        <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"token"</span>: <span class="hljs-string" style="color: #98c379; line-height: 26px;">"456789......"</span>
+<span/>    },
+<span/>    <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"msg"</span>: <span class="hljs-string" style="color: #98c379; line-height: 26px;">"OK"</span>,
+<span/>    <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"oK"</span>: <span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">true</span>,
+<span/>    <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"status"</span>: <span class="hljs-number" style="color: #d19a66; line-height: 26px;">200</span>
+<span/>}
+<span/></code></pre>
+    <pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px;"><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; background: #282c34; display: block; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; border-radius: 0px; font-size: 12px; -webkit-overflow-scrolling: touch;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> data = <span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">JSON</span>.parse(responseBody)
+<span/><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> statusCode = data.status
+<span/>pm.test(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"测试接口是否异常"</span>, <span class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">function</span> (<span class="hljs-params" style="line-height: 26px;"></span>) </span>{
+<span/>    pm.expect(<span class="hljs-number" style="color: #d19a66; line-height: 26px;">200</span>).to.equal(statusCode)
+<span/>})
+<span/></code></pre>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        还记得，我们利用 Environment 进行设置变量，然后在请求的 Header 中进行使用吗？Test 也可以对变量进行操作的。利用下面这四个方法就能对 Environment 或全局的变量进行取值和赋值操作。</p>
+    <pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px;"><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; background: #282c34; display: block; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; border-radius: 0px; font-size: 12px; -webkit-overflow-scrolling: touch;">pm.environment.get(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_key"</span>);
+<span/>pm.environment.set(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_key"</span>, <span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_value"</span>);
+<span/>pm.globals.get(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_key"</span>);
+<span/>pm.globals.set(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_key"</span>, <span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_value"</span>);
+<span/></code></pre>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这样一来，我们还可以利用，Test 来对 Token 进行自动更新，当我们检查出当前的接口返回数据正常，就把 Token 写入到 Environment 变量即可。</p>
+    <pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px;"><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; background: #282c34; display: block; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; border-radius: 0px; font-size: 12px; -webkit-overflow-scrolling: touch;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span> (statusCode == <span class="hljs-number" style="color: #d19a66; line-height: 26px;">200</span>) {
+<span/>    <span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> token = data.data.token
+<span/>    pm.environment.set(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"token"</span>, token)
+<span/>}
+<span/></code></pre>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">Collection
+            Runner</span><span class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这个功能也挺好，针对单个请求的，但是如果要测试很多呢？那测试人员肯定还不愿意用这个，有没有批量测试的工具呢。答案是有的，就在 Collection 里面，Collection 是一些请求的合集，它提供了一个叫 runner
+        的功能。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701160954937.png"
+            alt="image-20200701160954937" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701160954937
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        依次点击箭头所指的图标就能进入 Collection runner 面板。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701161156537.png"
+            alt="image-20200701161156537" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701161156537
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        看上图，A 区当前 Collection 所有的接口，可以选择执行范围，默认是整个 Collection，B 区则是选择的将要进行测试的接口，每个请求还可以进行拖动排序；C
+        区就是对整个测试的配置，比如执行几遍，每个请求间隔多少毫秒，是否保存响应等等，配置完成后就可以执行了。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701161756799.png"
+            alt="image-20200701161756799" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701161756799
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这个是测试结果，我对单个 Collection 中的单个接口进行了三次的请求。在这个页面上，也是可以对每一次的请求查看每个请求的信息，包括请求地址、Header、Response、响应 Header、响应 Body。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701162125565.png"
+            alt="image-20200701162125565" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701162125565
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        而且还能导出，把单次请求结果进行导出，导出的文件也是 JSON 格式的，很方便查看。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">没想到
+        Postman 还挺好用的哈，赶紧推荐给测试，下次数据再出问题，让他直接找后台去，还有数据摆在面前，想跑都到不掉。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        对了，如果登录 Postman，Postman 还会把 Collection 和变量 Environment 保存在云端，多个设备之间会自动同步。</p>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">参考资料</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <ol data-tool="mdnice编辑器"
+        style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: decimal;">
+        <li>
+            <section
+                style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                <a href="https://learning.postman.com/docs/postman/scripts/intro-to-scripts/"
+                    style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Test
+                    示例及官方资料</a></section>
+        </li>
+        <li>
+            <section
+                style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                <a href="https://learning.postman.com/docs/postman/sending-api-requests/debugging-and-logs/"
+                    style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Postman
+                    log 打印</a></section>
+        </li>
+        <li>
+            <section
+                style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                <a href="https://learning.postman.com/docs/postman/collection-runs/intro-to-collection-runs/"
+                    style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Collection
+                    Run</a></section>
+        </li>
+    </ol>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">关于我</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        我是一个普普通通的 Android 开发者，你可以在<a href="https://www.jianshu.com/u/7ecc47c75446"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">简书</a>、<a
+            href="https://juejin.im/user/576d73cd0a2b58006a09ad87"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">掘金</a>，还有我的<a
+            href="https://jiangjiwei.site/"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">个人博客</a>找到我。
+    </p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        本文封面图：Photo by <a
+            href="https://unsplash.com/@goian?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Ian
+            Schneider</a> on <a
+            href="https://unsplash.com/s/photos/efficient?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Unsplash</a>
+    </p>
+</section>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[一篇文章引发的思考]]></title>
         <id>https://cherrylover.github.io/post/oDDi-IE1j/</id>
@@ -1184,363 +1550,6 @@ public class Person implements Observer {
 </ul>
 </blockquote>
 <p>本文转载自 <a href="https://feelschaotic.github.io/">feelschaotic 的个人博客</a>，封面图是编者加的，封面图：Photo by <a href="https://unsplash.com/@chengfengrecord?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">cheng feng</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a>。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Navigation 之 Fragment 切换]]></title>
-        <id>https://cherrylover.github.io/post/navigation-zhi-fragment-qie-huan/</id>
-        <link href="https://cherrylover.github.io/post/navigation-zhi-fragment-qie-huan/">
-        </link>
-        <updated>2019-07-24T07:13:43.000Z</updated>
-        <content type="html"><![CDATA[<p>本篇是有关 Navigation 的第二篇，如有对 Navigation 不了解的朋友请先阅读<a href="https://jiangjiwei.site/post/lai-xue-yi-bo-navigation/">来学一波 Navigation</a>。</p>
-<h2 id="多次执行-oncreateview">多次执行 onCreateView</h2>
-<p>在上一篇中，我们利用 Navigation 与 BottomNavigationView 做出了一个有三个 Tab 的页面，分别是 Feed、Timer、Mine，这三个 Fragment 都是只在当前页面显示各自的名称。</p>
-<p>现在我们来给 TimerFragment 加点内容，我们在 TimerFragment 的 onCreateView 方法中启动一个倒计时。</p>
-<pre><code class="language-java">private void startTimer() {
-    new CountDownTimer(10 * 1000, 1000) {
-
-        @Override
-        public void onTick(long millisUntilFinished) {
-            tvLabel.setText(String.valueOf((millisUntilFinished / 1000) + 1));
-        }
-
-        @Override
-        public void onFinish() {
-            tvLabel.setText(&quot;Finished&quot;);
-        }
-    }.start();
-}
-</code></pre>
-<img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_nav_tab.gif" style="zoom:33%;" />
-<p>仔细看上面的效果可以看到，每次切换到 TimerFragment 时，倒计时总会重新开始，不是我们想要的仅开始一次。这是什么问题导致的呢？答案是 TimerFragment 执行了多次的 onCreateView，为什么是会执行多次，Fragment 为什么会加载多次？我们没有什么特殊的操作呀。是不是因为 Navigation？</p>
-<p>现在让我们深入到 Navigation 的源码看一看这到底是怎么一回事，以及我们该如何解决这一问题。</p>
-<p>首先，我们需要明确我们的方向，就是 Navigation 到底是怎么做 Fragment 切换的，为什么会导致 Fragment 的 onCreateView 被多次执行。</p>
-<p>从哪里作为入口呢？了解过 Navigation 的朋友对下面这行代码应该不会陌生，就是通过一个 View 获取到 NavController，然后通过执行 NavController 的 navigate 这个方法，我们就从这个方法开始。</p>
-<pre><code class="language-java">Navigation.findNavController(view)
-        .navigate(id);
-</code></pre>
-<p>这个 navigate 有多个重载方法，我们开始的 navigate 方法最终也是执行到下面这个重载方法。</p>
-<pre><code class="language-java">navigate(NavDestination node, Bundle args, NavOptions navOptions, Navigator.Extras navigatorExtras)
-</code></pre>
-<p>方法的具体内容如下图：</p>
-<figure data-type="image" tabindex="1"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_code_navigate.png" alt="" loading="lazy"></figure>
-<p>其中在第 9 行，我们可以看到通过 mNavigatorProvider 获取到了一个泛型类型为 NavDestination 的 Navigator 对象，并且在第 12 行时，通过调用刚获取到的 navigator 的 navigate 方法，得到了 NavDestination 这个对象。</p>
-<p>这两行是关键代码，一个是获取到执行 navigator 的对象，一个是实际执行 navigate 的方法。看到这，我们就只需要找到 Navigator 的 navigate 方法即可。不过，Navigator 这个只是一个抽象类，我们还需要继续寻找它的实现类。</p>
-<blockquote>
-<p>快捷键：Implementation(s) Mac: option(⌥) + command(⌘)+B</p>
-</blockquote>
-<figure data-type="image" tabindex="2"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/image-20190724110340568.png" alt="image-20190724110340568" loading="lazy"></figure>
-<p>Navigator 抽象类的关键代码：</p>
-<pre><code class="language-java">public abstract class Navigator&lt;D extends NavDestination&gt; {
-    @Retention(RUNTIME)
-    @Target({TYPE})
-    @SuppressWarnings(&quot;UnknownNullness&quot;)
-    public @interface Name {
-        String value();
-    }
-
-    @NonNull
-    public abstract D createDestination();
-
-    @Nullable
-    public abstract NavDestination navigate(@NonNull D destination, @Nullable Bundle args,
-            @Nullable NavOptions navOptions, @Nullable Extras navigatorExtras);
-
-    public abstract boolean popBackStack();
-
-    @Nullable
-    public Bundle onSaveState() {
-        return null;
-    }
-
-    public void onRestoreState(@NonNull Bundle savedState) {
-    }
-
-    public interface Extras {
-    }
-}
-</code></pre>
-<p>通过快捷键我们能找到多个实现类，有 ActivityNavigator、DialogFragmentNavigator 还有 FragmentNavigator 等，这里我们只关注 FragmentNavigator 这个类中的 navigate 这个方法。</p>
-<figure data-type="image" tabindex="3"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_code_navigate_real.png" alt="" loading="lazy"></figure>
-<p>别看这么多代码，别害怕，其实关键部分的代码就是第 32 行 <code>ft.replace(mContainerId, frag)</code> 这里使用的是 FragmentTransaction 的 replace 方法，这个方法不用说了吧。 replace 是移除了相同 id 的 fragment 然后再进行 add 的。</p>
-<p>所以，看到这，我们也就知道了，为什么 TimerFragment 的 onCreateView 方法会被执行多次了，原因就是在这。</p>
-<h2 id="规避-replace">规避 replace</h2>
-<p>找到原因了，那我们有什么方法去规避，或者说去绕过这个 replace 吗？答案是有的。</p>
-<p>还记得刚才我们找的下面这行代码吧（忘记的，请看第一张代码图的第 9 行），刚才我说，通过 mNavigatorProvider 找到一个泛型类型为 NavDestination 的 Navigator 对象，那它实际上是怎么找到的呢？是通过 node.getNavigatorName() 然后找的，这个 node 是什么东西？以及 mNavigatorProvider.getNavigator 内部究竟发生了什么？</p>
-<pre><code class="language-java">Navigator&lt;NavDestination&gt; navigator = mNavigatorProvider.getNavigator(
-        node.getNavigatorName());
-</code></pre>
-<p>实际上这里的 node 就是一个 NavDestination 对象，而一个 NavDestination 对象就是对应着 navigation graph 中的节点信息。我用来演示的 Demo 的 navigation graph 文件如下：</p>
-<pre><code class="language-xml">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;navigation xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
-    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
-    android:id=&quot;@+id/tab_navigation&quot;
-    app:startDestination=&quot;@id/feedFragment&quot;&gt;
-
-    &lt;fragment
-        android:id=&quot;@+id/feedFragment&quot;
-        android:name=&quot;me.monster.blogtest.tab.FeedFragment&quot;
-        android:label=&quot;fragment_feed&quot;
-        tools:layout=&quot;@layout/fragment_feed&quot; /&gt;
-    &lt;fragment
-        android:id=&quot;@+id/timerFragment&quot;
-        android:name=&quot;me.monster.blogtest.tab.TimerFragment&quot;
-        android:label=&quot;fragment_timer&quot;
-        tools:layout=&quot;@layout/fragment_timer&quot; /&gt;
-    &lt;fragment
-        android:id=&quot;@+id/mineFragment&quot;
-        android:name=&quot;me.monster.blogtest.tab.MineFragment&quot;
-        android:label=&quot;fragment_mine&quot;
-        tools:layout=&quot;@layout/fragment_mine&quot; /&gt;
-&lt;/navigation&gt;
-</code></pre>
-<p>node.getNavigatorName 返回的就是 fragment 节点的节点名称 <code>fragment</code>，而 getNavigator 其实内部就是维护了一个类型为 HashMap 的 mNavigators，这个 HashMap 存的 key 就是节点名称，value 就是抽象类 Navigator 的实现类。而与 fragment 对应的 FragmentNavigator 也存储在其中。</p>
-<p>既然是存在一个 map，并从中取出相对于的 Navigator 实现类，那我们能不能创建一个类并实现 Navigator，然后将 key、value 添加到那个 HashMap 中。答案是可行的。在NavigatorProvider 这个类中有两个公共方法：</p>
-<ul>
-<li>addNavigator(Navigator navigator)</li>
-<li>addNavigator(String name, Navigator navigator)</li>
-</ul>
-<p>其中，一个参数的 addNavigator 也是调用了 两个参数的 addNavigator 方法，那个 name 也就是 navigation graph 中 fragment 节点的节点名称，同时也是 Navigator 这个抽象类中注解 <code>Name</code> 定义的值。而且在 NavController 这个类（最初我们找到的 navigate 所在的类）中有一个 getNavigatorProvider() 方法。</p>
-<figure data-type="image" tabindex="4"><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/uml_blog_navigation.jpg" alt="" loading="lazy"></figure>
-<p>看到这，关系应该就比较清楚了。所以，我们需要自己创建一个类，实现 Navigator 并为 Name 注解添加一个值，然后在使用 Navigation 这个模块的 Activity 获取到 NavController 并调用其 getNavigatorProvider 方法后再调用 addNavigator 即可。</p>
-<h2 id="自定义-navigator">自定义 Navigator</h2>
-<p>Github 上已经有一个演示自定义实现 Navigator 的项目了。这个项目是以 Kotlin 语言编写的。</p>
-<p>项目地址： https://github.com/STAR-ZERO/navigation-keep-fragment-sample。</p>
-<blockquote>
-<p>说起来这个项目还是 <a href="https://github.com/drakeet">Drakeet</a> 在他的知识星球中分享的。感谢 Drakeet 的分享。</p>
-</blockquote>
-<p>我根据按照他的代码写了一份 Java 版本的，并且在其中改了两行代码（注释部分）。注释的内容其实就是使用 FragmentTranslation 对 Fragment 进行控制。原作者写的是 detach 与 attach 方法，我改成了使用 hide 和 show 方法。</p>
-<pre><code class="language-java">@Navigator.Name(&quot;keep_state_fragment&quot;)
-public class KeepStateNavigator extends FragmentNavigator {
-    private Context context;
-    private FragmentManager manager;
-    private int containerId;
-
-    public KeepStateNavigator(@NonNull Context context, @NonNull FragmentManager manager, int containerId) {
-        super(context, manager, containerId);
-        this.context = context;
-        this.manager = manager;
-        this.containerId = containerId;
-    }
-
-    @Nullable
-    @Override
-    public NavDestination navigate(@NonNull Destination destination, @Nullable Bundle args, @Nullable NavOptions navOptions, @Nullable Navigator.Extras navigatorExtras) {
-        String tag = String.valueOf(destination.getId());
-        FragmentTransaction transaction = manager.beginTransaction();
-        boolean initialNavigate = false;
-        Fragment currentFragment = manager.getPrimaryNavigationFragment();
-        if (currentFragment != null) {
-//            transaction.detach(currentFragment);
-            transaction.hide(currentFragment);
-        } else {
-            initialNavigate = true;
-        }
-        Fragment fragment = manager.findFragmentByTag(tag);
-        if (fragment == null) {
-            String className = destination.getClassName();
-            fragment = manager.getFragmentFactory().instantiate(context.getClassLoader(), className);
-            transaction.add(containerId, fragment, tag);
-        } else {
-//            transaction.attach(fragment);
-            transaction.show(fragment);
-        }
-
-        transaction.setPrimaryNavigationFragment(fragment);
-        transaction.setReorderingAllowed(true);
-        transaction.commitNow();
-        return initialNavigate ? destination : null;
-    }
-}
-</code></pre>
-<blockquote>
-<p>这里的代码没有传递 Bundle 类型的 args 同时也破坏了在 navigation graph 中切换动画的设置，如需要，自行加上即可。可参考 FragmentNavigator 类中实现。</p>
-<p>感谢 <a href="https://github.com/1196455690">Qwer</a> 提出问题</p>
-</blockquote>
-<p>注意，使用自定义 Navigator 的时候 navigation graph 需要把 fragment 节点名称改为 keep_state_fragment，并且在承载的 Activity 中进行设置并且还需要把 Activity 布局文件中 fragment 的 navGraph 属性移除。</p>
-<pre><code class="language-java">NavController navController = Navigation.findNavController(this, R.id.fragment3);
-NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment3);
-KeepStateNavigator navigator = new KeepStateNavigator(this, navHostFragment.getChildFragmentManager(), R.id.fragment3);
-navController.getNavigatorProvider().addNavigator(navigator);
-navController.setGraph(R.navigation.tab_navigation);
-</code></pre>
-<p>最后来看一下使用自定义 Navigator 时的 TabActivity。</p>
-<img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_nav_tab_state.gif" style="zoom: 33%;" />
-<p>这样好像看起来结束了？其实并没有，我们只是刚刚开始。</p>
-<p>首先，我先更正一下，在第一篇关于 Navigation 的博客中从 SettingFragment 返回到 RootFragment 那一段代码有些问题。</p>
-<blockquote>
-<p>没看过那篇文章的不要着急，其实就是 A 调到 B，然后在 B 中触发一个点击事件，再从 B 返回到 A。返回的代码如下。</p>
-</blockquote>
-<p>原代码为：</p>
-<pre><code class="language-java">btnToRoot.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Navigation.findNavController(btnToRoot)
-                .popBackStack();
-    }
-});
-</code></pre>
-<p>这里在点击事件中，最后执行的是 <code>popBackStack</code>，其实不应该调用这个方法应该用 <code>navigateUp</code> 这个方法。</p>
-<p>在第一篇博客中，Navigation Graph 中所有的节点名称都是 Fragment，如果我用上面这种 keep_state_fragment 的方式，会发生什么呢？</p>
-<img src="Navigation-state.assets/backNoWork.gif" style="zoom: 50%;" />
-<p>可以看到，在把 Navigation Graph 节点名替换为 keep_state_fragment 后，在 SettingFragment 点击返回并没有进行返回。这是为什么呢？我没干啥呀，怎么不好使了。</p>
-<p>不行，我要看看 Navigation 源码里面到底怎么做的。于是我开始了 debug 之旅。后来，我发现在 <code>Navigation.findNavController(btnToRoot).navigateUp();</code> 内部判断了当前的返回栈个数是否为 1，结果让我很震惊，返回的竟然真的是 1。所以，navigateUp 就理所当然的返回 false，也就没能从 SettingFragment 回到 RootFragment 了。</p>
-<blockquote>
-<p>下面的两段代码分别是：NavController#navigateUp 和 NavController#getDestinationCountOnBackStack</p>
-</blockquote>
-<figure data-type="image" tabindex="5"><img src="Navigation-state.assets/nav_conll_up.png" alt="" loading="lazy"></figure>
-<pre><code class="language-java">private int getDestinationCountOnBackStack() {
-    int count = 0;
-    for (NavBackStackEntry entry : mBackStack) {
-        if (!(entry.getDestination() instanceof NavGraph)) {
-            count++;
-        }
-    }
-    return count;
-}
-</code></pre>
-<p>我查了一下 mBackStack 这个数据类型，发现它是一个栈，紧接着找到 mBackStack 入栈的方法。</p>
-<figure data-type="image" tabindex="6"><img src="https://i.loli.net/2019/10/17/s91Txif3vPM2JOj.png" alt="" loading="lazy"></figure>
-<p>mBackStack#add 相关的方法一共有 4 个，第一个方法是在 NavController#NavController 方法中进行调用的，其余 3 个 add 相关方法均是在 NavController#navigate 内调用，而调用 add 方法之外有一个判空。判空的对象就是来自 Navigator#navigate 这个方法。</p>
-<blockquote>
-<p>NavController 的 navigate 方法，有删减。</p>
-</blockquote>
-<pre><code class="language-java">private void navigate(@NonNull NavDestination node, @Nullable Bundle args,
-        @Nullable NavOptions navOptions, @Nullable Navigator.Extras navigatorExtras) {
-    //......
-    Navigator&lt;NavDestination&gt; navigator = mNavigatorProvider
-           .getNavigator(node.getNavigatorName());
-    Bundle finalArgs = node.addInDefaultArgs(args);
-    NavDestination newDest = navigator.navigate(node, finalArgs,
-            navOptions, navigatorExtras);
-    if (newDest != null) {
-        // The mGraph should always be on the back stack after you navigate()
-        if (mBackStack.isEmpty()) {
-            mBackStack.add(new NavBackStackEntry(mGraph, finalArgs));
-        }
-        // Now ensure all intermediate NavGraphs are put on the back stack
-        // to ensure that global actions work.
-        ArrayDeque&lt;NavBackStackEntry&gt; hierarchy = new ArrayDeque&lt;&gt;();
-        NavDestination destination = newDest;
-        while (destination != null &amp;&amp; findDestination(destination.getId()) == null) {
-            NavGraph parent = destination.getParent();
-            if (parent != null) {
-                hierarchy.addFirst(new NavBackStackEntry(parent, finalArgs));
-            }
-            destination = parent;
-        }
-        mBackStack.addAll(hierarchy);
-        // And finally, add the new destination with its default args
-        NavBackStackEntry newBackStackEntry = new NavBackStackEntry(newDest,
-                newDest.addInDefaultArgs(finalArgs));
-        mBackStack.add(newBackStackEntry);
-    }
-  //......
-}
-</code></pre>
-<p>根据我们之前的经验，可以得出这里的 Navigator 就是我们自定义的 KeepStateNavigator 这个对象，那 navgate 这个方法的返回值也就是我们自己控制的，也就是我们自己给自己挖了个坑。2333~</p>
-<p>来吧，来看一下刚才写的代码。</p>
-<pre><code class="language-java">public NavDestination navigate(Destination destination, Bundle args, NavOptions navOptions, Navigator.Extras navigatorExtras) {
-    String tag = String.valueOf(destination.getId());
-    FragmentTransaction transaction = manager.beginTransaction();
-    boolean initialNavigate = false;
-    Fragment currentFragment = manager.getPrimaryNavigationFragment();
-    if (currentFragment != null) {
-      transaction.hide(currentFragment);
-    } else {
-      initialNavigate = true;
-    }
-    Fragment fragment = manager.findFragmentByTag(tag);
-    if (fragment == null) {
-      String className = destination.getClassName();
-      fragment = manager.getFragmentFactory().instantiate(context.getClassLoader(), className);
-      transaction.add(containerId, fragment, tag);
-    } else {
-      transaction.show(fragment);
-    }
-
-    transaction.setPrimaryNavigationFragment(fragment);
-    transaction.setReorderingAllowed(true);
-    transaction.commitNow();
-    return initialNavigate ? destination : null;
-  }
-</code></pre>
-<p>在最后一行中，我们通过对 <code>initialNavigate</code> 进行判断然后返回 null 或是 destination 对象。而把 initialNavigate 赋值为 true 则是只有在 currentFragment 为空时才会进行，什么时候 currentFragment 才会为空？只有当打开一个 Activity 并为其填充第一个 Fragment 时才会为 true，在我们当前这个场景里，就是当应用启动，打开 RootFragment 时 initialNavigate 为 true，从 RootFragment 跳转到 SettingFragment 时 initialNavigate 为 false。</p>
-<p>这显然是有问题的，那么我们需要改为，当这个 fragmen 为空时，在 <code>transaction.add(containerId, fragment, tag);</code> 之后把 initialNavigate 赋值为 true。这样一来，NavController#getDestinationCountOnBackStack 就能获取到实际的 fragment 大小了，也就不会直接 return fase 了。</p>
-<p>运行一下看看结果？别着急啊，再检查检查。刚才我说在 <code>Navigation.findNavController(btnToRoot).navigateUp();</code> 内部判断了当前的返回栈个数是否为 1，现在我们把为 1 的情况解决了，那么当返回栈的个数不为 1 时它怎么做的？在判断返回栈个数不是 1 的后经过内部调用，最终来到了 <code>NavController#popBackStackInternal</code> 这个方法内。</p>
-<blockquote>
-<p>NavController 的 popBackStackInternal 方法，有删减</p>
-</blockquote>
-<pre><code class="language-java">boolean popBackStackInternal(@IdRes int destinationId, boolean inclusive) {
-    if (mBackStack.isEmpty()) {
-        // Nothing to pop if the back stack is empty
-        return false;
-    }
-    ArrayList&lt;Navigator&gt; popOperations = new ArrayList&lt;&gt;();
-    Iterator&lt;NavBackStackEntry&gt; iterator = mBackStack.descendingIterator();
-    boolean foundDestination = false;
-    while (iterator.hasNext()) {
-        NavDestination destination = iterator.next().getDestination();
-        Navigator navigator = mNavigatorProvider.getNavigator(
-                destination.getNavigatorName());
-        if (inclusive || destination.getId() != destinationId) {
-            popOperations.add(navigator);
-        }
-    //......
-    boolean popped = false;
-    for (Navigator navigator : popOperations) {
-        if (navigator.popBackStack()) {
-            NavBackStackEntry entry = mBackStack.removeLast();
-            popped = true;
-     // ......
-    return popped;
-}
-</code></pre>
-<p>在这个方法内，我又看到了那个熟悉的面孔 navigator，在这里 navigator 执行了一个叫 popBackStack 的方法，这个方法看起来好像就是做返回事件的。可是，我们的 KeepStateNavigator 并没有这个方法啊，那是因为我们选择了继承自 FragmentNavigator，在 FragmentNavigator 有一套 popBackStack 逻辑，不过我们用不了。所以我们需要在 FragmentNavigator 进行重写这个方法。</p>
-<p>由于我们需要返回到上一个页面，所以我们也得有个管理栈，然后在 KeepStateNavigator#navigate 方法中的 <code>transaction.add(containerId, fragment, tag);</code> 之后把当前 Fragment 添加到返回栈中，在 popBackStack 中根据一些条件再进行 remove 即可。</p>
-<figure data-type="image" tabindex="7"><img src="Navigation-state.assets/keep_state_navigator.png" alt="" loading="lazy"></figure>
-<p>这样一来就可以了。</p>
-<img src="https://i.loli.net/2019/10/17/qn84IfTF7ybrViS.gif" style="zoom:50%;" />
-<blockquote>
-<p>不知道为什么，录制的 gif 画面一直在闪……</p>
-</blockquote>
-<h3 id="随意切换">随意切换</h3>
-<p>好了，这样就可以了，终于可以愉快的使用 Navigation 了。直到有一天，老大找到我，跟我说了一个需求。</p>
-<blockquote>
-<p>从 A 页面进入 B 页面，再从 B 页面进入 C 页面，在 C 页面产生一个事件，然后用户返回时，需要跳过 B，也就是从 C 直接回到 A。</p>
-</blockquote>
-<p>问我这个能不能在 Navigation 上实现，我想了一下，说可以。下面就分享一下实现这种效果的思路，我个人觉得可以有两个解决方法，下面我依次来说一下。</p>
-<blockquote>
-<p>假设页面打开顺序为：A、B、C。</p>
-</blockquote>
-<ul>
-<li>
-<p>第一种：优先关闭</p>
-<p>当从 C 返回到 A 时，其实并不一定是返回的时候进行操作，可能是在某个事件产生之后，这时就把 B 给关闭，此时回退栈里面也就只剩下 A 和 B。这时候只需要正常走页面返回逻辑即可。</p>
-</li>
-<li>
-<p>第二种：优先返回</p>
-<p>当从 C 返回到 A 时，也可以直接跳过 B，具体方法为：当从 C 点击返回时，触发返回栈的操作，当完成返回操作后发现当前页面需要跳过时，则继续返回，此时也就回到了 A。</p>
-</li>
-</ul>
-<p>落实到 Navigation 中，就是在自定义 Navigator 中添加一些方法，然后在需要执行此类操作的地方获取到 Navigator 对象，并进行相关操作。</p>
-<p>获取 Navigator 的相关代码如下：</p>
-<pre><code class="language-java">NavController navController = Navigation.findNavController(btnToRoot);
-NavigatorProvider navigatorProvider = navController.getNavigatorProvider();
-Navigator&lt;?&gt; navigator = navigatorProvider.getNavigator(&quot;keep_state_fragment&quot;);
-if (navigator instanceof KeepStateNavigator) {
-    ((KeepStateNavigator) navigator).closeMiddle(R.id.settingsFragment);
-}
-</code></pre>
-<h2 id="思考">思考</h2>
-<p>我第一次学习 Navigation 的时候就瞄了一眼，觉得这不就是个 Fragment 的管理框架吗？有什么的呀，比其他Fragment 的管理框架好吗？看起来一般般啊。哇哦，好复杂啊，算了，不看了，知道大致怎么用就行。看着大家讨论的越来越多，没忍住，又去仔细看了一下 Navigation 的使用，以及稍微阅读了源码。不就是个 Fragment 管理框架吗？怎么搞这么复杂，什么 NavigatorProvider、Navigator、Destination 这些都是啥啊。</p>
-<p>随着我看的内容越来越多，实践的也变多了，原生的 Navigation 越来不不能满足需求了，才发现，原来 Google 早就想到了，只是没有给我们提供具体的解决方法，只是把一些东西开放出来供开发者在不同场景下进行自定义使用。</p>
-<p>想想自己项目里的代码，好像如果要扩展的话，就得改动较多原来的代码，不能像 Navigation 这样，在需要改动的时候，尽量不触动原有代码，而通过接口、Provider、泛型等更多是编码技巧或是设计模式上的技巧来完成业务需求。</p>
-<p>也不应该把过多的心思花在各式各样的第三方库上，而是把更多的精力花在基础技能上，虽然可能一时半会儿看不出什么结果，但这可能是笑到最后的方法。</p>
-<hr>
-<p>本文首发于<a href="https://jiangjiwei.site/">个人博客</a>，文中全部源代码已上传至 <a href="https://github.com/CherryLover/BlogTest">GitHub</a>，代码分支为 master。喜欢本文的麻烦点个🌟。</p>
-<p>本文封面图：Photo by <a href="https://unsplash.com/@joaosilas?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">João Silas</a> on <a href="https://unsplash.com/search/photos/translation?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
 ]]></content>
     </entry>
 </feed>

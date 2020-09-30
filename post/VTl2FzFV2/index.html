@@ -1,0 +1,522 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Postman 的实用功能 | Jiang</title>
+<link rel="shortcut icon" href="https://cherrylover.github.io/favicon.ico?v=1601447716515">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cherrylover.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-143284233-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-143284233-1');
+</script>
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://cherrylover.github.io">
+  <img class="avatar" src="https://cherrylover.github.io/images/avatar.png?v=1601447716515" alt="">
+  </a>
+  <h1 class="site-title">
+    Jiang
+  </h1>
+  <p class="site-description">
+    我允许你走进我的世界，但不许你在我的世界里走来走去。
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://cherrylover.github.io/post/guan-yu-wo/" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/CherryLover" target="_blank">
+          <i class="fab fa-github"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://juejin.im/user/576d73cd0a2b58006a09ad87" target="_blank">
+          <i class="fab fa-weibo"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+      
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Postman 的实用功能
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2020-07-01 ·
+              </time>
+              
+                <a href="https://cherrylover.github.io/tag/FPMMcTCET/" class="post-tags">
+                  # 工具软件
+                </a>
+              
+            </div>
+            
+              <div class="post-feature-image" style="background-image: url('https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/photo-1455849318743-b2233052fcff.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <section id="nice" data-tool="mdnice编辑器" data-website="https://www.mdnice.com"
+    style="font-size: 16px; color: black; padding: 0 10px; line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; word-break: break-word; word-wrap: break-word; text-align: left; font-family: Optima-Regular, Optima, PingFangSC-light, PingFangTC-light, 'PingFang SC', Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+    <h1 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; font-size: 24px;">
+        <span class="prefix" style="display: none;"></span><span class="content">Postman 的实用功能</span><span
+            class="suffix"></span></h1>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"></p>
+    <div class="table-of-contents" data-tool="mdnice编辑器">
+        <ul style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: disc;">
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">前言</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">基础使用</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">Collection</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">Environment</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">Test</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">Collection
+                    Runner</a></li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">参考资料</a>
+            </li>
+            <li><a href
+                    style="text-decoration: none; word-wrap: break-word; border-bottom: 1px solid rgb(239, 112, 96); border: none; color: black; font-weight: normal;">关于我</a>
+            </li>
+        </ul>
+    </div>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;"></p>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">前言</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">我是一个
+        Android 开发工程师，日常开发中最免不了的就是使用 Postman 进行网络调试，Postman 也很方便，URL、Header 都能设置。下面来分享几个有用的功能，来看看有没有你没用过的。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200629171237658.png"
+            alt="image-20200629171237658" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200629171237658
+        </figcaption>
+    </figure>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">基础使用</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">初次打开
+        Postman，就会显示上图这样的页面。需要测试一个请求的时候，新开一个 Tab，填写 URL、选择请求方式，还要按照接口的要求设置响应的 Header、Params，然后点击 Send 发送请求，观察响应。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630143346409.png"
+            alt="image-20200630143346409" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630143346409
+        </figcaption>
+    </figure>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">Collection</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这就是最简单一次网络请求，我之前一直是这么用的，没有毛病。直到有一天，老大给我一个 JSON 文件，让我导入到
+        Postman，说是这是你后面要接手的项目的所有的网络请求。我导入之后，大概是下面这样的。老大告诉我，导入的这个就是一个 Collection，你可以在 Postman 中创建多个 Collection。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630150543167.png"
+            alt="image-20200630150543167" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630150543167
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这是我第一次接触 Collection，还是挺兴奋的，跑到一旁去研究这些接口去了，用了一阵子我发现，Collection 还可以在内部创建文件夹，用分包的形式对 Collection 里的请求进行归类整理，就像这样。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630152402689.png"
+            alt="image-20200630152402689" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630152402689
+        </figcaption>
+    </figure>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">Environment</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        用了没多久，我发现了一个问题，每次我访问的接口 token 变了，我就需要把每个请求的 header 中的 token 那个值改一下，这样弄太麻烦了。我就想 Postman 能不能设置全局变量，然后我只需要在一个地方更新
+        token，其他地方自动设置。查了一下还真有这个功能。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">不过
+        Postman 把变量这个概念放在了 Environment 中，如果把变量看做是请求，那么 Environment 就是变量的 Collection。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630161417022.png"
+            alt="image-20200630161417022" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630161417022
+        </figcaption>
+    </figure>
+    <blockquote class="multiquote-1" data-tool="mdnice编辑器"
+        style="border: none; display: block; font-size: 0.9em; overflow: auto; overflow-scrolling: touch; border-left: 3px solid rgba(0, 0, 0, 0.4); color: #6a737d; padding-top: 10px; padding-bottom: 10px; padding-left: 20px; padding-right: 10px; margin-bottom: 20px; margin-top: 20px; border-left-color: rgb(239, 112, 96); background: #fff9f9;">
+        <p
+            style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0px; color: black; line-height: 26px;">
+            ① 当前的 Environment</p>
+        <p
+            style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0px; color: black; line-height: 26px;">
+            ② 查看当前 Environment 中的值</p>
+        <p
+            style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0px; color: black; line-height: 26px;">
+            ③ 设置 Environment「可以添加、删除 Environment 或编辑其中的变量」</p>
+    </blockquote>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">点击 ③
+        可以打开下面这个面板，这个面板是列出当前所有的 Environment，点击每一个 Environment 的名称可以进入并编辑所属的变量。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">点击 ④
+        可以新建一个 Environment，并创建、编辑、删除变量；点击 ⑤ 则是直接对全局变量进行创建、编辑、删除，这里的全局的意思是在发起一个请求时不设置 Environment 也能使用的变量。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630171558981.png"
+            alt="image-20200630171558981" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630171558981
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        点击上图的 ④ 或 ⑤ 都会打开一个设置参数的面板，区别就在于 ⑤ 无需设置 Environment 的名称。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200630161003931.png"
+            alt="image-20200630161003931" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200630161003931
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        需要注意啊，如果你把变量设置在了 Environment 而不是全局的，需在发送请求之前，设置当前所使用的 Environment，点击 ① 处就能选择 Environment 了。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701144232925.png"
+            alt="image-20200701144232925" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701144232925
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        我就这么用了一阵子，也没什么事，老老实实的开发我的 APP，直到测试找上门来，说不对啊，你这 App 上的数据不对啊，还有有的时候半天都没数据，那个 Loading 动画一直在转，人家 iOS
+        都是好的。这我哪能忍，经过我一番排查，结果发现是服务器的问题，于是我就让测试再遇到这种情况，自己用 Postman 测试一下，自己去看数据。可人家又嫌每次都得用一下 Postman 太麻烦，于是我又发现了一个 Postman
+        功能，Test。</p>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">Test</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">Test
+        可以对每个请求及响应执行相应的测试逻辑，比如延迟是否超过 200ms，服务器响应是否为 200 等等，测试逻辑所采用的编程语言是 JavaScript。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701145427438.png"
+            alt="image-20200701145427438" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701145427438
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        每个请求都有一个 Tests 的 Tab，在 Tests 下方的编辑框中可以自行编写代码，相应的每个响应也都有一个 TestResult，在这里展示每一个 Test 的执行结果，是通过还是失败，如果是失败还有具体的原因。
+    </p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        下面就来简单测试一下，测试的项目是响应时间少于 200ms 和是否成功响应「是否成功响应，直接判断服务器返回的状态码是否为 200」。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701150729899.png"
+            alt="image-20200701150729899" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701150729899
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        可以看到，这次的测试有一个通过，一个失败的，失败的原因是请求时间为 1891ms 高于我们设置的 200ms 的目标值。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        嘿，你是不是在想测试哪些东西？Postman 都提供示例了，你看上图 Tests 编辑框右侧我框柱的区域，那是 Postman 提供的几个模板。直接拿来用就好了。如果模板不够用的，还可以自己写呢，Header 和 Body
+        都可以进行测试。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        比如我们一般把服务器的响应规定为下面这种类型，而客户端需要先判断 status 是否正确，然后再进行取值，那么我们需要拿到 status，然后进行判断。下面就是数据示例及测试样例代码。</p>
+    <pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px;"><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; background: #282c34; display: block; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; border-radius: 0px; font-size: 12px; -webkit-overflow-scrolling: touch;">{
+<span/>    <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"data"</span>: {
+<span/>        <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"isAgency"</span>: <span class="hljs-string" style="color: #98c379; line-height: 26px;">"0"</span>,
+<span/>        <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"token"</span>: <span class="hljs-string" style="color: #98c379; line-height: 26px;">"456789......"</span>
+<span/>    },
+<span/>    <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"msg"</span>: <span class="hljs-string" style="color: #98c379; line-height: 26px;">"OK"</span>,
+<span/>    <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"oK"</span>: <span class="hljs-literal" style="color: #56b6c2; line-height: 26px;">true</span>,
+<span/>    <span class="hljs-attr" style="color: #d19a66; line-height: 26px;">"status"</span>: <span class="hljs-number" style="color: #d19a66; line-height: 26px;">200</span>
+<span/>}
+<span/></code></pre>
+    <pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px;"><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; background: #282c34; display: block; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; border-radius: 0px; font-size: 12px; -webkit-overflow-scrolling: touch;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> data = <span class="hljs-built_in" style="color: #e6c07b; line-height: 26px;">JSON</span>.parse(responseBody)
+<span/><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> statusCode = data.status
+<span/>pm.test(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"测试接口是否异常"</span>, <span class="hljs-function" style="line-height: 26px;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">function</span> (<span class="hljs-params" style="line-height: 26px;"></span>) </span>{
+<span/>    pm.expect(<span class="hljs-number" style="color: #d19a66; line-height: 26px;">200</span>).to.equal(statusCode)
+<span/>})
+<span/></code></pre>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        还记得，我们利用 Environment 进行设置变量，然后在请求的 Header 中进行使用吗？Test 也可以对变量进行操作的。利用下面这四个方法就能对 Environment 或全局的变量进行取值和赋值操作。</p>
+    <pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px;"><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; background: #282c34; display: block; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; border-radius: 0px; font-size: 12px; -webkit-overflow-scrolling: touch;">pm.environment.get(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_key"</span>);
+<span/>pm.environment.set(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_key"</span>, <span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_value"</span>);
+<span/>pm.globals.get(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_key"</span>);
+<span/>pm.globals.set(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_key"</span>, <span class="hljs-string" style="color: #98c379; line-height: 26px;">"variable_value"</span>);
+<span/></code></pre>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这样一来，我们还可以利用，Test 来对 Token 进行自动更新，当我们检查出当前的接口返回数据正常，就把 Token 写入到 Environment 变量即可。</p>
+    <pre class="custom" data-tool="mdnice编辑器" style="margin-top: 10px; margin-bottom: 10px;"><code class="hljs" style="overflow-x: auto; padding: 16px; color: #abb2bf; background: #282c34; display: block; font-family: Operator Mono, Consolas, Monaco, Menlo, monospace; border-radius: 0px; font-size: 12px; -webkit-overflow-scrolling: touch;"><span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">if</span> (statusCode == <span class="hljs-number" style="color: #d19a66; line-height: 26px;">200</span>) {
+<span/>    <span class="hljs-keyword" style="color: #c678dd; line-height: 26px;">var</span> token = data.data.token
+<span/>    pm.environment.set(<span class="hljs-string" style="color: #98c379; line-height: 26px;">"token"</span>, token)
+<span/>}
+<span/></code></pre>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">Collection
+            Runner</span><span class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这个功能也挺好，针对单个请求的，但是如果要测试很多呢？那测试人员肯定还不愿意用这个，有没有批量测试的工具呢。答案是有的，就在 Collection 里面，Collection 是一些请求的合集，它提供了一个叫 runner
+        的功能。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701160954937.png"
+            alt="image-20200701160954937" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701160954937
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        依次点击箭头所指的图标就能进入 Collection runner 面板。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701161156537.png"
+            alt="image-20200701161156537" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701161156537
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        看上图，A 区当前 Collection 所有的接口，可以选择执行范围，默认是整个 Collection，B 区则是选择的将要进行测试的接口，每个请求还可以进行拖动排序；C
+        区就是对整个测试的配置，比如执行几遍，每个请求间隔多少毫秒，是否保存响应等等，配置完成后就可以执行了。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701161756799.png"
+            alt="image-20200701161756799" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701161756799
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        这个是测试结果，我对单个 Collection 中的单个接口进行了三次的请求。在这个页面上，也是可以对每一次的请求查看每个请求的信息，包括请求地址、Header、Response、响应 Header、响应 Body。</p>
+    <figure data-tool="mdnice编辑器"
+        style="margin: 0; margin-top: 10px; margin-bottom: 10px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200701162125565.png"
+            alt="image-20200701162125565" style="display: block; margin: 0 auto; max-width: 100%;">
+        <figcaption style="margin-top: 5px; text-align: center; color: #888; font-size: 14px;">image-20200701162125565
+        </figcaption>
+    </figure>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        而且还能导出，把单次请求结果进行导出，导出的文件也是 JSON 格式的，很方便查看。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">没想到
+        Postman 还挺好用的哈，赶紧推荐给测试，下次数据再出问题，让他直接找后台去，还有数据摆在面前，想跑都到不掉。</p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        对了，如果登录 Postman，Postman 还会把 Collection 和变量 Environment 保存在云端，多个设备之间会自动同步。</p>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">参考资料</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <ol data-tool="mdnice编辑器"
+        style="margin-top: 8px; margin-bottom: 8px; padding-left: 25px; color: black; list-style-type: decimal;">
+        <li>
+            <section
+                style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                <a href="https://learning.postman.com/docs/postman/scripts/intro-to-scripts/"
+                    style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Test
+                    示例及官方资料</a></section>
+        </li>
+        <li>
+            <section
+                style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                <a href="https://learning.postman.com/docs/postman/sending-api-requests/debugging-and-logs/"
+                    style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Postman
+                    log 打印</a></section>
+        </li>
+        <li>
+            <section
+                style="margin-top: 5px; margin-bottom: 5px; line-height: 26px; text-align: left; color: rgb(1,1,1); font-weight: 500;">
+                <a href="https://learning.postman.com/docs/postman/collection-runs/intro-to-collection-runs/"
+                    style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Collection
+                    Run</a></section>
+        </li>
+    </ol>
+    <h2 data-tool="mdnice编辑器"
+        style="margin-top: 30px; margin-bottom: 15px; padding: 0px; font-weight: bold; color: black; border-bottom: 2px solid rgb(239, 112, 96); font-size: 1.3em;">
+        <span class="prefix" style="display: none;"></span><span class="content"
+            style="display: inline-block; font-weight: bold; background: rgb(239, 112, 96); color: #ffffff; padding: 3px 10px 1px; border-top-right-radius: 3px; border-top-left-radius: 3px; margin-right: 3px;">关于我</span><span
+            class="suffix"></span><span
+            style="display: inline-block; vertical-align: bottom; border-bottom: 36px solid #efebe9; border-right: 20px solid transparent;">
+        </span></h2>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        我是一个普普通通的 Android 开发者，你可以在<a href="https://www.jianshu.com/u/7ecc47c75446"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">简书</a>、<a
+            href="https://juejin.im/user/576d73cd0a2b58006a09ad87"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">掘金</a>，还有我的<a
+            href="https://jiangjiwei.site/"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">个人博客</a>找到我。
+    </p>
+    <p data-tool="mdnice编辑器"
+        style="font-size: 16px; padding-top: 8px; padding-bottom: 8px; margin: 0; line-height: 26px; color: black;">
+        本文封面图：Photo by <a
+            href="https://unsplash.com/@goian?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Ian
+            Schneider</a> on <a
+            href="https://unsplash.com/s/photos/efficient?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText"
+            style="text-decoration: none; word-wrap: break-word; font-weight: bold; color: rgb(239, 112, 96); border-bottom: 1px solid rgb(239, 112, 96);">Unsplash</a>
+    </p>
+</section>
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://cherrylover.github.io/post/oDDi-IE1j/">
+              <h3 class="post-title">
+                一篇文章引发的思考
+              </h3>
+            </a>
+          </div>  
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: 'f5cc70d7d50fba65cf69',
+    clientSecret: '1d018e38ce9cdd399682bdd76690decfef00a051',
+    repo: 'CherryLover.github.io',
+    owner: 'CherryLover',
+    admin: ['CherryLover'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+    
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
