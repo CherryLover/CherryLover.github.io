@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Gradle 学习之路 | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="https://github.com/CherryLover" class="animsition-link">Jiang</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-06-16T04:32:10.000Z" itemprop="datePublished">
+          2020-06-16
+      </time>
+    
+</span>
+                <h1>Gradle 学习之路</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="Gradle-学习之路"><a href="#Gradle-学习之路" class="headerlink" title="Gradle 学习之路"></a>Gradle 学习之路</h1><p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/wengang-zhai-RVl6CjcvZ_0-unsplash.jpg" alt="封面图"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>虽然从开始用 Android Studio 开发 Android 应用就一直在接触 Gradle，但对 Gradle 始终都有一些陌生感，表现在日常的开发中就是不敢随便改 build.gradle 文件，一旦 sync 出错，只会复制错误找谷歌，可是解决方案也不一定能够完美解决自己的问题。还有就是不熟悉 Gradle 的时候，也不能很好的理解整个项目的配置，毕竟 Gradle 是 Android 项目的构建脚本。</p>
+<p>每当我想好好的学习一下 Gradle，总是被从哪里开始这个问题所打败。直到有一天……我终于不怵它了，然后又过了很久我决定写下这篇文章。</p>
+<p>这篇文章目的主要目的在于回顾我的 Gradle 学习之路，如果能对你有一些帮助，那定是极好的。</p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>[TOC]</p>
+<h2 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h2><p>Gradle 是一个用 Java 语言开发的构建工具，目前最新版本是 6.5。对于 Android 开发者来说，最常见的就是在 Android 开发中使用 Gradle，实际上 Gradle 还可以用于 Java 应用或 Java Web 应用等项目进行开发。</p>
+<blockquote>
+<ol>
+<li>笔者开始写下这篇笔记是在 2020 年 6 月 8 日。最新版本可在 <a target="_blank" rel="noopener" href="https://gradle.org/releases/">Gradle 官网</a>进行查看。</li>
+<li>据说有些 Java 开发者从 Maven 迁移到到 Gradle 之后就再也回不去了。</li>
+</ol>
+</blockquote>
+<h2 id="Gradle-User-Home"><a href="#Gradle-User-Home" class="headerlink" title="Gradle User Home"></a>Gradle User Home</h2><p>就像安装 Java 的 JDK 一样，Gradle 也有自己的 User Home 目录，一般在这个目录中存放着一些全局的配置信息。在 Mac 下的路径为：<code>user/.gradle</code>。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200608170058361.png" alt="GradleUserHome"></p>
+<p>在 Gradle User Home 中我们主要来介绍 wrapper 这个文件夹。wrapper 内包含 dists 文件夹，dists 就是 distribution 的缩写。</p>
+<h3 id="distribution"><a href="#distribution" class="headerlink" title="distribution"></a>distribution</h3><p>刚才我们说 Gradle 现在发布到了 6.5 ，不过 6.5 这个版本内部也有不同的类型。Gradle 将每一个版本分为了三个类型，它们分别是：</p>
+<ul>
+<li><p>src</p>
+<p>源代码类型</p>
+</li>
+<li><p>bin</p>
+<p>源代码打包后的执行文件</p>
+</li>
+<li><p>all</p>
+<p>包含 bin 及一些示例代码和相关文档。</p>
+</li>
+</ul>
+<p>这里的 distribution 就是每个由 Gradle 构建的项目中 gradle-wrapper.properties 文件配置的一部分，如下图。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200608170937573.png" alt="gradle-wrapper.properties"></p>
+<p>在 Gradle User Home 中的 wrapper 下的 dists 文件夹内存放的其实就是各个版本的的不同类型的 Gradle 下载并解压后的文件。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200608171239711.png" alt="GradleUserHomeWrapperDists"></p>
+<p>仔细看这张图底部的文件路径<code>jiang/.gradle/wrapper/dists</code>，这里隐藏了 2 个问题：</p>
+<ol>
+<li>你看我的 dists 文件夹内有从 4.1 到 6.4 的各种版本的包，那么日常开发中，不是只用一个版本的就可以了吗？为什么要保存这么多版本在本地？</li>
+<li>既然是下载下来的 Gradle 版本，那为什么 dists 是在 wrapper 文件夹下面呢？</li>
+</ol>
+<p>我先回答第一个问题。是因为多版本，具体来说就是，Gradle 支持本地存在多个版本，并且这些版本之间相互独立。举个例子，你在去年用 Android Studio 开发 App 用的是 Gradle 4.1 之后由于各种原因，没有及时对它进行升级。今年你又新创建了一个项目，这个新创建的项目用的是最新的 6.5。你不能因为有了新项目，就不让老项目不能运行吧，那你也太渣了。</p>
+<h3 id="wrapper"><a href="#wrapper" class="headerlink" title="wrapper"></a>wrapper</h3><p>在了解为什么会存在多版本之后，我们可以来讨论一下为什么 dists 是在 wrapper 文件夹而不是直接在 Gradle User Home 的根目录下。</p>
+<p>那是因为，我们在使用 Gradle 构建项目的时候一般不直接使用 dists 里的各种具体版本进行构建，而是选用 wrapper 进行。通过使用 wrapper 进行查找并使用具体的 Gradle 版本完成构建任务。</p>
+<p>具体来说，当我们去构建项目时，首先是根据当前项目中的 gradle-wrapper.properties 文件中设置的目标版本及下载地址。如果在本地「User Home 的 wrapper 下的 dists 文件夹」找不到，就会从服务器上进行下载，这样既能保证在一台从未使用过 Gradle 的机器上运行 Gradle 构建工具，也能保证了多项目之间的 Gradle 各版本相互分离，互不干扰。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/20200609130514.png" alt="Gradle-Wrapper"></p>
+<blockquote>
+<p>图片来自 Gradle 官网的 <a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/gradle_wrapper.html#header">Gradle Wrapper</a> 介绍。</p>
+</blockquote>
+<h2 id="Gradle-项目"><a href="#Gradle-项目" class="headerlink" title="Gradle 项目"></a>Gradle 项目</h2><p>现在我们来创建一个最简单的项目来认识一下 Gradle 项目。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200609135117631.png" alt="gradle-init"></p>
+<blockquote>
+<ol>
+<li>执行 gradle init 可能需要正在阅读的你在你的机器上配置 gradle 的路径到环境变量中；</li>
+<li>截图中的红色框 ①、②、③ 是 gradle 提示让开发者输入的项目相关的配置信息。</li>
+<li>截图中的红色框 ④ 是直接完 gradle init 后的目录结构。</li>
+</ol>
+</blockquote>
+<p>可以发现里面有 gradlew 和 gradlew.bat 这两个文件，而这两个文件就是我们当前这个项目执行构建是所必须的的脚本文件。文件名 gradlew 其实就是 gradle wrapper 的缩写。gradlew 文件是用在 macOS 和 Linux 上的执行脚本，gradlew 则是运行在 Windows 上的。</p>
+<p>现在我们来运行一下看看，执行 <code>./gradlew help</code> 命令看看</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/gradlew-help-run.gif" alt="gradlew help"></p>
+<p>注意看这个 GIF，在开始的时候，提示了一段话。</p>
+<blockquote>
+<p>Starting a Gradle Daemon, 3 stopped Daemons could not be reused, use –status for details</p>
+</blockquote>
+<p>什么意思呢？就是说，启动了一个 Gradle Daemon，有 3 个已经被停止的 Daemon 是不能被使用的，详情使用 <code>./gradlew --status</code> 进行查看。</p>
+<p>什么是 Daemon？我只是想执行 help 命令，怎么还扯上了 Daemon？</p>
+<p>是因为虽然你执行的是 <code>./gradlew help</code> 实际上，gradle 通过将这条命令转发给了一个叫 Daemon 的进程，由它在完成开发者所期待的指令。</p>
+<h3 id="Daemon"><a href="#Daemon" class="headerlink" title="Daemon"></a>Daemon</h3><p>Gradle Daemon 是 Gradle 在 3.0 之后新加入的一个功能，旨在加快项目的构建速度。Daemon 是作为 Gradle 的一个后台进程，在这个后台进程中会缓存参与构建的项目的目录结构、文件、Tasks 还有一些其他东西在内存中。</p>
+<p>默认情况下 Daemon 模式是打开的，开发者可以选择关闭 Daemon 模式，当然如果关闭了，每构建一次项目就会创建一个 JVM 去执行，直到执行结束，关闭并释放资源，如果频繁的进行，其实浪费的是开发者的时间。Gradle 官方也是建议我们使用 Daemon。</p>
+<p>之前说，我机器上可以同时存在多个版本的 Gradle，那如果我正好又同时构建了多个项目，Daemon 又是什么表现呢？</p>
+<p>事实上，当开发者想要执行一个 gradle 指令时，会先去查找有没有可用的 Daemon，这里的可以指的是没有被关闭，同时满足执行构建的所指定的参数。查找到可用的 Daemon 之后就会交给 Daemon 去执行，找不到就根据当前的构建请求去启动一个 Daemon。</p>
+<p>执行构建所指定的参数？什么东西？我没指定过啊，简单来说，就是你要完成构建的环境，比如 Java 的版本或 minimum heap size 等等。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200609161042032.png" alt="gradle-download-wrapper-run"></p>
+<p>看这个图，我复制了刚才创建的 gradle 项目然后改了 <code>gradle/wrapper/gradle-wrapper.properties</code> 中指定的 Gradle 版本，将原来的 5.4.1-all 改为了 6.5-all，然后执行 <code>./gradlew help</code> 指令。</p>
+<p>Gradle 在执行时就是先下载 6.5-all 的文件，之后启动 Daemon 并执行 <code>help</code> 指令。</p>
+<p>假设启动了多个不同版本的 Daemon，会不会特别占用内存或是我长时间不进行构建不就浪费内存了吗？这个其实也不用怎么操心。Gradle Daemon 在 3 小时之内没有使用，就会被关闭，下次再有构建请求，会重新开启 Daemon，而且当系统内存不足时 Daemon 也会被清理。</p>
+<blockquote>
+<p>使用 ./gradlew –stop 就能手动停止当前的使用的 Daemon 进程。</p>
+</blockquote>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>Gradle 是一个使用 Java 开发的构建工具，它有不同的版本、每个版本之间又有不同的类型，当执行一个 Gradle 指令时，实际上是通过 Gradle Daemon 来进行的，Daemon 会在 3 小时内无操作时自动关闭节约内存。</p>
+<h2 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h2><p>直到现在，我们好像还没跟构建项目打交道，说的全是 Gradle 结构相关的内容。下面我们就来看看如果使用 Gradle 进行项目构建。</p>
+<p>在开始讲构建之前，先看一个小例子。输出一些文字</p>
+<p>打开 build.gradle 文件，在其中加上一行输入。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">println(<span class="string">&quot; I&#x27;m first line in build.gradle &quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>问题来了，我该怎么运行让他显示出来呢？答案是没法通过像运行 Java 程序那样运行，然后输出这行文字。不过 Gradle 有他自己的一套规范。</p>
+<h3 id="Project-amp-Task"><a href="#Project-amp-Task" class="headerlink" title="Project&amp;Task"></a>Project&amp;Task</h3><p>Project 和 Task 都是 Gradle 中的模型，它们两个的存在构成了 Gradle 运行所必备的项目结构，一个 Gradle 项目可能包含多个 Project 同时一个 Project 中可能包含多个 Task。真正执行构建任务的实际上就是执行各种的 Task，并且 Task 之间可以相互依赖，通过组合的形式可以完成诸多任务。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610113340066.png" alt="tastTree"></p>
+<blockquote>
+<p> 一个 Android 项目的 build Task 的依赖部分截图。</p>
+</blockquote>
+<p>一个 Gradle 项目在执行构建的过程中，会先通过当前目录下的 <code>settings.gradle </code> 来配置当前的项目结构，比如：项目名称是什么，包含了几个 Project 以及每个 Project 的路径名称等信息。在这之后又会根据 Project 来构建其所包含的 Task 及 Task 之间的层级关系。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610144743655.png" alt="Gralde-Project-Task"></p>
+<blockquote>
+<p>上面这张图列举了 Project 和 Task 的一些属性，完整的属性列表请看 <a target="_blank" rel="noopener" href="https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#N15090">Project Proterties</a> 和 <a target="_blank" rel="noopener" href="https://docs.gradle.org/current/dsl/org.gradle.api.Task.html#N18EF0">Task Proterties</a>。</p>
+</blockquote>
+<p>一个基本的 Gradle 项目也有一些默认的 Task，比如之前我们 之前执行的 <code>help</code> 就是一个辅助功能的 Task，还有 <code>tasks</code> 用于查看当前项目所有的 Task，<code>projects</code> 用于查看当前项目所有的 Project。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610142047140.png" alt="gradlew-projects"></p>
+<blockquote>
+<p>执行 <code>./gradlew projects</code> 的结果</p>
+</blockquote>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610142231861.png" alt="gradlew-tasks"></p>
+<blockquote>
+<p>执行 <code>./gradlew tasks</code> 的结果</p>
+</blockquote>
+<p>细心看的话，会发现这两张图片的顶部都有这样一些字样：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; Configure project :</span><br><span class="line"> I&#x27;m first line in build.gradle</span><br></pre></td></tr></table></figure>
+
+<p>这是什么意思？这行文字，不是我们刚才写在 build.gradle 第一行的吗？我没有执行啊，我执行的明明是 <code>projects</code> 和 <code>tasks</code> 两个指令，为什么反而输出了呢？这就不得不提到 Gradle 构建的生命周期了。</p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>Gradle 执行构建时的生命周期共有 3 个，分别为：initialization、configuration、execution。</p>
+<p>initialization 阶段就是从当前项目读取整个项目的配置信息，比如是不是多项目「通过在 <code>settings.gradle</code> 中的配置」工程、这个 Gradle 项目用到了哪些插件、项目之间的依赖关系是怎么样？</p>
+<p>configuration 阶段所做的任务就是把当前项目的每个 <code>Project</code> 下的 <code>build.gradle</code> 文件从上到下依次执行一遍。在这个生命周期过程中，也就产生了各种 Task 被创建并建立关联，并把执行单元 Action 依次添加进各自的执行列表。</p>
+<p>最后是 execution 阶段，在这个阶段就是执行在 configuration 中配置的各种的 Task。说是执行 Task，其实是执行 Task 中的的 Actions。</p>
+<blockquote>
+<p>在 Task 中有一些操作 Action 的方法比如：doFirst、doLast 都是添加一个实际要执行的过程，并在 execution 阶段执行。</p>
+</blockquote>
+<h3 id="小试牛刀"><a href="#小试牛刀" class="headerlink" title="小试牛刀"></a>小试牛刀</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">println(<span class="string">&quot; I&#x27;m first line in build.gradle &quot;</span>)</span><br><span class="line"></span><br><span class="line">task hello &#123;</span><br><span class="line">    group(<span class="string">&#x27;demo-run&#x27;</span>)</span><br><span class="line">    doLast &#123;</span><br><span class="line">        println(<span class="string">&quot; hello world&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task(<span class="string">&quot;tryRun&quot;</span>, &#123;</span><br><span class="line">    group(<span class="string">&quot;demo-run&quot;</span>)</span><br><span class="line">    dependsOn(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">    println(<span class="string">&quot; you are in configuration&quot;</span>)</span><br><span class="line"></span><br><span class="line">    doLast &#123;</span><br><span class="line">        println(<span class="string">&quot;You run me! in Last&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    doFirst &#123;</span><br><span class="line">        println(<span class="string">&quot; You run me in First&quot;</span>)</span><br><span class="line">    &#125;.doFirst &#123;</span><br><span class="line">        println(<span class="string">&quot; You run me in 2nd First&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这段代码是用 Groovy 写的，意思就是创建了两个 Task，分别是 hello 和 tryRun，它们都属于 demo-run 这个分组，同时 tryRun 依赖于 hello。</p>
+<p>doLast 和 doFirst 后面跟着的代码块就是实际要执行的内容，这个内容就叫 Action。doLast 和 doFirst 内部操作的是一个 List，doLast 相当于在这个 List 的最后添加一个 Action；doFirst 相当于插入一个 Action 作为 List 的第一个元素，它们都是 Task 的方法。在 Gradle 生命周期的 execution 阶段其实就是执行这个 Action 的 List。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200610165147980.png" alt="gradlew-customTask"></p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>来来来，快速回顾一下，刚才说了 Gradle 的构建模型和生命周期，模型是 Project 和 Task，单个项目中可能存在多个 Project，同时单个 Project 也可能存在多个 Task。Gradle 构建的生命周期分为 initialization、configuration、execution 三个阶段，第一个阶段是读取项目配置构建 Project，第二个阶段是依次配置 Project 的中的 Task及 Task 之间的层级关系；最后一个阶段就是执行，按照 Task 的层级关系依次执行相对应 Task 中的 Actions。</p>
+<p>说了这么多，感觉 Gradle 好像没啥大不了啊，就像是个没完成的功能？真的是这样吗？不是的，我觉得 Gradle 最大的优点就是接下来要介绍的 Gradle Plugin。通过 Gradle Plugin 可以完成一系列构建任务，而且几乎每一个 Android 开发者都在和 Gradle Plugin 打交道，下面我们就一起开看一下吧。</p>
+<h2 id="Gradle-Plugin"><a href="#Gradle-Plugin" class="headerlink" title="Gradle Plugin"></a>Gradle Plugin</h2><p>就像前文所说的那样，Gradle 本身并没有承担大多数任务，而是很巧妙的把任务分担到各式各样的 Plugin 上，这样做的好处是，Gradle 本身不需要有特定的业务点，只需要提供一个环境给那些有需要的开发者，而有需要的人自己肯定会根据去自己的业务场景去定制不同的功能，就像 Android 应用的构建。</p>
+<blockquote>
+<ol>
+<li>说到这其实你也应该明白了，说是 Android 应用使用 Gradle 构建不够准确，更为准确的说法应该是，使用 Android Gradle Plugin 进行构建。</li>
+<li>有兴趣的同学可以自行了解 Android Gradle Plugin，这里就不展开了。</li>
+<li>编写 Plugin 并不是非要会 Groovy，用 Java 也可以。</li>
+</ol>
+</blockquote>
+<p>要编写插件也不难，可能稍微有些麻烦。Gradle 考虑到开发者在不同场景下进行创建 Plugin，所以 Gradle 一共提供了 3 种形式 Plugin 的编写方式。下面就示范一下其中两种。</p>
+<h3 id="build-gradle-脚本-Plugin"><a href="#build-gradle-脚本-Plugin" class="headerlink" title="build.gradle 脚本 Plugin"></a>build.gradle 脚本 Plugin</h3><p>这种方法是最简单的 Plugin 开发方式，只需要在 build.gradle 脚本文件中添加 Plugin 的实现逻辑，并通过 apply 进行引入即可。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GreetingPlugin</span> <span class="keyword">implements</span> <span class="title">Plugin</span>&lt;<span class="title">Project</span>&gt; &#123;</span></span><br><span class="line">    <span class="keyword">void</span> apply(Project project) &#123;</span><br><span class="line">        project.task(<span class="string">&#x27;helloPlugin&#x27;</span>) &#123;</span><br><span class="line">            doLast &#123;</span><br><span class="line">                println <span class="string">&#x27;Hello from the GreetingPlugin&#x27;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">apply <span class="attr">plugin:</span> GreetingPlugin</span><br></pre></td></tr></table></figure>
+
+<p>实现一个 Plugin 也没有很难，创建一个类然后实现 Plugin 接口，接口的泛型就是 Project。然后在实现 apply 方法即可。</p>
+<p>接下来在 apply 方法内部实现自己的逻辑即可，这里就是很简单的创建出一个名为 helloPlugin 的 Task，并向它的执行列表「Actions」内添加一个输出到控制台的一句话的 Action。</p>
+<p>通过上文我们可以知道添加了一个 Task 之后，在任何时候都可以执行，而且 Task 之间还可以设置依赖关系，如果我们的任务很复杂还可以通过 <code>dependsOn</code> 方法对多个 Task 设置依赖关系。那直接创建 Task 和通过 Plugin 创建 Task 有什么区别吗？或者说用 Plugin 创建的 Task 有什么优势吗？</p>
+<p>答案是没有，至少在实现效果上 Plugin 实现的 Task 并没有什么优势。使用 Plugin 的目的在于开发者 Plugin 的人员期望能以最小成本让需要的开发者接入，降低由于人「开发者」导致问题的风险概率。在这种时候 Plugin 的优势就显露出来了，让开发 Plugin 的人只关注 Plugin 的开发，使用 Plugin 的人尽量少的感知 Plugin 的存在。</p>
+<blockquote>
+<p>我在刚用 Android Studio 开发时从来就没想过编译 Android 应用的竟然是另一个工具的一个插件，这种无感知成功的。</p>
+</blockquote>
+<p>所以这种使用脚本进行开发 Plugin 的方式就比较适合单人或小范围内的插件开发。像 Android Gradle Plugin 这种级别的大工程都是需要一个标准项目工程来完成的，下面就来简单介绍一下。</p>
+<h3 id="标准工程-Plugin"><a href="#标准工程-Plugin" class="headerlink" title="标准工程 Plugin"></a>标准工程 Plugin</h3><p>这种标准化工程开发 Plugin 与 脚本式开发的区别还是挺大的。推荐使用 IDE 进行开发，笔者使用的是 JetBrains 开发的 IntelliJ IDEA。</p>
+<blockquote>
+<ol>
+<li>我是直接将上文通过命令行创建的 gradle 导入 IDE，然后创建一个 Module 作为开发 Plugin。项目代码已上传至 GitHub，文末有链接。</li>
+<li>如果直接开发插件的话，在创建项目时，选择使用 Gradle 作为构建工具的进行开发即可，开发语言不受限，可使用 Groovy 也可使用 Java 或 Kotlin。</li>
+</ol>
+</blockquote>
+<p>创建完成项目之后，第一步我们需要添加依赖关系。依赖什么呢？Gradle，毕竟我们开发的是 Gradle 的 Plugin，没有对应的环境该怎么继续。</p>
+<p>在 dependencies 中添加下面这行代码。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation gradleApi()</span><br></pre></td></tr></table></figure>
+
+<p>然后 IDE 会在右下角提示你需要同步修改。这里选择 import Changes 或 Enable Auto-import 均可，或是在 IDE 上找到 Gradle 面板然后点击 ReImport All Gradle Project 。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200612165031911.png" alt="idea-need-imported"></p>
+<p> <img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/image-20200612165358694.png" alt="idea-gradle-panel"></p>
+<blockquote>
+<p>如果没有选择自动 import，每次修改 .gradle 文件后需要手动 impor。后文不再赘述。</p>
+</blockquote>
+<p>接下来就是创建 Plugin 的入口类了，别忘记创建包路径哦。下面是我创建的入口类，在这个 apply 方法内部就可以编写了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> me.monster.gradle.plugin;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.gradle.api.Plugin;</span><br><span class="line"><span class="keyword">import</span> org.gradle.api.Project;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Entrance</span> <span class="keyword">implements</span> <span class="title">Plugin</span>&lt;<span class="title">Project</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">apply</span><span class="params">(Project target)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过在此之前，还需要配置一个东西，一个指向性的文件。在与 java 文件夹同级目录下创建 resources 文件夹，然后，在其中创建子文件夹及文件。路径：<code>resources/META-INF/gradle-plugins/&#123;包名&#125;.properties</code>。在这个文件中添加一行代码：<code>implementation-class=&#123;入口类的路径&#125;</code>。如果创建正确的话，点击入口类名是能够跳转到入口类的。</p>
+<p>完成这些之后，就能在入口类中尽情的玩耍了。</p>
+<h3 id="自定义-Plugin-输入"><a href="#自定义-Plugin-输入" class="headerlink" title="自定义 Plugin 输入"></a>自定义 Plugin 输入</h3><p>刚才我们在使用 build.gradle 脚本写 Plugin 内创建了一个 Task，然后打印一句话。看起来挺死板的，让我们来加点自定义的输入信息。</p>
+<h3 id="Object-一样的输入·Extension"><a href="#Object-一样的输入·Extension" class="headerlink" title="Object 一样的输入·Extension"></a>Object 一样的输入·Extension</h3><p>通常我们会把多个属性值「字段」和方法的集合叫做对象，对应的在 Gradle 中有一种各种属性的输入，它就是 Extension。先来看看它长什么样。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">userInfo &#123;</span><br><span class="line">    userName = <span class="string">&#x27;little monster&#x27;</span></span><br><span class="line">    avatar = <span class="string">&quot;no avatar&quot;</span></span><br><span class="line">    age = <span class="number">20</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上的这段代码是写在 build.gradle 文件中的。也就是在实际使用的阶段的由使用者决定的输入值。它是怎么创建出来的呢？</p>
+<p>首先需要定义一个明确参数及方法的对象，然后使用 <code>project.getExtensions</code> 方法拿到 <code>ExtensionContainer</code> 对象，利用这个对象的 create 方法我们可创建出一个 Extension。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> userInfo = project.extensions.create(<span class="string">&quot;userInfo&quot;</span>, UserInfo)</span><br><span class="line">project.task(<span class="string">&#x27;helloPlugin&#x27;</span>) &#123;</span><br><span class="line">    doLast &#123;</span><br><span class="line">        println userInfo.toString()</span><br><span class="line">        println <span class="string">&#x27;Hello from the GreetingPlugin&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol>
+<li>写在 build.gradle 中 <code>&#123;&#125;</code> 外面的名称是由 create 方法中 name 参数控制的；</li>
+<li>在这个例子中，我省略了 UserInfo 这个类的构造方法，使用 Java 提供的默认的无参构造，当构造方法有参数时，需要在 create 方法中的 constructionArguments 参数填入构造方法的值；</li>
+</ol>
+</blockquote>
+<p>Extension 也是可以嵌套使用的，例如：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">userInfo &#123;</span><br><span class="line">    userName = <span class="string">&#x27;little monster&#x27;</span></span><br><span class="line">    avatar = <span class="string">&quot;no avatar&quot;</span></span><br><span class="line">    age = <span class="number">20</span></span><br><span class="line"></span><br><span class="line">    address &#123;</span><br><span class="line">        country = <span class="string">&quot;China&quot;</span></span><br><span class="line">        province = <span class="string">&quot;ShangHai&quot;</span></span><br><span class="line">        city = <span class="string">&quot;ShangHai&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>创建的嵌套 Extension 的方式也很简单，只需要在外层 Extension 中增加一个与嵌套 Extension 同名的方法即可。具体实现方式如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span> &#123;</span></span><br><span class="line">  Address address = <span class="keyword">new</span> Address()</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 两个 address 方法，选择一个即可。</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">void</span> address(Closure c) &#123;</span><br><span class="line">      org.gradle.util.ConfigureUtil.configure(c, address)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> address(Action&lt;Address&gt; action) &#123;</span><br><span class="line">      action.execute(address)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>更多关于 Extension 的用法及介绍这里就不一一展开了，有兴趣的朋友可以看看官方文档。</p>
+<h3 id="Map-一样的输入·NamedDomainObjectContainer"><a href="#Map-一样的输入·NamedDomainObjectContainer" class="headerlink" title="Map 一样的输入·NamedDomainObjectContainer"></a>Map 一样的输入·NamedDomainObjectContainer</h3><p>刚才已经介绍了 Extension，现在来看一下 NamedDomainObjectContainer，这个名字看起来很长，但是实际的用法看起来就像 Map 的 put 方法一样。与 put 方法类似，这种输入方式必须有一个 name 属性，而它自己本身则相当于 put 方法中的 value。</p>
+<p>听起来听绕的，看一下具体的使用。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">clothes &#123;</span><br><span class="line">    pants &#123;</span><br><span class="line">        brand = <span class="string">&quot;Nike&quot;</span></span><br><span class="line">        year = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    shoes &#123;</span><br><span class="line">        brand = <span class="string">&quot;Converse&quot;</span></span><br><span class="line">        year = <span class="number">2</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的 pants、shoes 就是 name 的值。</p>
+</blockquote>
+<p>Clothes 是一个对象，里面有 name、brand、year 三个属性，同时 Clothes 对象的构造方法必须有一个值赋值给 name 属性。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Clothes</span> &#123;</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 必须有 name 属性</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    String name</span><br><span class="line">    String brand</span><br><span class="line">    <span class="keyword">int</span> year</span><br><span class="line"></span><br><span class="line">    Clothes(String name) &#123;</span><br><span class="line">        <span class="built_in">this</span>.name = name</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    String toString() &#123;</span><br><span class="line">        <span class="keyword">return</span> getName() + <span class="string">&quot; &quot;</span> + getBrand() + <span class="string">&quot; &quot;</span> + getYear()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span>&#123;</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * UserInfo 构造方法，传入 Project 对 clothesNamedDomainObjectContainer 进行初始化</span></span><br><span class="line"><span class="comment">     * @param project</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> UserInfo(Project project) &#123;</span><br><span class="line">        NamedDomainObjectContainer&lt;Clothes&gt; domainObjs = project.container(Clothes)</span><br><span class="line">        clothesNamedDomainObjectContainer = domainObjs</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 添加 Clothes</span></span><br><span class="line"><span class="comment">     * @param action</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">void</span> clothes(Action&lt;NamedDomainObjectContainer&lt;Clothes&gt;&gt; action) &#123;</span><br><span class="line">        action.execute(clothesNamedDomainObjectContainer)</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 打印所有 Clothes</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> printAllClothes() &#123;</span><br><span class="line">        clothesNamedDomainObjectContainer.all &#123; singleCloth -&gt;</span><br><span class="line">            println(singleCloth.toString())</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 使用起来也挺简单的，不过它有什么作用呢？它最大的亮点就在于可以由开发者自行配置参数搭建出想要的配置而不需要额外的支持。Android 开发者应该对下面这段代码比较熟悉。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">    release &#123;</span><br><span class="line">        minifyEnabled <span class="literal">true</span></span><br><span class="line">        zipAlignEnabled <span class="literal">true</span></span><br><span class="line">        shrinkResources <span class="literal">true</span></span><br><span class="line">        proguardFiles getDefaultProguardFile(<span class="string">&#x27;proguard-android.txt&#x27;</span>), <span class="string">&#x27;proguard-rules.pro&#x27;</span></span><br><span class="line">        debuggable <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    debug &#123;</span><br><span class="line">        debuggable <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>buildType 就是 Android Gradle Plugin 中的一个 NamedDomainObjectContainer，其中 release、debug 只是 BuildType 的一个 Name，换句话说，你可以再添加任意一个不与他们重名都可以完成构建，而且 Android Gradle Plugin 还会为其生成 <code>assemble&lt;Name&gt;</code> 等配套的 Task。</p>
+<h3 id="状态监听"><a href="#状态监听" class="headerlink" title="状态监听"></a>状态监听</h3><p>有些时候，开发一个插件需要在构建完成之后再进行，或是需要监控执行状态，Gradle 也替我们提前想好了，调用 <code>project.getGradle</code> 方法能够获得一个 Gradle 对象，在这个 Gradle 对象中，可以设置各种各样的状态监听，比如：buildStarted，在构建开始之后被调用，buildFinished 在构建完成之后等等。需要的朋友可以查看 Gradle 源码或官方文档。</p>
+<h3 id="小结-2"><a href="#小结-2" class="headerlink" title="小结"></a>小结</h3><p>这一部分我们讲了 Gradle 的 Plugin 部分，围绕着 Plugin 的创建展开，由简入难，先说了脚本试的插件、标准化工程的 Plugin，有了 Plugin 之后，还讲了 Plugin 的输入的两种方式，一种为 Extension，另一种为 NamedDomainObjectContainer，在最后还稍微提了一下 Gradle 这个对象中可以设置的状态监听方法。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>Gradle 作为 Android 开发的必备工具，一直是很多人心中的痛，有点懂，又不是那么懂，我也是从那个阶段过来的，在这里分享一下我的 Gradle 学习之路，针对本文有什么建议，还请指出，共同进步。</p>
+<h2 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h2><h3 id="参考来源"><a href="#参考来源" class="headerlink" title="参考来源"></a>参考来源</h3><ul>
+<li>B 站 <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1DE411Z7nt?p=1">来自 Gradle 开发团队的 Gradle 入门教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.gradle.org/current/userguide/userguide.html">Gradle 官方文档</a></li>
+<li>简书 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/e26236943dd6">Android Gradle 学习系列</a></li>
+<li>掘金 <a target="_blank" rel="noopener" href="https://juejin.im/post/5b8642ac6fb9a019f82fb772#heading-0">Android Gradle Plugin 源码解析</a></li>
+</ul>
+<h3 id="辅助资料"><a href="#辅助资料" class="headerlink" title="辅助资料"></a>辅助资料</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://lug.ustc.edu.cn/wiki/mirrors/help/aosp">Android Gradle Plugin 源码</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/CherryLover/BlogTestGradle">本文示例代码</a></li>
+</ul>
+<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>我是一个普普通通的 Android 开发者，你可以在<a target="_blank" rel="noopener" href="https://www.jianshu.com/u/7ecc47c75446">简书</a>、<a target="_blank" rel="noopener" href="https://juejin.im/user/576d73cd0a2b58006a09ad87">掘金</a>，还有我的<a target="_blank" rel="noopener" href="https://jiangjiwei.site/">个人博客</a>找到我。</p>
+<p>本文封面图：Photo by <a target="_blank" rel="noopener" href="https://unsplash.com/@wgzhai?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Wengang Zhai</a> on <a target="_blank" rel="noopener" href="https://unsplash.com/photos/RVl6CjcvZ_0">Unsplash</a></p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/06/24/2020-06-24-%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E5%BC%95%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83/" style="float: left;">
+        ← 一篇文章引发的思考🤔
+    </a>
+    
+    
+    <a class="pull-right" href="/2020/03/30/%E4%BB%8E%20notifyDataSetChanged%20%E5%88%B0%20Diff/">
+        从 notifyDataSetChanged 到 DiffUtil →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

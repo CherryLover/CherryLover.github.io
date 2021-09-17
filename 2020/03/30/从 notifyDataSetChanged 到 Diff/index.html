@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>从 notifyDataSetChanged 到 DiffUtil | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="https://github.com/CherryLover" class="animsition-link">Jiang</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2020-03-30T04:48:24.000Z" itemprop="datePublished">
+          2020-03-30
+      </time>
+    
+</span>
+                <h1>从 notifyDataSetChanged 到 DiffUtil</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="从-notifyDataSetChanged-到-DiffUtil"><a href="#从-notifyDataSetChanged-到-DiffUtil" class="headerlink" title="从 notifyDataSetChanged 到 DiffUtil"></a>从 notifyDataSetChanged 到 DiffUtil</h1><p>DiffUtil 是 RecyclerView 中自带的一个计算数据集差异性的组件，其内部还提供了对 RecyclerView 进行局部刷新的 API。以往我们对 RecyclerView 的刷新，大多会采用 notifyDataSetChanged，而这种刷新方式，会造成 RecyclerView#Adapter 调用 List#size 次的 onCreateViewHolder 和 onBindViewHolder，很容易就造成资源浪费，在使用了 DiffUtil 之后，无论是添加、删除、还是更新元素，也只会调用对应数量个 onCreateViewHolder 和 onBindViewHolder，从而对 RecyclerView 的使用进行优化。</p>
+<p>下面我们就通过一个简单的例子来认识一下这个 DiffUtil。</p>
+<h2 id="创建-RecyclerView"><a href="#创建-RecyclerView" class="headerlink" title="创建 RecyclerView"></a>创建 RecyclerView</h2><p>首先，我们创建出一个简单的列表。然后为其设置 Adapter、LayoutManager 等 RecyclerView 基础配置。</p>
+<p>代码如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">val</span> numberList = mutableListOf&lt;SimpleText&gt;()</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">val</span> simpleAdapter = SimpleAdapter(numberList)</span><br><span class="line"></span><br><span class="line">rv_main_diff.adapter = simpleAdapter</span><br><span class="line">rv_main_diff.layoutManager = LinearLayoutManager(<span class="keyword">this</span>)</span><br><span class="line">rv_main_diff.addItemDecoration(DividerItemDecoration(<span class="keyword">this</span>, DividerItemDecoration.VERTICAL))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (i <span class="keyword">in</span> <span class="number">1.</span><span class="number">.10</span>) &#123;</span><br><span class="line">  numberList.add(SimpleText(<span class="string">&quot;Tittle <span class="variable">$i</span>&quot;</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">prepareList()</span><br><span class="line">simpleAdapter.notifyDataSetChanged()</span><br><span class="line"></span><br><span class="line"><span class="keyword">data</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleText</span></span>(<span class="keyword">var</span> title: String)</span><br></pre></td></tr></table></figure>
+
+<p>SimpleAdapter 和 布局文件内容比较简单，就不展示了，仅仅是把 SimpleText 的中的 title 显示到 RecyclerView 的 Item 上。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/BlogTest-DiffUtil-1.png"></p>
+<h2 id="更新列表"><a href="#更新列表" class="headerlink" title="更新列表"></a>更新列表</h2><h3 id="实现-DiffUtil-Callback"><a href="#实现-DiffUtil-Callback" class="headerlink" title="实现 DiffUtil.Callback"></a>实现 DiffUtil.Callback</h3><p>在没有使用 DiffUtil 时，更新页面上的内容我们需要更新数据集合「List」，然后再次调用 Adapter#notifyDataSetChanged 或 Adapter 的其它局部更新的方法进行刷新即可。现在我们既然要使用 DiffUtill，那么具体该怎么做呢？</p>
+<p>首先，我们需要创建一个 DiffUtil.Callback 的实现类，DiffUtil.Callback 是一个抽象类，其中包含了 4 个抽象方法，都是用于比较两个数据集时所必须用到的方法。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DiffCallback</span></span>(<span class="keyword">private</span> <span class="keyword">val</span> oldList: List&lt;SimpleText&gt;, <span class="keyword">private</span> <span class="keyword">val</span> newList: List&lt;SimpleText&gt;) : DiffUtil.Callback() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">areItemsTheSame</span><span class="params">(oldItemPosition: <span class="type">Int</span>, newItemPosition: <span class="type">Int</span>)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> oldList[oldItemPosition] === newList[newItemPosition]</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getOldListSize</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> oldList.size</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">getNewListSize</span><span class="params">()</span></span>: <span class="built_in">Int</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> newList.size</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">areContentsTheSame</span><span class="params">(oldItemPosition: <span class="type">Int</span>, newItemPosition: <span class="type">Int</span>)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> oldList[oldItemPosition].title.hashCode() == newList[newItemPosition].title.hashCode()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>DiffUtil.Callback 需要两个列表，就把新旧两个数据集合在构造函数中传入即可。</p>
+<ul>
+<li>getOldListSize：顾名思义就是获取上一个版本的列表个数；</li>
+<li>getNewListSize：和 getOldListSize 一样，只不过是获取最新的列表个数；</li>
+<li>areItemsTheSame：这个方法是用于比较指定新旧两个元素位置所对应的元素是否为同一个元素；</li>
+<li>areContentsTheSame：这个方法有些类似上一个，区别在于确定两个元素是同一个元素后，判断新旧列表中的这两个元素内容是否相同。</li>
+</ul>
+<p>到这里，我们猜一下，这个 DiffUtil 的工作原理：先进行判断新旧两个数据集的尺寸是否相同，然后再比较新旧两个数据集同一个下标的所对应的元素是否相同，最后再对元素内容是否一致进行比较。</p>
+<p>不管猜的对不对，我们先继续。</p>
+<p>在创建完 DiffUtil.Callback 的实现类后，需要对它进行实例化，注意看，DiffCallback 的主构造器声明了两个字段，所以我们在对它进行实例化时也需要传入两个元素。</p>
+<h3 id="编辑列表元素"><a href="#编辑列表元素" class="headerlink" title="编辑列表元素"></a>编辑列表元素</h3><p>现在我们有个需求：对数据集合中倒数第二个元素进行编辑。我们该怎么做？按照之前不使用 Diff 的时候，我们应该这么做：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">numberList[numberList.size - <span class="number">2</span>].title = <span class="string">&quot;New Edit To&quot;</span></span><br><span class="line">simpleAdapter.notifyItemChanged(numberList.size - <span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p>现在呢？自然是用 DiffUtil.Callback 来进行，不过在使用 Diff 之前，我们还需要准备一个 List。因为我们刚才给 DiffCallback 的主构造器声明了两个字段，一个是 oldList，一个是 newList。oldList 就是我们的 numberList，我们还需要准备一个新的 List。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> tmpList = MutableList&lt;SimpleText&gt;(<span class="number">10</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span><span class="symbol">@MutableList</span> numberList[it]</span><br><span class="line">&#125;</span><br><span class="line">tmpList[tmpList.size - <span class="number">2</span>] = SimpleText(<span class="string">&quot;New Edit To&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>数据准备完成后，接下来就是应用在 Diff 上了。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> diffResult = DiffUtil.calculateDiff(DiffCallback(numberList, tmpList))</span><br><span class="line">numberList.clear()</span><br><span class="line">numberList.addAll(tmpList)</span><br><span class="line">diffResult.dispatchUpdatesTo(simpleAdapter)</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，就这样很简单的把两个 List 放在 DiffUtil#calculateDiff 中进行计算，然后得出 diffResult，最后将 diffResult 关联到 Adapter 即可。</p>
+<p>怎么样？是不是挺简单的？去试一下，向列表添加元素和删除元素吧。</p>
+<blockquote>
+<p>添加和删除元素本质上和编辑元素没太多区别，就不进行阐述了，在提供的代码中都有。</p>
+</blockquote>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/BlogTest-DiffUtil-Action.gif"></p>
+<h2 id="ListAdapter"><a href="#ListAdapter" class="headerlink" title="ListAdapter"></a>ListAdapter</h2><p>Diff 用起来好像挺简单的，不过 Google 还向我们提供了一个工具，能让我们用起来更方便，这个就是 ListAdapter。</p>
+<p>ListAdapter 继承了 RecyclerView#Adapter，并且开发者不需要再实现 DiffCallback 的四个方法，只需要实现其中的两个「areItemsTheSame，areContentsTheSame」即可。也不需要调用拿到 DiffUtil#calculateDiff 的结果了。只需要在需要更新列表的时候，调用 <code>simpleListAdapter.submitList(List)</code> 即可，不过 RecyclerView 的 Adapter 就不能继承 RecyclerView#Adaper 了，而是需要继承自 ListAdapter。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleDiffItemCallback</span> : <span class="type">DiffUtil.ItemCallback</span>&lt;<span class="type">MainActivity.SimpleText</span>&gt;</span>() &#123;</span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">areItemsTheSame</span><span class="params">(oldItem: <span class="type">MainActivity</span>.<span class="type">SimpleText</span>, newItem: <span class="type">MainActivity</span>.<span class="type">SimpleText</span>)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> oldItem == newItem</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">areContentsTheSame</span><span class="params">(oldItem: <span class="type">MainActivity</span>.<span class="type">SimpleText</span>, newItem: <span class="type">MainActivity</span>.<span class="type">SimpleText</span>)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> oldItem.title.hashCode() == newItem.title.hashCode()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleListAdapter</span> : <span class="type">ListAdapter</span>&lt;<span class="type">MainActivity.SimpleText, SimpleListViewHolder</span>&gt;</span>(SimpleDiffItemCallback()) &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onCreateViewHolder</span><span class="params">(parent: <span class="type">ViewGroup</span>, viewType: <span class="type">Int</span>)</span></span>: SimpleListViewHolder &#123;</span><br><span class="line">        <span class="keyword">return</span> SimpleListViewHolder(LayoutInflater.from(parent.context).inflate(android.R.layout.simple_list_item_1, parent,<span class="literal">false</span>))</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">fun</span> <span class="title">onBindViewHolder</span><span class="params">(holder: <span class="type">SimpleListViewHolder</span>, position: <span class="type">Int</span>)</span></span> &#123;</span><br><span class="line">        holder.tvText.text = getItem(position).title</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SimpleListViewHolder</span></span>(itemView: View): RecyclerView.ViewHolder(itemView) &#123;</span><br><span class="line">    <span class="keyword">var</span> tvText: TextView = itemView.findViewById(android.R.id.text1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>仔细看的朋友可能会发现，我在使用 ListAdapter 时传入一个 SimpleDiffItemCallback 这个对象，这个对象实现的抽象类是 DiffUtil.ItemCallback。这个 ItemCallback 和之前使用 Callback 有 3 处不同。</p>
+<ol>
+<li>Callback 是 DiffUtil 用于比较两个列表，而 ItemCallback 是 DiffUtil 用于比较两个元素不为空的列表；</li>
+<li>Callback 有 4 个抽象方法，ItemCallback 只有 2 个；</li>
+<li>Callback 适用于自己创建并应用在 RecyclerView#Adapter 上，ItemCallback 是 ListAdapter 内置在其中的。</li>
+</ol>
+<p>怎么样？ListAdapter 是不是挺简单的？不过我现在有点好奇，ListAdpater 内部具体做了哪些事情？来让我们看看 ListAdapter 的源码。</p>
+<h2 id="ListAdapter-到底干了啥"><a href="#ListAdapter-到底干了啥" class="headerlink" title="ListAdapter 到底干了啥"></a>ListAdapter 到底干了啥</h2><p>当我点开 ListAdapter 的源码时，我发现，它内部好像啥也没干，又好像啥都干了。具体来说就是把全部的脏活累活都丢给了 AsyncListDiffer 这个类，ListAdapter 自己就像是一个代理，需要做什么，就丢给 AsyncListDiffer 这个类，需要获取什么就从 AsyncListDiffer 这个类里取出来。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/20200327163615.png"></p>
+<p>看到这，我继续进入 AsyncListDiffer，发现这个类其实也没特别多的东西，最重要的就是其中两个方法。一个是 submitList，另一个是 latchList。</p>
+<p>submitList 其实就是我们在 Activity/Fragment 调用 adapter#submit(List) 后通过各种调用最终的目的地。不过在 submitList 的内部实际上是通过在子线程计算两个列表的差异，并在主线程上通过调用 latchList 将数据关联到 RecyclerView#Adapter 的效果。</p>
+<p>latchList 做的内容就很简单了，只是将数据进行绑定。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/carbon-asynclistdiffer.png"></p>
+<h2 id="多类型怎么做？"><a href="#多类型怎么做？" class="headerlink" title="多类型怎么做？"></a>多类型怎么做？</h2><p>在这个例子中，我使用的是单一类型的数据集，但是在实际项目中存在多类型数据集该怎么做呢？我这里提供一下思路和简单的示例代码。</p>
+<p>思路：</p>
+<ol>
+<li>多类型数据集合，我们可以创建一个 Base 类，在 Base 类中定义类型，不同的类型在继承 Base 类时，在其构造方法内调用 Base 的构造方法，并传入类型。</li>
+<li>如果不使用 ListAdapter 的话，RecyclerView#Adapter 就可以按照以往的多类型编写方式进行，只需要更改 DiffUtil.Callback 的实现类中的 areItemsTheSame 和 areContentsTheSame 的具体实现。具体实现可以先判断元素类型是否相同，然后再对内容进行判断；</li>
+<li>如果使用 ListAdapter 的话，需要在继承的 ListAdapter 传入泛型进行更改，而且还需要对实现 DiffUtil.ItemCallback 的实现类的传入泛型的更改；</li>
+</ol>
+<p>怎么样？Diff 用起来很简单吧？要不要去试一下？而且，偷偷告诉你，Google 发布的另一个库 Paging 内部也有 Diff 的身影哦。</p>
+<p>本文示例代码已经上传到了 <a target="_blank" rel="noopener" href="https://github.com/CherryLover/BlogTest">GitHub</a>，分支为 <a target="_blank" rel="noopener" href="https://github.com/CherryLover/BlogTest/tree/diff">diff</a>，<a target="_blank" rel="noopener" href="https://github.com/CherryLover/BlogTest/commit/d2d01149d5a2f4b655ae61cb636df66d1cd4582f">多类型示例</a>。</p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2020/06/16/2020-06-16-Gradle%20%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B7%AF/" style="float: left;">
+        ← Gradle 学习之路
+    </a>
+    
+    
+    <a class="pull-right" href="/2019/12/31/2019-12-31-2019%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">
+        2019 年终总结 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

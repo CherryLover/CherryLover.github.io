@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>从注解到 ButterKnife | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="https://github.com/CherryLover" class="animsition-link">Jiang</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-10-30T01:32:22.000Z" itemprop="datePublished">
+          2019-10-30
+      </time>
+    
+</span>
+                <h1>从注解到 ButterKnife</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/butterKnife20191028135145.jpg"></p>
+<h1 id="从注解到-ButterKnife"><a href="#从注解到-ButterKnife" class="headerlink" title="从注解到 ButterKnife"></a>从注解到 ButterKnife</h1><p>一直好奇 BufferKnife 内部是怎么做到 findViewById 的，今天就好好看看它。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@BindView(R.id.tv_hello)</span> TextView tvHello;</span><br><span class="line"><span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//......</span></span><br><span class="line">    ButterKnife.bind(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其实，重点就是那个注解，利用 <code>BindView</code> 这个注解，可以把 tvHello 这个成员变量跟 <code>R.id.tv_hello</code> 进行绑定，下面就来一步步实现一下。</p>
+<p>先来认识一下注解吧。声明注解和声明一个借口类似，不同的是注解声明时在 interface 这个关键字前加一个 <code>@</code> 符号，就像这样：<code>public @interface BindView</code> ，而且注解还可以增加各种限制，比如限制当前注解的适用范围（<code>Target</code>），是只能用于方法（函数）还是可以用在成员变量上，亦或是可以用在类型上。当然了，最重要的还是可以设置当前注解的保存期限，有三个选项可供选择，分别是：</p>
+<ul>
+<li>SOURCE：仅保留在源代码时；</li>
+<li>CLASS：保留到 java 代码编译到 class 文件时；</li>
+<li>RUNTIME：保留到实际运行时 Class 所对应的对象上；</li>
+</ul>
+<p>在声明注解内部的方法时也和接口有所不用，在注解中，可以为声明的方法设置一个默认值，这个是接口没有的，其他的也是像接口一样的声明。</p>
+<blockquote>
+<p>在 Java 后续的版本中提供了设置默认值的方式，这里只讨论 Java 本身的接口设计不包含其他后续版本的新特性。</p>
+</blockquote>
+<p>注解内部也可以定义多个方法，使用时需要显式声明出多个方法，就像下面这样。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(ElementType.FIELD)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> BindView &#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">name</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@BindView(value = R.id.tv_hello, name = &quot;jiang&quot;)</span> TextView tvHello;</span><br></pre></td></tr></table></figure>
+
+<p>如果注解里面只有一个方法，且方法名为 value，在使用时可以省去方法名。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(ElementType.FIELD)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> BindView &#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@BindView(R.id.tv_hello)</span> TextView tvHello;</span><br></pre></td></tr></table></figure>
+
+<p>简单的了解一下注解，之后我们可以继续往下了。注意，在这里我们对 BindView 这个注解加了两个限制，一个指明了当前的生命周期是 RUNTIME，另一个是限制只用在成员变量上，避免误用。</p>
+<p>注解定义好之后，我们还需要再实现一个类，干什么的呢？就是做跟  <code>ButterKnife.bind(this);</code> 一样的事情。那简简单单的一行代码里，具体做的什么呢？简单来说，利用传入的 this 配合着注解，在运行时通过反射进行 findViewById 的操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bind</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (Field field : activity.getClass().getDeclaredFields()) &#123;</span><br><span class="line">        BindView annotation = field.getAnnotation(BindView.class);</span><br><span class="line">        <span class="keyword">if</span> (annotation != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                field.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                field.set(activity, activity.findViewById(annotation.value()));</span><br><span class="line">            &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样好是好，不过呢，就一点不好，反射是有时间成本的，所以，ButterKnife 换了另一种方式，变成了利用注解动态生成代码的方式。</p>
+<p>生成什么代码呢？其实就是生成 findViewById 这行代码，并且我们在生成之后还需要让代码能够执行，自动执行好办，可以利用反射，根据生成代码的路径，通过 <code>Class#forName</code> 来完成对生成代码后的调用。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">bind</span><span class="params">(Activity activity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// $Binding 是自动生成代码的后缀，用于与开发者声明的类做区分</span></span><br><span class="line">        Class bindClass = Class.forName(activity.getClass().getCanonicalName() + <span class="string">&quot;$Binding&quot;</span>);</span><br><span class="line">        Class activityClass = Class.forName(activity.getClass().getCanonicalName());</span><br><span class="line">        Constructor constructor = bindClass.getDeclaredConstructor(activityClass);</span><br><span class="line">        constructor.newInstance(activity);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>看这部分代码这么少就知道重头戏不在这，而在于动态生成代码，其实动态生成我们 Android 开发者一点也不陌生，就是 AnnotationProcessor。</p>
+<p>要实现 AnnotationProcessor 我们需要创建一个 Java Module，之后再稍加配置，然后就可以写出让我们能自动生成代码的代码了。</p>
+<blockquote>
+<p>这里我创建的 module 名为 lib-processor</p>
+</blockquote>
+<p>配置：</p>
+<ol>
+<li>在 java 文件夹中正确的包下创建一个继承自 <code>AbstractProcessor</code> 的类；</li>
+<li>在 main 文件夹下新建与 java 文件夹同级的名为 resources 文件夹；</li>
+<li>在 resources 中按照 <code>resources/META-INF/services/javax.annotation.processing.Processor </code> 新建一个文件，并把刚才新建的类的路径写入 <code>javax.annotation.processing.Processor</code>；</li>
+</ol>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/butterKnife20191028130047.jpg"></p>
+<p>现在就需要开始编写能够进行自动生成代码的代码了，不过在此之前，我们需要理一下思路。首先，我们需要注解，其次，需要用到 AnnotationProcessor，然后才能在 Activity 中调用 <code>@BindView</code> 的注解以及 <code>Bind.bind(this)</code> 方法。</p>
+<p>这里我们需要注意一点，就是 AnnotationProcessor 需要用到「依赖」注解「BindView」，Activity 所在的 App 模块也需要用到它，这样一来我们就不能在 app 模块定义注解，需要在另一个模块中单独定义注解，这个模块叫 <code>lib-annotation</code>。而且我要做的是像 ButterKnife 一样的依赖库，所以还得把 Bind 这个类也放在一个 module 里，而且还不能放在 <code>lib-annotaion</code> 中，所以我们还需要一个叫 <code>bind-lib</code> 的模块。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/butterKnife20191028131931.jpg"></p>
+<blockquote>
+<ol>
+<li><p>app 模块和 bind-lib 都需要依赖 lib-annotation，可以在 bind-lib 已传递依赖的形式进行依赖 lib-annotaion，这样 app 模块就不需要单独声明依赖 lib-annotation。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">api project(<span class="attr">path:</span> <span class="string">&#x27;:lib-annotaion&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>动态生成代码需要用到一个第三方库</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">implementation <span class="string">&#x27;com.squareup:javapoet:1.11.1&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+</blockquote>
+<p>准备工作一切就绪，下面来看看动态生成的代码吧。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BindProcessor</span> <span class="keyword">extends</span> <span class="title">AbstractProcessor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Filer filer;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ProcessingEnvironment processingEnvironment)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.init(processingEnvironment);</span><br><span class="line">        filer = processingEnvironment.getFiler();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">process</span><span class="params">(Set&lt;? extends TypeElement&gt; set, RoundEnvironment roundEnvironment)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Element element : roundEnvironment.getRootElements()) &#123;</span><br><span class="line">            String packageStr = element.getEnclosingElement().toString();</span><br><span class="line">            String classStr = element.getSimpleName().toString();</span><br><span class="line">            ClassName className = ClassName.get(packageStr, classStr + <span class="string">&quot;$Binding&quot;</span>);</span><br><span class="line">            MethodSpec.Builder constructorBuilder = MethodSpec.constructorBuilder()</span><br><span class="line">                    .addModifiers(Modifier.PUBLIC)</span><br><span class="line">                    .addParameter(ClassName.get(packageStr, classStr), <span class="string">&quot;activity&quot;</span>);</span><br><span class="line">            <span class="keyword">boolean</span> hasBinding = <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">for</span> (Element enclosedElement : element.getEnclosedElements()) &#123;</span><br><span class="line">                BindView bindView = enclosedElement.getAnnotation(BindView.class);</span><br><span class="line">                <span class="keyword">if</span> (bindView != <span class="keyword">null</span>) &#123;</span><br><span class="line">                    hasBinding = <span class="keyword">true</span>;</span><br><span class="line">                    constructorBuilder.addStatement(<span class="string">&quot;activity.$N = activity.findViewById($L)&quot;</span>, enclosedElement.getSimpleName(), bindView.value());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            TypeSpec buildClass = TypeSpec.classBuilder(className)</span><br><span class="line">                    .addModifiers(Modifier.PUBLIC)</span><br><span class="line">                    .addMethod(constructorBuilder.build())</span><br><span class="line">                    .build();</span><br><span class="line">            <span class="keyword">if</span> (hasBinding) &#123;</span><br><span class="line">                JavaFile.builder(packageStr, buildClass).build().writeTo(filer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Set&lt;String&gt; <span class="title">getSupportedAnnotationTypes</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.singleton(BindView.class.getCanonicalName());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先来解释一下这三个方法：</p>
+<ul>
+<li><p>getSupportedAnnotationTypes</p>
+<p>这个方法真的是见名之意，就是获取当前 AnnotationProcessor 所支持的注解集合而已；</p>
+</li>
+<li><p>init</p>
+<p>初始化 AnnotationProcessor 并获取到 Filer，这个 Filer 是我们等下生成代码需要用到的。</p>
+</li>
+<li><p>process</p>
+<p>真正做生成代码的部分。</p>
+</li>
+</ul>
+<p>这个类中，process 才是真正做事情的方法，代码也不难懂。先是从根据当前类提取到有用的包名及类名，再利用包名、类名及特殊字符创建出一个类，紧接着为其声明一个参数名为 <code>activity</code> 的公开构造方法，在构造方法内部加入一行 <code>activity.$N = activity.findViewById($L)</code> 。其中，N 和 L 均是占位符，真正的值是开发者定义的字段的 name 以及注解的 value 也就是 View 的 Id。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/butterKnife20191028133523.png"></p>
+<p>这个就是 ButterKnife 它做的事情，不同的是，它内部还做了其他的优化以及一些其他功能。</p>
+<p>本文首发于<a target="_blank" rel="noopener" href="https://jiangjiwei.site/">个人博客</a>，文中全部源代码已上传至 <a target="_blank" rel="noopener" href="https://github.com/CherryLover/BlogTest">GitHub</a>，代码分支为 bindView。喜欢本文的麻烦点个🌟。</p>
+<p>本文封面图：Photo by <a target="_blank" rel="noopener" href="https://unsplash.com/@wilstewart3?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Wil Stewart</a> on <a target="_blank" rel="noopener" href="https://unsplash.com/s/photos/look?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2019/12/17/2019-07-24Navigation%E4%B9%8B%20Fragment%20%E5%88%87%E6%8D%A2/" style="float: left;">
+        ← Navigation 之 Fragment 切换
+    </a>
+    
+    
+    <a class="pull-right" href="/2019/10/25/2019-10-24-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%EF%BC%9A%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/">
+        设计模式：观察者模式 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

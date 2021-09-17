@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>ToolBar 在项目中的变迁 | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="https://github.com/CherryLover" class="animsition-link">Jiang</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-09-20T08:39:40.000Z" itemprop="datePublished">
+          2019-09-20
+      </time>
+    
+</span>
+                <h1>ToolBar 在项目中的变迁</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<h1 id="ToolBar-在项目中的变迁"><a href="#ToolBar-在项目中的变迁" class="headerlink" title="ToolBar 在项目中的变迁"></a>ToolBar 在项目中的变迁</h1><p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelpertoolBar-convert.jpg"></p>
+<p>本文旨在分享自己在 ToolBar 使用上的偷懒，没有较多代码，只是分享一种思路。</p>
+<blockquote>
+<p>这里指的 ToolBar 是泛指顶部的那个功能区域，不仅仅局限于 Android 中的 ActionBar、ToolBar 。</p>
+</blockquote>
+<h2 id="ToolBar-的样式"><a href="#ToolBar-的样式" class="headerlink" title="ToolBar 的样式"></a>ToolBar 的样式</h2><p>ToolBar 应该算是在项目中使用较为广泛的一个 View 了，它主要用于展示当前页面的标题、导航按钮及可能存在的扩展功能。</p>
+<p>下图就展示了一个具有一些基本属性的 ToolBar。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolBar-Normal.png">)</p>
+<p>在 Android 中也不难实现，无非就是在布局文件声明出 ToolBar，然后在 Activity 使用它，为其设置一些内容，如果需要用到右侧的菜单，为其添加菜单即可。</p>
+<p>不过呢，国内的应用大多没有按照这种样式去设计，我们公司也是如此。这里我们不去评判它该是怎么样的，只是来讨论如何快速做出与设计师要求相同的效果。</p>
+<blockquote>
+<p>QQ 的 ToolBar</p>
+</blockquote>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolbar-QQ.png"></p>
+<blockquote>
+<p>小米短信的 ToolBar</p>
+</blockquote>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolBar-Mi-Message.png"></p>
+<blockquote>
+<p>我司产品的 ToolBar</p>
+</blockquote>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolbar-osapling.png"></p>
+<p>遇到这种情况，无非就是通过自定义 View，做出一个类似 ToolBar 的 View，然后放在页面的最靠近状态栏的地方。然后每个页面通过在布局文件中进行声明，再到相应的 Activity 或是 Fragment 中通过 findViewById 的形式找到再设置一些相关属性之类的。</p>
+<p>难吗？不难，就是有点恶心，每个页面都得写一些重复代码，我是真的不想写啊。那就一起来偷个懒吧。</p>
+<h2 id="偷懒版本-V1"><a href="#偷懒版本-V1" class="headerlink" title="偷懒版本 V1"></a>偷懒版本 V1</h2><p>我不想在每个 Activity 或是 Fragment 上都写那些恶心的代码，能不能少些一点？</p>
+<p>经过观察我发现，大部分页面的 ToolBar 都是中间是标题，左侧是返回按钮，右侧可能为文字、图片或是什么都不显示。区别最大的就是底部的内容，那么我把底部的内容全部划分给 Fragment、Toolbar 所属的区域属于承载 Fragment 的 Activity。(如下图所示)</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/toolbarhelperToolBar-Activity-Fragment.png"></p>
+<p>这样一来，开发者只需要在 Activity 中写，在 Activity 加载不同的 Fragment 时由 Fragment 去更新当前的标题。当用户点击了左侧或右侧的功能按键，通过查找当前 Activity 中存在的 Fragment 列表，找出当前显示的 Fragment，把点击事件传入即可。</p>
+<p>这样一来，既能实现了 UI 效果也少些了部分代码，挺好的。到这还没完，来思考一下这种方案的优缺点。</p>
+<p>优点是不需要在每个 Fragment 中声明并设置 ToolBar 了，在一定程度上减少了 ToolBar 声明与设置属性的次数。</p>
+<p>不过呢这种方案的缺点也很明显，由于把 ToolBar 放在了 Activity，所以每次设置 ToolBar 的相关属性都必须经过 Activity，Activity 要保证其承载的每个 Fragment 显示不出问题，就必须做到对每个 Fragment 的情况做到兼容。比如，有个页面需要放置一张圆弧的背景图，此时这种方案做起来就会比较麻烦。</p>
+<p>所以，整体来说，只是把粗略的把重复代码的解决掉，但是又会带来某些兼容的问题。也不算多好，所以才又有了新的偷懒版本。</p>
+<h2 id="偷懒版本-V2"><a href="#偷懒版本-V2" class="headerlink" title="偷懒版本 V2"></a>偷懒版本 V2</h2><p>自从 Android Studio 大力推行 ConstraintLayout 之后，我就一直在使用，发现了可以利用 ConstraintLayout 动态设置 View 的约束从而达到设置 ToolBar 的效果。</p>
+<p>具体来说是这样的：</p>
+<p>首先使用 Java 代码动态创建出 ToolBar 这个 View。紧接着为 ToolBar 设置约束条件，分别为：</p>
+<ul>
+<li>Start: Parent</li>
+<li>Top: Parent</li>
+<li>End: Parent</li>
+</ul>
+<p>这样一来，就能让 ToolBar 位于整个页面的顶端位置。</p>
+<p>不过这样有一个致命的痛，就是会覆盖原有属于顶部的 View（closeToolView），解决这个问题也很简单，利用 ConstraintLayout 为顶端 View （closeToolView）设置一个 top_toBottomOf 这个属性，这个属性值当然就是 ToolBar 了。</p>
+<p>怎么样，这个方案是不是挺简单的，不过，稍微想一想就会发现，我们在布局文件里不就这么写的吗？有什么稀奇的。</p>
+<p>这个方案没什么稀奇的，只是把原本属于开发者写在布局文件中的内容，放在了 Java 代码中而已。</p>
+<p>不过稍稍变通一下，我们在页面的布局文件也就不需要写这么多的重复代码了，而且，可以创建出一个 ToolBarHelper 这个类，由这个类去完成上述的这些内容，如此一来，Activity 与 Fragment 的基类只需要去调用 ToolBarHelper 即可。</p>
+<p>这样这个流程下来就算是完事了，不过你要是想用的话还是得清楚他的不足之处：</p>
+<ol>
+<li><p>根布局必须为 ConstraintLayout</p>
+<p>这个很好理解，如果不是 ConstraintLayout 这个布局的话，后续所有的约束条件都不能使用；</p>
+</li>
+<li><p>顶部 View （closeToolView）的高度不能设置为 match_parent</p>
+<p>如果顶部 View（closeToolView）的高度为 match_parent 的话，那么即使设置了 top_toBottomOf 顶部 View（closeToolView）的相对位置也不会发生改变。</p>
+</li>
+</ol>
+<h4 id="Talk-is-cheap-show-me-the-code"><a href="#Talk-is-cheap-show-me-the-code" class="headerlink" title="Talk is cheap show me the code."></a>Talk is cheap show me the code.</h4><p>关键的代码如下：</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">addToolBar</span><span class="params">(root: <span class="type">View</span>, closeToolView: <span class="type">View</span>)</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> layoutParams = ConstraintLayout.LayoutParams(root.layoutParams)</span><br><span class="line">    layoutParams.width = ConstraintLayout.LayoutParams.MATCH_PARENT</span><br><span class="line">    layoutParams.height = <span class="number">48.</span>toPix()</span><br><span class="line">    toolView.layoutParams = layoutParams</span><br><span class="line">    toolView.id = View.generateViewId()</span><br><span class="line">    <span class="keyword">if</span> (initTitle.isNotEmpty()) &#123;</span><br><span class="line">        toolView.setTitle(initTitle)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (root <span class="keyword">is</span> ConstraintLayout) &#123;</span><br><span class="line">        <span class="keyword">val</span> relation = ConstraintSet()</span><br><span class="line">        checkId(root)</span><br><span class="line">        root.addView(toolView)</span><br><span class="line">        relation.clone(root)</span><br><span class="line">        relation.connect(toolView.id, ConstraintSet.START, root.id, ConstraintSet.START)</span><br><span class="line">        relation.connect(toolView.id, ConstraintSet.END, root.id, ConstraintSet.END)</span><br><span class="line">        relation.connect(toolView.id, ConstraintSet.TOP, root.id, ConstraintSet.TOP)</span><br><span class="line">        relation.applyTo(root)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">val</span> closeRelation = ConstraintSet()</span><br><span class="line">        closeRelation.clone(root)</span><br><span class="line">        closeRelation.connect(</span><br><span class="line">            closeToolView.id,</span><br><span class="line">            ConstraintSet.TOP,</span><br><span class="line">            toolView.id,</span><br><span class="line">            ConstraintSet.BOTTOM</span><br><span class="line">        )</span><br><span class="line">        closeRelation.applyTo(root)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>笔者做了一个简单的 Demo，并上传到了 <a target="_blank" rel="noopener" href="https://github.com/CherryLover/ToolBarHelper">GitHub</a>，这个 Demo 仅用于演示 ToolBarHelper 的使用，后续可能包含 ToolBar 的点击相应及多样化的设置，没有什么特别的功能，其中 Fragment 的导航库使用的是 AndroidX 的 Navigation。</p>
+<p>有什么问题或是情况，可以在评论或是 issues 中留言。😉</p>
+<p>封面图：Photo by <a target="_blank" rel="noopener" href="https://unsplash.com/@artwalker?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Amber Walker</a> on <a target="_blank" rel="noopener" href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+<p>推荐阅读：<a target="_blank" rel="noopener" href="https://jiangjiwei.site/post/lai-xue-yi-bo-navigation/">来学一波 Navigation</a></p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2019/10/18/2019-09-06-%E5%85%B3%E4%BA%8E%20TDD/" style="float: left;">
+        ← 关于 TDD
+    </a>
+    
+    
+    <a class="pull-right" href="/2019/08/06/2019-08-06-%5B%E8%BD%AC%5D%20%E6%A0%87%E6%96%B9%E6%B3%95%E5%89%8D%E7%BD%AE%E6%A3%80%E9%AA%8C%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0/">
+        【转】标方法前置检验模型设计与实现 →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>

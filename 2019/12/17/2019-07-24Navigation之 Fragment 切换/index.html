@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********    -----Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+
+<head>
+  <title>Navigation 之 Fragment 切换 | Hexo</title>
+  <!-- Meta data -->
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Hexo">
+    <meta name="author" content="John Doe">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicon, (keep icon in root folder) -->
+    <link rel="Shortcut Icon" href="/img/favicon.ico" type="image/ico">
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="stylesheet" href="/css/all.css" media="screen" type="text/css">
+    
+    <link rel="stylesheet" href="/highlightjs/vs.css" type="text/css">
+    
+
+    <!--[if IE 8]>
+    <link rel="stylesheet" type="text/css" href="/css/ie8.css" />
+    <![endif]-->
+
+    <!-- jQuery | Load our jQuery, with an alternative source fallback to a local version if request is unavailable -->
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.11.1.min.js"><\/script>')</script>
+
+    <!-- Load these in the <head> for quicker IE8+ load times -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+  
+  
+  
+
+  <style>.col-md-8.col-md-offset-2.opening-statement img{display:none;}</style>
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ Off-canvas navigation =========================== -->
+
+    <div class="sb-slidebar sb-right sb-style-overlay sb-momentum-scrolling">
+        <div class="sb-close" aria-label="Close Menu" aria-hidden="true">
+            <img src="/img/close.png" alt="Close"/>
+        </div>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu">
+            <li><a href="/" class="animsition-link" title="Home">Home</a></li>
+            <li><a href="/archives" class="animsition-link" title="archive">archives</a></li>
+            <!-- Dropdown Menu -->
+			 
+            
+            
+            <li>
+                <a class="sb-toggle-submenu">Links<span class="sb-caret"></span></a>
+                <ul class="sb-submenu">
+                    
+                    <li><a target="_blank" rel="noopener" href="https://github.com/CherryLover" class="animsition-link">Jiang</a></li>
+                    
+                </ul>
+            </li>
+            
+        </ul>
+        <!-- Lists in Slidebars -->
+        <ul class="sb-menu secondary">
+            
+            <li><a href="/about.html" class="animsition-link" title="about">About</a></li>
+            <li><a href="/atom.xml" class="animsition-link" title="rss">RSS</a></li>
+        </ul>
+    </div>
+    
+    <!-- ============================ END Off-canvas navigation =========================== -->
+
+    <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+        <div id="navigation" class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <!-- Nav logo -->
+                    <div class="logo">
+                        <a href="/" title="Logo" class="animsition-link">
+                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
+                        </a>
+                    </div>
+                    <!-- // Nav logo -->
+                    <!-- Info-bar -->
+                    <nav>
+                        <ul class="nav">
+                            <li><a href="/" class="animsition-link">Hexo</a></li>
+                            <li class="nolink"><span>Always </span>Creative.</li>
+                            
+                            <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a></li>
+                            
+                            
+                            
+                            
+                            
+                            <li class="nolink"><span>Welcome!</span></li>
+                        </ul>
+                    </nav>
+                    <!--// Info-bar -->
+                </div>
+                <!-- // .container -->
+                <div class="learnmore sb-toggle-right">More</div>
+                <button type="button" class="navbar-toggle menu-icon sb-toggle-right" title="More">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar before"></span>
+                <span class="icon-bar main"></span>
+                <span class="icon-bar after"></span>
+                </button>
+            </div>
+            <!-- // .navbar-inner -->
+        </div>
+
+        <!-- ============================ Header & Logo bar =========================== -->
+
+
+      
+<section id="intro">
+    <div class="container">
+        <div class="row col-md-offset-2">
+            <div class="col-md-8">
+    			<span class="post-meta">
+      <time datetime="2019-12-17T05:44:06.000Z" itemprop="datePublished">
+          2019-12-17
+      </time>
+    
+</span>
+                <h1>Navigation 之 Fragment 切换</h1>
+            </div>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+      		<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_nav_state.jpg" alt="封面图"></p>
+<h1 id="Navigation-之-Fragment-切换"><a href="#Navigation-之-Fragment-切换" class="headerlink" title="Navigation 之 Fragment 切换"></a>Navigation 之 Fragment 切换</h1><p>本篇是有关 Navigation 的第二篇，如有对 Navigation 不了解的朋友请先阅读<a target="_blank" rel="noopener" href="https://jiangjiwei.site/post/lai-xue-yi-bo-navigation/">来学一波 Navigation</a>。</p>
+<h2 id="多次执行-onCreateView"><a href="#多次执行-onCreateView" class="headerlink" title="多次执行 onCreateView"></a>多次执行 onCreateView</h2><p>在上一篇中，我们利用 Navigation 与 BottomNavigationView 做出了一个有三个 Tab 的页面，分别是 Feed、Timer、Mine，这三个 Fragment 都是只在当前页面显示各自的名称。</p>
+<p>现在我们来给 TimerFragment 加点内容，我们在 TimerFragment 的 onCreateView 方法中启动一个倒计时。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startTimer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">new</span> CountDownTimer(<span class="number">10</span> * <span class="number">1000</span>, <span class="number">1000</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onTick</span><span class="params">(<span class="keyword">long</span> millisUntilFinished)</span> </span>&#123;</span><br><span class="line">            tvLabel.setText(String.valueOf((millisUntilFinished / <span class="number">1000</span>) + <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFinish</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            tvLabel.setText(<span class="string">&quot;Finished&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_nav_tab.gif" style="zoom:33%;" />
+
+<p>仔细看上面的效果可以看到，每次切换到 TimerFragment 时，倒计时总会重新开始，不是我们想要的仅开始一次。这是什么问题导致的呢？答案是 TimerFragment 执行了多次的 onCreateView，为什么是会执行多次，Fragment 为什么会加载多次？我们没有什么特殊的操作呀。是不是因为 Navigation？</p>
+<p>现在让我们深入到 Navigation 的源码看一看这到底是怎么一回事，以及我们该如何解决这一问题。</p>
+<p>首先，我们需要明确我们的方向，就是 Navigation 到底是怎么做 Fragment 切换的，为什么会导致 Fragment 的 onCreateView 被多次执行。</p>
+<p>从哪里作为入口呢？了解过 Navigation 的朋友对下面这行代码应该不会陌生，就是通过一个 View 获取到 NavController，然后通过执行 NavController 的 navigate 这个方法，我们就从这个方法开始。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Navigation.findNavController(view)</span><br><span class="line">        .navigate(id);</span><br></pre></td></tr></table></figure>
+
+<p>这个 navigate 有多个重载方法，我们开始的 navigate 方法最终也是执行到下面这个重载方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigate(NavDestination node, Bundle args, NavOptions navOptions, Navigator.Extras navigatorExtras)</span><br></pre></td></tr></table></figure>
+
+<p>方法的具体内容如下图：</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_code_navigate.png"></p>
+<p>其中在第 9 行，我们可以看到通过 mNavigatorProvider 获取到了一个泛型类型为 NavDestination 的 Navigator 对象，并且在第 12 行时，通过调用刚获取到的 navigator 的 navigate 方法，得到了 NavDestination 这个对象。</p>
+<p>这两行是关键代码，一个是获取到执行 navigator 的对象，一个是实际执行 navigate 的方法。看到这，我们就只需要找到 Navigator 的 navigate 方法即可。不过，Navigator 这个只是一个抽象类，我们还需要继续寻找它的实现类。</p>
+<blockquote>
+<p>快捷键：Implementation(s) Mac: option(⌥) + command(⌘)+B</p>
+</blockquote>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/image-20190724110340568.png" alt="image-20190724110340568"></p>
+<p>Navigator 抽象类的关键代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Navigator</span>&lt;<span class="title">D</span> <span class="keyword">extends</span> <span class="title">NavDestination</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Retention(RUNTIME)</span></span><br><span class="line">    <span class="meta">@Target(&#123;TYPE&#125;)</span></span><br><span class="line">    <span class="meta">@SuppressWarnings(&quot;UnknownNullness&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="meta">@interface</span> Name &#123;</span><br><span class="line">        <span class="function">String <span class="title">value</span><span class="params">()</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@NonNull</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> D <span class="title">createDestination</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> NavDestination <span class="title">navigate</span><span class="params">(<span class="meta">@NonNull</span> D destination, <span class="meta">@Nullable</span> Bundle args,</span></span></span><br><span class="line"><span class="params"><span class="function">            <span class="meta">@Nullable</span> NavOptions navOptions, <span class="meta">@Nullable</span> Extras navigatorExtras)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">popBackStack</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bundle <span class="title">onSaveState</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRestoreState</span><span class="params">(<span class="meta">@NonNull</span> Bundle savedState)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Extras</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过快捷键我们能找到多个实现类，有 ActivityNavigator、DialogFragmentNavigator 还有 FragmentNavigator 等，这里我们只关注 FragmentNavigator 这个类中的 navigate 这个方法。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_code_navigate_real.png"></p>
+<p>别看这么多代码，别害怕，其实关键部分的代码就是第 32 行 <code>ft.replace(mContainerId, frag)</code> 这里使用的是 FragmentTransaction 的 replace 方法，这个方法不用说了吧。 replace 是移除了相同 id 的 fragment 然后再进行 add 的。</p>
+<p>所以，看到这，我们也就知道了，为什么 TimerFragment 的 onCreateView 方法会被执行多次了，原因就是在这。</p>
+<h2 id="规避-replace"><a href="#规避-replace" class="headerlink" title="规避 replace"></a>规避 replace</h2><p>找到原因了，那我们有什么方法去规避，或者说去绕过这个 replace 吗？答案是有的。</p>
+<p>还记得刚才我们找的下面这行代码吧（忘记的，请看第一张代码图的第 9 行），刚才我说，通过 mNavigatorProvider 找到一个泛型类型为 NavDestination 的 Navigator 对象，那它实际上是怎么找到的呢？是通过 node.getNavigatorName() 然后找的，这个 node 是什么东西？以及 mNavigatorProvider.getNavigator 内部究竟发生了什么？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Navigator&lt;NavDestination&gt; navigator = mNavigatorProvider.getNavigator(</span><br><span class="line">        node.getNavigatorName());</span><br></pre></td></tr></table></figure>
+
+<p>实际上这里的 node 就是一个 NavDestination 对象，而一个 NavDestination 对象就是对应着 navigation graph 中的节点信息。我用来演示的 Demo 的 navigation graph 文件如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">navigation</span> <span class="attr">xmlns:android</span>=<span class="string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:app</span>=<span class="string">&quot;http://schemas.android.com/apk/res-auto&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:tools</span>=<span class="string">&quot;http://schemas.android.com/tools&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">&quot;@+id/tab_navigation&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">app:startDestination</span>=<span class="string">&quot;@id/feedFragment&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/feedFragment&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">&quot;me.monster.blogtest.tab.FeedFragment&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">&quot;fragment_feed&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">tools:layout</span>=<span class="string">&quot;@layout/fragment_feed&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/timerFragment&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">&quot;me.monster.blogtest.tab.TimerFragment&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">&quot;fragment_timer&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">tools:layout</span>=<span class="string">&quot;@layout/fragment_timer&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">fragment</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">&quot;@+id/mineFragment&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:name</span>=<span class="string">&quot;me.monster.blogtest.tab.MineFragment&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:label</span>=<span class="string">&quot;fragment_mine&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">tools:layout</span>=<span class="string">&quot;@layout/fragment_mine&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">navigation</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>node.getNavigatorName 返回的就是 fragment 节点的节点名称 <code>fragment</code>，而 getNavigator 其实内部就是维护了一个类型为 HashMap 的 mNavigators，这个 HashMap 存的 key 就是节点名称，value 就是抽象类 Navigator 的实现类。而与 fragment 对应的 FragmentNavigator 也存储在其中。</p>
+<p>既然是存在一个 map，并从中取出相对于的 Navigator 实现类，那我们能不能创建一个类并实现 Navigator，然后将 key、value 添加到那个 HashMap 中。答案是可行的。在NavigatorProvider 这个类中有两个公共方法：</p>
+<ul>
+<li>addNavigator(Navigator navigator)</li>
+<li>addNavigator(String name, Navigator navigator)</li>
+</ul>
+<p>其中，一个参数的 addNavigator 也是调用了 两个参数的 addNavigator 方法，那个 name 也就是 navigation graph 中 fragment 节点的节点名称，同时也是 Navigator 这个抽象类中注解 <code>Name</code> 定义的值。而且在 NavController 这个类（最初我们找到的 navigate 所在的类）中有一个 getNavigatorProvider() 方法。</p>
+<p><img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/uml_blog_navigation.jpg"></p>
+<p>看到这，关系应该就比较清楚了。所以，我们需要自己创建一个类，实现 Navigator 并为 Name 注解添加一个值，然后在使用 Navigation 这个模块的 Activity 获取到 NavController 并调用其 getNavigatorProvider 方法后再调用 addNavigator 即可。</p>
+<h2 id="自定义-Navigator"><a href="#自定义-Navigator" class="headerlink" title="自定义 Navigator"></a>自定义 Navigator</h2><p>Github 上已经有一个演示自定义实现 Navigator 的项目了。这个项目是以 Kotlin 语言编写的。</p>
+<p>项目地址： <a target="_blank" rel="noopener" href="https://github.com/STAR-ZERO/navigation-keep-fragment-sample%E3%80%82">https://github.com/STAR-ZERO/navigation-keep-fragment-sample。</a></p>
+<blockquote>
+<p>说起来这个项目还是 <a target="_blank" rel="noopener" href="https://github.com/drakeet">Drakeet</a> 在他的知识星球中分享的。感谢 Drakeet 的分享。</p>
+</blockquote>
+<p>我根据按照他的代码写了一份 Java 版本的，并且在其中改了两行代码（注释部分）。注释的内容其实就是使用 FragmentTranslation 对 Fragment 进行控制。原作者写的是 detach 与 attach 方法，我改成了使用 hide 和 show 方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Navigator</span>.Name(<span class="string">&quot;keep_state_fragment&quot;</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KeepStateNavigator</span> <span class="keyword">extends</span> <span class="title">FragmentNavigator</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Context context;</span><br><span class="line">    <span class="keyword">private</span> FragmentManager manager;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> containerId;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">KeepStateNavigator</span><span class="params">(<span class="meta">@NonNull</span> Context context, <span class="meta">@NonNull</span> FragmentManager manager, <span class="keyword">int</span> containerId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(context, manager, containerId);</span><br><span class="line">        <span class="keyword">this</span>.context = context;</span><br><span class="line">        <span class="keyword">this</span>.manager = manager;</span><br><span class="line">        <span class="keyword">this</span>.containerId = containerId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Nullable</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> NavDestination <span class="title">navigate</span><span class="params">(<span class="meta">@NonNull</span> Destination destination, <span class="meta">@Nullable</span> Bundle args, <span class="meta">@Nullable</span> NavOptions navOptions, <span class="meta">@Nullable</span> Navigator.Extras navigatorExtras)</span> </span>&#123;</span><br><span class="line">        String tag = String.valueOf(destination.getId());</span><br><span class="line">        FragmentTransaction transaction = manager.beginTransaction();</span><br><span class="line">        <span class="keyword">boolean</span> initialNavigate = <span class="keyword">false</span>;</span><br><span class="line">        Fragment currentFragment = manager.getPrimaryNavigationFragment();</span><br><span class="line">        <span class="keyword">if</span> (currentFragment != <span class="keyword">null</span>) &#123;</span><br><span class="line"><span class="comment">//            transaction.detach(currentFragment);</span></span><br><span class="line">            transaction.hide(currentFragment);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            initialNavigate = <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Fragment fragment = manager.findFragmentByTag(tag);</span><br><span class="line">        <span class="keyword">if</span> (fragment == <span class="keyword">null</span>) &#123;</span><br><span class="line">            String className = destination.getClassName();</span><br><span class="line">            fragment = manager.getFragmentFactory().instantiate(context.getClassLoader(), className);</span><br><span class="line">            transaction.add(containerId, fragment, tag);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="comment">//            transaction.attach(fragment);</span></span><br><span class="line">            transaction.show(fragment);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        transaction.setPrimaryNavigationFragment(fragment);</span><br><span class="line">        transaction.setReorderingAllowed(<span class="keyword">true</span>);</span><br><span class="line">        transaction.commitNow();</span><br><span class="line">        <span class="keyword">return</span> initialNavigate ? destination : <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这里的代码没有传递 Bundle 类型的 args 同时也破坏了在 navigation graph 中切换动画的设置，如需要，自行加上即可。可参考 FragmentNavigator 类中实现。</p>
+<p>感谢 <a target="_blank" rel="noopener" href="https://github.com/1196455690">Qwer</a> 提出问题</p>
+</blockquote>
+<p>注意，使用自定义 Navigator 的时候 navigation graph 需要把 fragment 节点名称改为 keep_state_fragment，并且在承载的 Activity 中进行设置并且还需要把 Activity 布局文件中 fragment 的 navGraph 属性移除。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">NavController navController = Navigation.findNavController(<span class="keyword">this</span>, R.id.fragment3);</span><br><span class="line">NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragment3);</span><br><span class="line">KeepStateNavigator navigator = <span class="keyword">new</span> KeepStateNavigator(<span class="keyword">this</span>, navHostFragment.getChildFragmentManager(), R.id.fragment3);</span><br><span class="line">navController.getNavigatorProvider().addNavigator(navigator);</span><br><span class="line">navController.setGraph(R.navigation.tab_navigation);</span><br></pre></td></tr></table></figure>
+
+<p>最后来看一下使用自定义 Navigator 时的 TabActivity。</p>
+<img src="https://monster-image-backup.oss-cn-shanghai.aliyuncs.com/picgo/blog/blog_nav_tab_state.gif" style="zoom: 33%;" />
+
+<p>这样好像看起来结束了？其实并没有，我们只是刚刚开始。</p>
+<p>首先，我先更正一下，在第一篇关于 Navigation 的博客中从 SettingFragment 返回到 RootFragment 那一段代码有些问题。</p>
+<blockquote>
+<p>没看过那篇文章的不要着急，其实就是 A 调到 B，然后在 B 中触发一个点击事件，再从 B 返回到 A。返回的代码如下。</p>
+</blockquote>
+<p>原代码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">btnToRoot.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">        Navigation.findNavController(btnToRoot)</span><br><span class="line">                .popBackStack();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这里在点击事件中，最后执行的是 <code>popBackStack</code>，其实不应该调用这个方法应该用 <code>navigateUp</code> 这个方法。</p>
+<p>在第一篇博客中，Navigation Graph 中所有的节点名称都是 Fragment，如果我用上面这种 keep_state_fragment 的方式，会发生什么呢？</p>
+<img src="https://i.loli.net/2019/10/21/BAC6leVN1WhdaKJ.gif" style="zoom: 50%;" />
+
+<p>可以看到，在把 Navigation Graph 节点名替换为 keep_state_fragment 后，在 SettingFragment 点击返回并没有进行返回。这是为什么呢？我没干啥呀，怎么不好使了。</p>
+<p>不行，我要看看 Navigation 源码里面到底怎么做的。于是我开始了 debug 之旅。后来，我发现在 <code>Navigation.findNavController(btnToRoot).navigateUp();</code> 内部判断了当前的返回栈个数是否为 1，结果让我很震惊，返回的竟然真的是 1。所以，navigateUp 就理所当然的返回 false，也就没能从 SettingFragment 回到 RootFragment 了。</p>
+<blockquote>
+<p>下面的两段代码分别是：NavController#navigateUp 和 NavController#getDestinationCountOnBackStack</p>
+</blockquote>
+<p><img src="https://i.loli.net/2019/10/21/bu9EAoP5HNJ7y8v.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getDestinationCountOnBackStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (NavBackStackEntry entry : mBackStack) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!(entry.getDestination() <span class="keyword">instanceof</span> NavGraph)) &#123;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>我查了一下 mBackStack 这个数据类型，发现它是一个栈，紧接着找到 mBackStack 入栈的方法。</p>
+<p><img src="https://i.loli.net/2019/10/17/s91Txif3vPM2JOj.png"></p>
+<p>mBackStack#add 相关的方法一共有 4 个，第一个方法是在 NavController#NavController 方法中进行调用的，其余 3 个 add 相关方法均是在 NavController#navigate 内调用，而调用 add 方法之外有一个判空。判空的对象就是来自 Navigator#navigate 这个方法。</p>
+<blockquote>
+<p>NavController 的 navigate 方法，有删减。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">navigate</span><span class="params">(<span class="meta">@NonNull</span> NavDestination node, <span class="meta">@Nullable</span> Bundle args,</span></span></span><br><span class="line"><span class="params"><span class="function">        <span class="meta">@Nullable</span> NavOptions navOptions, <span class="meta">@Nullable</span> Navigator.Extras navigatorExtras)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//......</span></span><br><span class="line">    Navigator&lt;NavDestination&gt; navigator = mNavigatorProvider</span><br><span class="line">           .getNavigator(node.getNavigatorName());</span><br><span class="line">    Bundle finalArgs = node.addInDefaultArgs(args);</span><br><span class="line">    NavDestination newDest = navigator.navigate(node, finalArgs,</span><br><span class="line">            navOptions, navigatorExtras);</span><br><span class="line">    <span class="keyword">if</span> (newDest != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="comment">// The mGraph should always be on the back stack after you navigate()</span></span><br><span class="line">        <span class="keyword">if</span> (mBackStack.isEmpty()) &#123;</span><br><span class="line">            mBackStack.add(<span class="keyword">new</span> NavBackStackEntry(mGraph, finalArgs));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// Now ensure all intermediate NavGraphs are put on the back stack</span></span><br><span class="line">        <span class="comment">// to ensure that global actions work.</span></span><br><span class="line">        ArrayDeque&lt;NavBackStackEntry&gt; hierarchy = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</span><br><span class="line">        NavDestination destination = newDest;</span><br><span class="line">        <span class="keyword">while</span> (destination != <span class="keyword">null</span> &amp;&amp; findDestination(destination.getId()) == <span class="keyword">null</span>) &#123;</span><br><span class="line">            NavGraph parent = destination.getParent();</span><br><span class="line">            <span class="keyword">if</span> (parent != <span class="keyword">null</span>) &#123;</span><br><span class="line">                hierarchy.addFirst(<span class="keyword">new</span> NavBackStackEntry(parent, finalArgs));</span><br><span class="line">            &#125;</span><br><span class="line">            destination = parent;</span><br><span class="line">        &#125;</span><br><span class="line">        mBackStack.addAll(hierarchy);</span><br><span class="line">        <span class="comment">// And finally, add the new destination with its default args</span></span><br><span class="line">        NavBackStackEntry newBackStackEntry = <span class="keyword">new</span> NavBackStackEntry(newDest,</span><br><span class="line">                newDest.addInDefaultArgs(finalArgs));</span><br><span class="line">        mBackStack.add(newBackStackEntry);</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">//......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据我们之前的经验，可以得出这里的 Navigator 就是我们自定义的 KeepStateNavigator 这个对象，那 navgate 这个方法的返回值也就是我们自己控制的，也就是我们自己给自己挖了个坑。2333~</p>
+<p>来吧，来看一下刚才写的代码。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> NavDestination <span class="title">navigate</span><span class="params">(Destination destination, Bundle args, NavOptions navOptions, Navigator.Extras navigatorExtras)</span> </span>&#123;</span><br><span class="line">    String tag = String.valueOf(destination.getId());</span><br><span class="line">    FragmentTransaction transaction = manager.beginTransaction();</span><br><span class="line">    <span class="keyword">boolean</span> initialNavigate = <span class="keyword">false</span>;</span><br><span class="line">    Fragment currentFragment = manager.getPrimaryNavigationFragment();</span><br><span class="line">    <span class="keyword">if</span> (currentFragment != <span class="keyword">null</span>) &#123;</span><br><span class="line">      transaction.hide(currentFragment);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      initialNavigate = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    Fragment fragment = manager.findFragmentByTag(tag);</span><br><span class="line">    <span class="keyword">if</span> (fragment == <span class="keyword">null</span>) &#123;</span><br><span class="line">      String className = destination.getClassName();</span><br><span class="line">      fragment = manager.getFragmentFactory().instantiate(context.getClassLoader(), className);</span><br><span class="line">      transaction.add(containerId, fragment, tag);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      transaction.show(fragment);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    transaction.setPrimaryNavigationFragment(fragment);</span><br><span class="line">    transaction.setReorderingAllowed(<span class="keyword">true</span>);</span><br><span class="line">    transaction.commitNow();</span><br><span class="line">    <span class="keyword">return</span> initialNavigate ? destination : <span class="keyword">null</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在最后一行中，我们通过对 <code>initialNavigate</code> 进行判断然后返回 null 或是 destination 对象。而把 initialNavigate 赋值为 true 则是只有在 currentFragment 为空时才会进行，什么时候 currentFragment 才会为空？只有当打开一个 Activity 并为其填充第一个 Fragment 时才会为 true，在我们当前这个场景里，就是当应用启动，打开 RootFragment 时 initialNavigate 为 true，从 RootFragment 跳转到 SettingFragment 时 initialNavigate 为 false。</p>
+<p>这显然是有问题的，那么我们需要改为，当这个 fragmen 为空时，在 <code>transaction.add(containerId, fragment, tag);</code> 之后把 initialNavigate 赋值为 true。这样一来，NavController#getDestinationCountOnBackStack 就能获取到实际的 fragment 大小了，也就不会直接 return fase 了。</p>
+<p>运行一下看看结果？别着急啊，再检查检查。刚才我说在 <code>Navigation.findNavController(btnToRoot).navigateUp();</code> 内部判断了当前的返回栈个数是否为 1，现在我们把为 1 的情况解决了，那么当返回栈的个数不为 1 时它怎么做的？在判断返回栈个数不是 1 的后经过内部调用，最终来到了 <code>NavController#popBackStackInternal</code> 这个方法内。</p>
+<blockquote>
+<p>NavController 的 popBackStackInternal 方法，有删减</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">popBackStackInternal</span><span class="params">(<span class="meta">@IdRes</span> <span class="keyword">int</span> destinationId, <span class="keyword">boolean</span> inclusive)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (mBackStack.isEmpty()) &#123;</span><br><span class="line">        <span class="comment">// Nothing to pop if the back stack is empty</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    ArrayList&lt;Navigator&gt; popOperations = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    Iterator&lt;NavBackStackEntry&gt; iterator = mBackStack.descendingIterator();</span><br><span class="line">    <span class="keyword">boolean</span> foundDestination = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">        NavDestination destination = iterator.next().getDestination();</span><br><span class="line">        Navigator navigator = mNavigatorProvider.getNavigator(</span><br><span class="line">                destination.getNavigatorName());</span><br><span class="line">        <span class="keyword">if</span> (inclusive || destination.getId() != destinationId) &#123;</span><br><span class="line">            popOperations.add(navigator);</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="comment">//......</span></span><br><span class="line">    <span class="keyword">boolean</span> popped = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (Navigator navigator : popOperations) &#123;</span><br><span class="line">        <span class="keyword">if</span> (navigator.popBackStack()) &#123;</span><br><span class="line">            NavBackStackEntry entry = mBackStack.removeLast();</span><br><span class="line">            popped = <span class="keyword">true</span>;</span><br><span class="line">     <span class="comment">// ......</span></span><br><span class="line">    <span class="keyword">return</span> popped;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在这个方法内，我又看到了那个熟悉的面孔 navigator，在这里 navigator 执行了一个叫 popBackStack 的方法，这个方法看起来好像就是做返回事件的。可是，我们的 KeepStateNavigator 并没有这个方法啊，那是因为我们选择了继承自 FragmentNavigator，在 FragmentNavigator 有一套 popBackStack 逻辑，不过我们用不了。所以我们需要在 FragmentNavigator 进行重写这个方法。</p>
+<p>由于我们需要返回到上一个页面，所以我们也得有个管理栈，然后在 KeepStateNavigator#navigate 方法中的 <code>transaction.add(containerId, fragment, tag);</code> 之后把当前 Fragment 添加到返回栈中，在 popBackStack 中根据一些条件再进行 remove 即可。</p>
+<p><img src="https://i.loli.net/2019/10/21/GaH4yIbd7uC6Bmz.png"></p>
+<p>这样一来就可以了。</p>
+<img src="https://i.loli.net/2019/10/17/qn84IfTF7ybrViS.gif" style="zoom:50%;" />
+
+<blockquote>
+<p>不知道为什么，录制的 gif 画面一直在闪……</p>
+</blockquote>
+<h3 id="随意切换"><a href="#随意切换" class="headerlink" title="随意切换"></a>随意切换</h3><p>好了，这样就可以了，终于可以愉快的使用 Navigation 了。直到有一天，老大找到我，跟我说了一个需求。</p>
+<blockquote>
+<p>从 A 页面进入 B 页面，再从 B 页面进入 C 页面，在 C 页面产生一个事件，然后用户返回时，需要跳过 B，也就是从 C 直接回到 A。</p>
+</blockquote>
+<p>问我这个能不能在 Navigation 上实现，我想了一下，说可以。下面就分享一下实现这种效果的思路，我个人觉得可以有两个解决方法，下面我依次来说一下。</p>
+<blockquote>
+<p>假设页面打开顺序为：A、B、C。</p>
+</blockquote>
+<ul>
+<li><p>第一种：优先关闭</p>
+<p>当从 C 返回到 A 时，其实并不一定是返回的时候进行操作，可能是在某个事件产生之后，这时就把 B 给关闭，此时回退栈里面也就只剩下 A 和 B。这时候只需要正常走页面返回逻辑即可。</p>
+</li>
+<li><p>第二种：优先返回</p>
+<p>当从 C 返回到 A 时，也可以直接跳过 B，具体方法为：当从 C 点击返回时，触发返回栈的操作，当完成返回操作后发现当前页面需要跳过时，则继续返回，此时也就回到了 A。</p>
+</li>
+</ul>
+<p>落实到 Navigation 中，就是在自定义 Navigator 中添加一些方法，然后在需要执行此类操作的地方获取到 Navigator 对象，并进行相关操作。</p>
+<p>获取 Navigator 的相关代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NavController navController = Navigation.findNavController(btnToRoot);</span><br><span class="line">NavigatorProvider navigatorProvider = navController.getNavigatorProvider();</span><br><span class="line">Navigator&lt;?&gt; navigator = navigatorProvider.getNavigator(<span class="string">&quot;keep_state_fragment&quot;</span>);</span><br><span class="line"><span class="keyword">if</span> (navigator <span class="keyword">instanceof</span> KeepStateNavigator) &#123;</span><br><span class="line">    ((KeepStateNavigator) navigator).closeMiddle(R.id.settingsFragment);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><p>我第一次学习 Navigation 的时候就瞄了一眼，觉得这不就是个 Fragment 的管理框架吗？有什么的呀，比其他Fragment 的管理框架好吗？看起来一般般啊。哇哦，好复杂啊，算了，不看了，知道大致怎么用就行。看着大家讨论的越来越多，没忍住，又去仔细看了一下 Navigation 的使用，以及稍微阅读了源码。不就是个 Fragment 管理框架吗？怎么搞这么复杂，什么 NavigatorProvider、Navigator、Destination 这些都是啥啊。</p>
+<p>随着我看的内容越来越多，实践的也变多了，原生的 Navigation 越来不不能满足需求了，才发现，原来 Google 早就想到了，只是没有给我们提供具体的解决方法，只是把一些东西开放出来供开发者在不同场景下进行自定义使用。</p>
+<p>想想自己项目里的代码，好像如果要扩展的话，就得改动较多原来的代码，不能像 Navigation 这样，在需要改动的时候，尽量不触动原有代码，而通过接口、Provider、泛型等更多是编码技巧或是设计模式上的技巧来完成业务需求。</p>
+<p>也不应该把过多的心思花在各式各样的第三方库上，而是把更多的精力花在基础技能上，虽然可能一时半会儿看不出什么结果，但这可能是笑到最后的方法。</p>
+<p>本文首发于<a target="_blank" rel="noopener" href="https://jiangjiwei.site/">个人博客</a>，文中全部源代码已上传至 <a target="_blank" rel="noopener" href="https://github.com/CherryLover/BlogTest">GitHub</a>，代码分支为 closeBefore。喜欢本文的麻烦点个🌟。</p>
+<p>本文封面图：Photo by <a target="_blank" rel="noopener" href="https://unsplash.com/@joaosilas?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">João Silas</a> on <a target="_blank" rel="noopener" href="https://unsplash.com/search/photos/translation?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+
+            <div class="clearfix"></div>
+            <hr class="nogutter">
+        </div>
+        <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2019/12/31/2019-12-31-2019%20%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="float: left;">
+        ← 2019 年终总结
+    </a>
+    
+    
+    <a class="pull-right" href="/2019/10/30/2019-10-28-%E4%BB%8E%E6%B3%A8%E8%A7%A3%E5%88%B0%20ButterKnife/">
+        从注解到 ButterKnife →
+    </a>
+    
+</nav>
+
+        <div class="col-md-8 col-md-offset-2 col-sm-24"><script type="text/javascript">
+  /**
+   * 搜狐畅言
+   */
+
+  /*
+  document.write('<div id="SOHUCS" sid="' + window.location.pathname.slice(1) + '" ></div>');
+
+  window.onload = function () {
+    (function () {
+      var appid = 'cytXXXX';
+      var conf = 'prod_xxxxxxxxxxxxxxxxx';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      var loadJs = function (d, a, id) {
+        var c = document.getElementsByTagName("head")[0] || document.head || document.documentElement;
+        var b = document.createElement("script");
+        b.setAttribute("type", "text/javascript");
+        b.setAttribute("charset", "UTF-8");
+        b.setAttribute("src", d);
+        if (id) {
+          b.setAttribute("id", id);
+        }
+        if (typeof a === "function") {
+          if (window.attachEvent) {
+            b.onreadystatechange = function () {
+              var e = b.readyState;
+              if (e === "loaded" || e === "complete") {
+                b.onreadystatechange = null;
+                a()
+              }
+            }
+          } else {
+            b.onload = a
+          }
+        }
+        c.appendChild(b)
+      };
+
+      loadJs("https://changyan.sohu.com/upload/changyan.js", function () {
+        window.changyan.api.config({
+          appid: appid,
+          conf: conf
+        })
+      });
+    })();
+  }
+  */
+
+</script>
+</div>
+    </div>
+</section>
+
+
+      
+<!-- ============================ Footer =========================== -->
+
+<footer>
+    <div class="container">
+            <div class="copy">
+                <p>
+                    &copy; 2014<script>new Date().getFullYear()>2010&&document.write("-"+new Date().getFullYear());</script>, Content By John Doe. All Rights Reserved.
+                </p>
+                <p>Theme By <a target="_blank" rel="noopener" href="//go.kieran.top" style="color: #767D84">Kieran</a></p>
+            </div>
+            <div class="social">
+                <ul>
+                    
+                    <li><a href="https://github.com/CherryLover" title="Github" target="_blank"><i class="icon-github"></i></a>&nbsp;</li>
+                    
+                    
+                    
+                    
+                    
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+</footer>
+
+<!-- ============================ END Footer =========================== -->
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+      
+</body>
+</html>
